@@ -11,13 +11,13 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=DM+Mono&display=swap');
         body { font-family: 'DM Sans', sans-serif; background-color: #0f172a; color: #f8fafc; margin: 0; scroll-behavior: smooth; }
+        .mono { font-family: 'DM Mono', monospace; }
     </style>
 </head>
 <body>
     <div id="root"></div>
 
     <script type="text/babel">
-        // Destructure React hooks for browser usage
         const { useState, useEffect, useRef } = React;
 
         const NAV_LINKS = ["Philosophy", "Case Study", "Timeline", "Contact"];
@@ -32,54 +32,49 @@
         ];
 
         const PRINCETON_DATA = [
-            { label: "Intended Major", reject: "Mathematics", admit: "Biology", signal: false },
-            { label: "Total IB Score (Gr.11)", reject: "37/42", admit: "38/42", signal: false },
+            { label: "Intended Major", reject: "Mathematics", admit: "Biology" },
+            { label: "Total IB Score", reject: "37/42", admit: "38/42" },
             { label: "Critical HL Score", reject: "Math HL: 5/7 ← FATAL SIGNAL", admit: "Bio HL: 6/7 — competitive", signal: true },
-            { label: "Princeton REA Result", reject: "✗ Rejected", admit: "✓ Admitted", signal: false, isResult: true }
+            { label: "Result", reject: "✗ Rejected", admit: "✓ Admitted", isResult: true }
         ];
 
         const TIMELINE = [
             { month: "May — Grade 10 Ends", title: "The Window Opens", brutal: "This is Day 1. The students who treat this summer as vacation are already behind.", action: "First counselor session: honest profile audit.", tag: "MANDATORY" },
-            { month: "Jun – Aug — Summer", title: "Project Architecture", brutal: "Internships at family friend's office are resume filler. Elite committees want tangible output.", action: "Begin research under university mentorship.", tag: "CRITICAL" },
+            { month: "Jun – Aug — Summer", title: "Project Architecture", brutal: "Elite committees want tangible output, not family-friend internships.", action: "Begin research under university mentorship.", tag: "CRITICAL" },
             { month: "Sep – Nov — Grade 11", title: "Academic Fortress", brutal: "Grade 11 is the most important year. Your application GPA is locked by May.", action: "Subject-specific coaching where needed.", tag: "HIGHEST STAKES" }
         ];
 
         function App() {
             return (
                 <div className="min-h-screen">
-                    {/* NAV */}
                     <nav className="fixed top-0 w-full h-16 bg-slate-900/90 backdrop-blur-md border-b border-emerald-500/10 flex items-center justify-between px-8 z-50">
-                        <div className="font-mono text-emerald-400 text-xs tracking-widest uppercase">ELITE_ADMISSIONS.COUNSELOR</div>
-                        <div className="flex gap-6">
+                        <div className="mono text-emerald-400 text-xs tracking-widest uppercase">ELITE_ADMISSIONS.COUNSELOR</div>
+                        <div className="hidden md:flex gap-6">
                             {NAV_LINKS.map(l => <a key={l} href={`#${l.toLowerCase()}`} className="text-xs text-slate-400 hover:text-emerald-400 uppercase tracking-wider no-underline transition-colors">{l}</a>)}
                         </div>
                     </nav>
 
-                    {/* HERO */}
                     <section id="philosophy" className="pt-48 pb-20 px-8 max-w-5xl mx-auto">
-                        <div className="font-mono text-emerald-400 text-[10px] tracking-[0.3em] mb-6 uppercase">UC Berkeley · Quant Finance · STEM Specialist</div>
+                        <div className="mono text-emerald-400 text-[10px] tracking-[0.3em] mb-6 uppercase">UC Berkeley · Quant Finance · STEM Specialist</div>
                         <h1 className="text-5xl md:text-7xl font-light leading-tight mb-8">Your child's Ivy League window <span className="text-emerald-400 font-medium italic">closes in Grade 11.</span></h1>
-                        <p className="text-xl text-slate-400 max-w-2xl leading-relaxed mb-12">I'm a UC Berkeley Quantitative Finance graduate. This is ruthless clarity for Indian STEM specialists who refuse to leave the outcome to chance.</p>
-                        <div className="flex gap-4">
-                            <a href="#timeline" className="bg-emerald-500 text-slate-950 px-10 py-4 font-bold tracking-widest text-sm rounded-sm hover:bg-emerald-400 transition-colors uppercase no-underline">See The Timeline</a>
-                        </div>
+                        <p className="text-xl text-slate-400 max-w-2xl leading-relaxed mb-12">I'm a UC Berkeley Quantitative Finance graduate. This is ruthless clarity for Indian STEM specialists.</p>
+                        <a href="https://wa.me/919999999999" className="inline-block bg-emerald-500 text-slate-950 px-10 py-4 font-bold tracking-widest text-sm rounded-sm hover:bg-emerald-400 transition-colors uppercase no-underline">Book a Session</a>
                     </section>
 
-                    {/* PRINCETON PARADOX */}
-                    <section id="case-study" className="py-24 px-8 bg-slate-900/50">
+                    <section id="case-study" className="py-24 px-8 bg-slate-900/50 border-y border-slate-800">
                         <div className="max-w-5xl mx-auto">
-                            <div className="font-mono text-amber-500 text-[10px] tracking-[0.3em] mb-4 uppercase">The Princeton Paradox</div>
+                            <div className="mono text-amber-500 text-[10px] tracking-[0.3em] mb-4 uppercase">The Princeton Paradox</div>
                             <h2 className="text-3xl font-light mb-10 text-white">Subject Alignment > Total GPA</h2>
-                            <div className="grid md:grid-cols-2 gap-4 mb-10">
+                            <div className="grid md:grid-cols-2 gap-4">
                                 {PRINCETON_DATA.map((row, i) => (
                                     <React.Fragment key={i}>
-                                        <div className={`p-6 border ${row.isResult && row.reject.includes('Reject') ? 'bg-red-500/10 border-red-500/30' : 'bg-amber-950/20 border-amber-500/20'}`}>
-                                            <div className="text-[10px] font-mono text-amber-500 mb-2 uppercase">{row.label}</div>
-                                            <div className={`text-lg ${row.signal ? 'text-amber-400 font-mono font-bold' : 'text-slate-300'}`}>{row.reject}</div>
+                                        <div className={`p-6 border ${row.isResult && row.reject.includes('Reject') ? 'bg-red-500/10 border-red-500/30' : 'bg-amber-950/10 border-amber-500/10'}`}>
+                                            <div className="text-[10px] mono text-amber-500 mb-2 uppercase">{row.label}</div>
+                                            <div className={`text-lg ${row.signal ? 'text-amber-400 font-bold' : 'text-slate-400'}`}>{row.reject}</div>
                                         </div>
-                                        <div className={`p-6 border ${row.isResult && row.admit.includes('Admit') ? 'bg-emerald-500/10 border-emerald-500/30' : 'bg-emerald-950/20 border-emerald-500/20'}`}>
-                                            <div className="text-[10px] font-mono text-emerald-500 mb-2 uppercase">{row.label}</div>
-                                            <div className="text-lg text-slate-300">{row.admit}</div>
+                                        <div className={`p-6 border ${row.isResult && row.admit.includes('Admit') ? 'bg-emerald-500/10 border-emerald-500/30' : 'bg-emerald-950/10 border-emerald-500/10'}`}>
+                                            <div className="text-[10px] mono text-emerald-500 mb-2 uppercase">{row.label}</div>
+                                            <div className="text-lg text-slate-400">{row.admit}</div>
                                         </div>
                                     </React.Fragment>
                                 ))}
@@ -87,19 +82,39 @@
                         </div>
                     </section>
 
-                    {/* TIMELINE */}
                     <section id="timeline" className="py-24 px-8 max-w-4xl mx-auto">
-                        <div className="font-mono text-emerald-400 text-[10px] tracking-[0.3em] mb-4 uppercase">12-Month Execution Window</div>
+                        <div className="mono text-emerald-400 text-[10px] tracking-[0.3em] mb-4 uppercase">Execution Window</div>
                         <h2 className="text-3xl font-light mb-12 text-white">The Junior Year Timeline</h2>
                         <div className="space-y-12">
                             {TIMELINE.map((step, i) => (
-                                <div key={i} className="flex gap-8 relative">
-                                    <div className="flex-shrink-0 w-4 h-4 rounded-full border-2 border-emerald-500 mt-2 z-10 bg-slate-950"></div>
+                                <div key={i} className="flex gap-8">
+                                    <div className="flex-shrink-0 w-1 bg-emerald-500/20 rounded-full"></div>
                                     <div>
                                         <div className="flex items-center gap-4 mb-2">
-                                            <span className="font-mono text-[11px] text-emerald-500">{step.month}</span>
-                                            <span className="text-[9px] font-mono px-2 py-1 bg-emerald-500/10 text-emerald-500 rounded uppercase">{step.tag}</span>
+                                            <span className="mono text-[11px] text-emerald-500">{step.month}</span>
+                                            <span className="text-[9px] mono px-2 py-1 bg-emerald-500/10 text-emerald-500 rounded uppercase">{step.tag}</span>
                                         </div>
                                         <h3 className="text-xl font-bold text-white mb-2">{step.title}</h3>
                                         <p className="text-sm text-slate-400 leading-relaxed mb-4">{step.brutal}</p>
-                                        <div className="p-4 bg-emerald-500/5 border border-emerald-50
+                                        <div className="p-4 bg-emerald-500/5 border border-emerald-500/10 rounded">
+                                            <span className="text-[10px] mono text-emerald-500 uppercase block mb-1">Target Action</span>
+                                            <p className="text-sm text-slate-300">{step.action}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
+
+                    <footer className="py-20 border-t border-slate-800 text-center">
+                        <p className="mono text-[10px] text-slate-600 uppercase tracking-widest">Elite_Admissions.Counselor — Bengaluru</p>
+                    </footer>
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
