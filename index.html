@@ -12,6 +12,7 @@
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=DM+Mono&display=swap');
         body { font-family: 'DM Sans', sans-serif; background-color: #0f172a; color: #f8fafc; margin: 0; scroll-behavior: smooth; }
         .mono { font-family: 'DM Mono', monospace; }
+        .emerald-glow { text-shadow: 0 0 20px rgba(52, 211, 153, 0.2); }
     </style>
 </head>
 <body>
@@ -26,7 +27,9 @@
             { label: "Profile", s1: "CS / Math", s2: "EECS", s3: "Finance" },
             { label: "IB Midterms (Gr.11)", s1: "39/42", s2: "39/42", s3: "38/42" },
             { label: "SAT / ACT", s1: "2300 SAT", s2: "2240 SAT", s3: "34 ACT" },
+            { label: "Grade 10", s1: "IGCSE 6A*, 2A", s2: "ICSE 97%", s3: "IGCSE 8A*" },
             { label: "Research / Projects", s1: "Published IISc research + Graph Theory (Python)", s2: "CS projects / generic apps", s3: "MUN + 1 app. Thin on output." },
+            { label: "Essays", s1: "A+ linguistic, A- effort", s2: "A- effort, B+ linguistic", s3: "B+ across board" },
             { label: "SSP Result", s1: "✓ Selected", s2: "✗ Not selected", s3: "✗ Not selected" },
             { label: "College Outcome", s1: "SSP → competitive admit", s2: "M&T UPenn Summer → UPenn", s3: "CS at MIT" }
         ];
@@ -35,46 +38,85 @@
             { label: "Intended Major", reject: "Mathematics", admit: "Biology" },
             { label: "Total IB Score", reject: "37/42", admit: "38/42" },
             { label: "Critical HL Score", reject: "Math HL: 5/7 ← FATAL SIGNAL", admit: "Bio HL: 6/7 — competitive", signal: true },
-            { label: "Result", reject: "✗ Rejected", admit: "✓ Admitted", isResult: true }
+            { label: "Princeton REA Result", reject: "✗ Rejected", admit: "✓ Admitted", isResult: true }
         ];
 
         const TIMELINE = [
             { month: "May — Grade 10 Ends", title: "The Window Opens", brutal: "This is Day 1. The students who treat this summer as vacation are already behind.", action: "First counselor session: honest profile audit.", tag: "MANDATORY" },
-            { month: "Jun – Aug — Summer", title: "Project Architecture", brutal: "Elite committees want tangible output, not family-friend internships.", action: "Begin research under university mentorship.", tag: "CRITICAL" },
-            { month: "Sep – Nov — Grade 11", title: "Academic Fortress", brutal: "Grade 11 is the most important year. Your application GPA is locked by May.", action: "Subject-specific coaching where needed.", tag: "HIGHEST STAKES" }
+            { month: "Jun – Aug — Summer", title: "Project Architecture", brutal: "Elite committees want tangible output. Family internships are resume filler.", action: "Begin research under university mentorship (IISc/local faculty).", tag: "CRITICAL" },
+            { month: "Sep – Nov — Grade 11", title: "Academic Fortress", brutal: "Grade 11 is the most important year. Your application GPA is locked by May.", action: "Subject-specific coaching. HL alignment with major.", tag: "HIGHEST STAKES" },
+            { month: "Dec – Feb — Mid-Year", title: "SAT / ACT Execution", brutal: "Score below 1530? You are compensating everywhere else.", action: "SAT target: 1530+. ACT target: 34+.", tag: "NON-NEGOTIABLE" },
+            { month: "Mar – May — Grade 11 Ends", title: "Profile Lock", brutal: "By May, your predicted scores and projects either exist or they don't.", action: "Finalize college list by tier. Essay brainstorming.", tag: "REALITY CHECK" }
         ];
 
         function App() {
             return (
                 <div className="min-h-screen">
-                    <nav className="fixed top-0 w-full h-16 bg-slate-900/90 backdrop-blur-md border-b border-emerald-500/10 flex items-center justify-between px-8 z-50">
+                    {/* NAVIGATION */}
+                    <nav className="fixed top-0 w-full h-16 bg-[#0f172a]/90 backdrop-blur-md border-b border-emerald-500/10 flex items-center justify-between px-8 z-50">
                         <div className="mono text-emerald-400 text-xs tracking-widest uppercase">ELITE_ADMISSIONS.COUNSELOR</div>
-                        <div className="hidden md:flex gap-6">
-                            {NAV_LINKS.map(l => <a key={l} href={`#${l.toLowerCase()}`} className="text-xs text-slate-400 hover:text-emerald-400 uppercase tracking-wider no-underline transition-colors">{l}</a>)}
+                        <div className="hidden md:flex gap-8">
+                            {NAV_LINKS.map(l => (
+                                <a key={l} href={`#${l.toLowerCase()}`} className="text-[11px] text-slate-400 hover:text-emerald-400 uppercase tracking-[0.2em] no-underline transition-all">{l}</a>
+                            ))}
                         </div>
                     </nav>
 
-                    <section id="philosophy" className="pt-48 pb-20 px-8 max-w-5xl mx-auto">
-                        <div className="mono text-emerald-400 text-[10px] tracking-[0.3em] mb-6 uppercase">UC Berkeley · Quant Finance · STEM Specialist</div>
-                        <h1 className="text-5xl md:text-7xl font-light leading-tight mb-8">Your child's Ivy League window <span className="text-emerald-400 font-medium italic">closes in Grade 11.</span></h1>
-                        <p className="text-xl text-slate-400 max-w-2xl leading-relaxed mb-12">I'm a UC Berkeley Quantitative Finance graduate. This is ruthless clarity for Indian STEM specialists.</p>
-                        <a href="https://wa.me/919999999999" className="inline-block bg-emerald-500 text-slate-950 px-10 py-4 font-bold tracking-widest text-sm rounded-sm hover:bg-emerald-400 transition-colors uppercase no-underline">Book a Session</a>
+                    {/* HERO SECTION */}
+                    <section id="philosophy" className="pt-48 pb-24 px-8 max-w-5xl mx-auto">
+                        <div className="mono text-emerald-400 text-[10px] tracking-[0.4em] mb-6 uppercase opacity-80">UC Berkeley · Quant Finance · STEM Specialist</div>
+                        <h1 className="text-5xl md:text-8xl font-light leading-tight mb-8 text-white emerald-glow">
+                            Your child's Ivy League window <span className="text-emerald-400 italic">closes in Grade 11.</span>
+                        </h1>
+                        <p className="text-xl text-slate-400 max-w-2xl leading-relaxed mb-12">I am a UC Berkeley Quantitative Finance graduate. This is ruthless clarity for Indian STEM specialists who refuse to leave the outcome to chance.</p>
+                        <a href="https://wa.me/919999999999" className="inline-block bg-emerald-500 text-slate-950 px-10 py-4 font-bold tracking-[0.2em] text-xs rounded-sm hover:bg-emerald-400 transition-all uppercase no-underline">Book Strategy Session</a>
                     </section>
 
-                    <section id="case-study" className="py-24 px-8 bg-slate-900/50 border-y border-slate-800">
+                    {/* SSP CASE STUDY */}
+                    <section id="case-study" className="py-24 px-8 bg-slate-900/40 border-y border-slate-800">
                         <div className="max-w-5xl mx-auto">
-                            <div className="mono text-amber-500 text-[10px] tracking-[0.3em] mb-4 uppercase">The Princeton Paradox</div>
-                            <h2 className="text-3xl font-light mb-10 text-white">Subject Alignment > Total GPA</h2>
-                            <div className="grid md:grid-cols-2 gap-4">
+                            <div className="mono text-emerald-400 text-[10px] tracking-[0.3em] mb-4 uppercase">Case Study: SSP Selection 2015</div>
+                            <h2 className="text-3xl font-light mb-12 text-white">Three Profiles, One Seat</h2>
+                            <div className="overflow-x-auto">
+                                <table className="w-full border-collapse">
+                                    <thead>
+                                        <tr className="border-b border-emerald-500/20">
+                                            <th className="text-left py-4 text-slate-500 mono text-[10px] tracking-widest">DIMENSION</th>
+                                            <th className="text-left py-4 text-emerald-400 mono text-[10px] tracking-widest">STUDENT 1 (ME)</th>
+                                            <th className="text-left py-4 text-slate-400 mono text-[10px] tracking-widest">STUDENT 2</th>
+                                            <th className="text-left py-4 text-slate-400 mono text-[10px] tracking-widest">STUDENT 3</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {SSP_DATA.map((row, i) => (
+                                            <tr key={i} className="border-b border-slate-800/50">
+                                                <td className="py-5 pr-4 text-slate-500 mono text-[10px] uppercase">{row.label}</td>
+                                                <td className="py-5 pr-4 text-emerald-300 font-medium text-sm">{row.s1}</td>
+                                                <td className="py-5 pr-4 text-slate-400 text-sm">{row.s2}</td>
+                                                <td className="py-5 text-slate-400 text-sm">{row.s3}</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* PRINCETON PARADOX */}
+                    <section className="py-24 px-8 bg-slate-950">
+                        <div className="max-w-5xl mx-auto">
+                            <div className="mono text-amber-500 text-[10px] tracking-[0.3em] mb-4 uppercase text-center">Subject Alignment > Total GPA</div>
+                            <h2 className="text-3xl font-light mb-12 text-white text-center">The Princeton Paradox</h2>
+                            <div className="grid md:grid-cols-2 gap-2">
                                 {PRINCETON_DATA.map((row, i) => (
                                     <React.Fragment key={i}>
-                                        <div className={`p-6 border ${row.isResult && row.reject.includes('Reject') ? 'bg-red-500/10 border-red-500/30' : 'bg-amber-950/10 border-amber-500/10'}`}>
-                                            <div className="text-[10px] mono text-amber-500 mb-2 uppercase">{row.label}</div>
-                                            <div className={`text-lg ${row.signal ? 'text-amber-400 font-bold' : 'text-slate-400'}`}>{row.reject}</div>
+                                        <div className={`p-8 border ${row.isResult && row.reject.includes('Reject') ? 'bg-red-500/5 border-red-500/20' : 'bg-amber-950/10 border-amber-500/10'}`}>
+                                            <div className="text-[9px] mono text-amber-500 mb-2 uppercase tracking-widest">{row.label}</div>
+                                            <div className={`text-lg ${row.signal ? 'text-amber-400 font-bold underline decoration-amber-500/40 underline-offset-4' : 'text-slate-400'}`}>{row.reject}</div>
                                         </div>
-                                        <div className={`p-6 border ${row.isResult && row.admit.includes('Admit') ? 'bg-emerald-500/10 border-emerald-500/30' : 'bg-emerald-950/10 border-emerald-500/10'}`}>
-                                            <div className="text-[10px] mono text-emerald-500 mb-2 uppercase">{row.label}</div>
-                                            <div className="text-lg text-slate-400">{row.admit}</div>
+                                        <div className={`p-8 border ${row.isResult && row.admit.includes('Admit') ? 'bg-emerald-500/5 border-emerald-500/20' : 'bg-emerald-950/10 border-emerald-500/10'}`}>
+                                            <div className="text-[9px] mono text-emerald-500 mb-2 uppercase tracking-widest">{row.label}</div>
+                                            <div className="text-lg text-slate-300">{row.admit}</div>
                                         </div>
                                     </React.Fragment>
                                 ))}
@@ -82,32 +124,31 @@
                         </div>
                     </section>
 
+                    {/* TIMELINE */}
                     <section id="timeline" className="py-24 px-8 max-w-4xl mx-auto">
-                        <div className="mono text-emerald-400 text-[10px] tracking-[0.3em] mb-4 uppercase">Execution Window</div>
-                        <h2 className="text-3xl font-light mb-12 text-white">The Junior Year Timeline</h2>
-                        <div className="space-y-12">
+                        <div className="mono text-emerald-400 text-[10px] tracking-[0.3em] mb-4 uppercase">12-Month Execution Window</div>
+                        <h2 className="text-4xl font-light mb-16 text-white text-center">The Junior Year Timeline</h2>
+                        <div className="space-y-16 border-l border-emerald-500/20 ml-6 pl-10 relative">
                             {TIMELINE.map((step, i) => (
-                                <div key={i} className="flex gap-8">
-                                    <div className="flex-shrink-0 w-1 bg-emerald-500/20 rounded-full"></div>
-                                    <div>
-                                        <div className="flex items-center gap-4 mb-2">
-                                            <span className="mono text-[11px] text-emerald-500">{step.month}</span>
-                                            <span className="text-[9px] mono px-2 py-1 bg-emerald-500/10 text-emerald-500 rounded uppercase">{step.tag}</span>
-                                        </div>
-                                        <h3 className="text-xl font-bold text-white mb-2">{step.title}</h3>
-                                        <p className="text-sm text-slate-400 leading-relaxed mb-4">{step.brutal}</p>
-                                        <div className="p-4 bg-emerald-500/5 border border-emerald-500/10 rounded">
-                                            <span className="text-[10px] mono text-emerald-500 uppercase block mb-1">Target Action</span>
-                                            <p className="text-sm text-slate-300">{step.action}</p>
-                                        </div>
+                                <div key={i} className="relative">
+                                    <div className="absolute -left-[49px] top-2 w-4 h-4 rounded-full border-2 border-emerald-500 bg-slate-950"></div>
+                                    <div className="flex items-center gap-4 mb-3">
+                                        <span className="mono text-[11px] text-emerald-500 tracking-wider font-bold">{step.month}</span>
+                                        <span className="text-[9px] mono px-2 py-1 bg-emerald-500/10 text-emerald-500 rounded uppercase tracking-tighter">{step.tag}</span>
+                                    </div>
+                                    <h3 className="text-2xl font-bold text-white mb-3">{step.title}</h3>
+                                    <p className="text-base text-slate-400 leading-relaxed mb-6 italic border-l-2 border-slate-700 pl-4">"{step.brutal}"</p>
+                                    <div className="p-5 bg-emerald-500/5 border border-emerald-500/10 rounded-sm">
+                                        <span className="text-[10px] mono text-emerald-500 uppercase block mb-2 font-bold tracking-widest">TACTICAL ACTION</span>
+                                        <p className="text-sm text-slate-300 leading-relaxed">{step.action}</p>
                                     </div>
                                 </div>
                             ))}
                         </div>
                     </section>
 
-                    <footer className="py-20 border-t border-slate-800 text-center">
-                        <p className="mono text-[10px] text-slate-600 uppercase tracking-widest">Elite_Admissions.Counselor — Bengaluru</p>
+                    <footer className="py-24 border-t border-slate-900 text-center opacity-50">
+                        <p className="mono text-[10px] text-slate-500 uppercase tracking-[0.4em]">Sovereign Admissions · Bengaluru · UC Berkeley Network</p>
                     </footer>
                 </div>
             );
