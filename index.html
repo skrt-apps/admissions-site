@@ -9,86 +9,62 @@
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=DM+Mono&display=swap');
-        body { font-family: 'DM Sans', sans-serif; background-color: #0f172a; color: #f8fafc; overflow-x: hidden; }
-        * { scroll-behavior: smooth; }
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=DM+Mono&display=swap');
+        body { font-family: 'DM Sans', sans-serif; background-color: #0f172a; color: #f8fafc; margin: 0; }
     </style>
 </head>
 <body>
     <div id="root"></div>
-
     <script type="text/babel">
         const { useState, useEffect, useRef } = React;
 
         const NAV_LINKS = ["Philosophy", "Case Study", "Timeline", "Contact"];
-
         const SSP_DATA = [
             { label: "Profile", s1: "CS / Math", s2: "EECS", s3: "Finance" },
-            { label: "IB Midterms (Gr.11)", s1: "39/42", s2: "39/42", s3: "38/42" },
+            { label: "IB Midterms", s1: "39/42", s2: "39/42", s3: "38/42" },
             { label: "SAT / ACT", s1: "2300 SAT", s2: "2240 SAT", s3: "34 ACT" },
-            { label: "Grade 10", s1: "IGCSE 6A*, 2A", s2: "ICSE 97%", s3: "IGCSE 8A*" },
-            { label: "Research / Projects", s1: "Published IISc research + Graph Theory (Python)", s2: "CS projects / generic apps", s3: "MUN + 1 app. Thin on output." },
-            { label: "Essays", s1: "A+ linguistic, A- effort", s2: "A- effort, B+ linguistic", s3: "B+ across board" },
-            { label: "SSP Result", s1: "✓ Selected", s2: "✗ Not selected", s3: "✗ Not selected" },
-            { label: "College Outcome", s1: "SSP → competitive admit", s2: "M&T UPenn Summer → UPenn", s3: "CS at MIT" }
+            { label: "Research", s1: "Published IISc research", s2: "Generic apps", s3: "Thin on output" },
+            { label: "SSP Result", s1: "✓ Selected", s2: "✗ Not selected", s3: "✗ Not selected" }
         ];
 
-        const PRINCETON_DATA = [
-            { label: "Intended Major", reject: "Mathematics", admit: "Biology", signal: false },
-            { label: "Total IB Score (Gr.11)", reject: "37/42", admit: "38/42", signal: false },
-            { label: "SAT / ACT", reject: "2300 SAT", admit: "34 ACT", signal: false },
-            { label: "Critical HL Score", reject: "Math HL: 5/7 ← FATAL SIGNAL", admit: "Bio HL: 6/7 — competitive", signal: true },
-            { label: "Princeton REA Result", reject: "✗ Rejected", admit: "✓ Admitted", signal: false, isResult: true }
-        ];
-
-        const TIMELINE = [
-            { month: "May — Grade 10 Ends", title: "The Window Opens", brutal: "This is Day 1. NOW. The students who treat this summer as vacation are already behind.", action: "First counselor session: honest profile audit.", tag: "MANDATORY" },
-            { month: "Jun – Aug — Summer", title: "Project Architecture", brutal: "Internships at family friend's office are resume filler. Quality over quantity.", action: "Begin research under university mentorship.", tag: "CRITICAL" },
-            { month: "Sep – Nov — Grade 11", title: "Academic Fortress", brutal: "Grade 11 is the most important year. Your application GPA is locked by May.", action: "Subject-specific coaching where needed.", tag: "HIGHEST STAKES" },
-            { month: "Dec – Feb — Mid-Year", title: "SAT / ACT Execution", brutal: "Score below 1530? You are compensating everywhere else.", action: "SAT target: 1530+. ACT target: 34+.", tag: "NON-NEGOTIABLE" }
-        ];
-
-        const COMPARISON = [
-            { dimension: "Summer after Gr 10", generic: "Family trip, rest", specialist: "Counselor session + research begins" },
-            { dimension: "Research / Projects", generic: "5 scattered activities", specialist: "2 deep projects with tangible output" },
-            { dimension: "College List", generic: "Dream schools by ranking", specialist: "School + major alignment" }
-        ];
-
-        function useInView(threshold = 0.15) {
-            const ref = useRef(null);
-            const [inView, setInView] = useState(false);
-            useEffect(() => {
-                const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setInView(true); obs.disconnect(); } }, { threshold });
-                if (ref.current) obs.observe(ref.current);
-                return () => obs.disconnect();
-            }, []);
-            return [ref, inView];
-        }
-
-        function FadeIn({ children, delay = 0, className = "" }) {
-            const [ref, inView] = useInView();
+        function App() {
             return (
-                <div ref={ref} className={className} style={{ opacity: inView ? 1 : 0, transform: inView ? "translateY(0)" : "translateY(24px)", transition: `opacity 0.7s ease ${delay}ms, transform 0.7s ease ${delay}ms` }}>
-                    {children}
+                <div className="min-h-screen">
+                    <nav className="fixed top-0 w-full h-16 bg-slate-900/90 backdrop-blur-md border-b border-emerald-500/10 flex items-center justify-between px-8 z-50">
+                        <div className="font-mono text-emerald-400 text-xs tracking-widest">ELITE_ADMISSIONS.COUNSELOR</div>
+                        <div className="flex gap-6">
+                            {NAV_LINKS.map(l => <a key={l} href={`#${l.toLowerCase()}`} className="text-xs text-slate-400 hover:text-emerald-400 uppercase tracking-wider">{l}</a>)}
+                        </div>
+                    </nav>
+
+                    <section className="pt-40 pb-20 px-8 max-w-5xl mx-auto">
+                        <div className="font-mono text-emerald-400 text-[10px] tracking-[0.3em] mb-6 uppercase">UC Berkeley · Quant Finance · STEM Specialist</div>
+                        <h1 className="text-5xl md:text-7xl font-light leading-tight mb-8">Your child's Ivy League window <span className="text-emerald-400">closes in Grade 11.</span></h1>
+                        <p className="text-xl text-slate-400 max-w-2xl leading-relaxed mb-12">Ruthless clarity for Indian STEM specialists who refuse to leave the outcome to chance.</p>
+                        <a href="https://wa.me/919999999999" className="inline-block bg-emerald-500 text-slate-950 px-10 py-4 font-bold tracking-widest text-sm rounded-sm hover:bg-emerald-400 transition-colors">BOOK A SESSION</a>
+                    </section>
+
+                    <section className="py-20 px-8 bg-slate-900/50">
+                        <div className="max-w-5xl mx-auto">
+                            <div className="font-mono text-amber-500 text-[10px] tracking-[0.3em] mb-4 uppercase">The Princeton Paradox</div>
+                            <h2 className="text-3xl font-light mb-10">Subject Alignment > Total GPA</h2>
+                            <div className="grid md:grid-cols-2 gap-4">
+                                <div className="p-8 bg-amber-950/20 border border-amber-500/20 rounded-sm">
+                                    <div className="text-amber-500 font-mono text-[10px] mb-2">REJECTED (Princeton Math)</div>
+                                    <div className="text-2xl font-bold text-amber-200">Student 1 — 37/42</div>
+                                    <div className="mt-4 text-red-500 font-mono text-xs p-2 bg-red-500/10 inline-block">MATH HL: 5/7 ← FATAL SIGNAL</div>
+                                </div>
+                                <div className="p-8 bg-emerald-950/20 border border-emerald-500/20 rounded-sm">
+                                    <div className="text-emerald-500 font-mono text-[10px] mb-2">ADMITTED (Princeton Bio)</div>
+                                    <div className="text-2xl font-bold text-emerald-200">Student 2 — 38/42</div>
+                                    <div className="mt-4 text-emerald-500 font-mono text-xs p-2 bg-emerald-500/10 inline-block">BIO HL: 6/7 — COMPETITIVE</div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
                 </div>
             );
         }
 
-        function App() {
-            const [activeStep, setActiveStep] = useState(null);
-            return (
-                <div className="min-h-screen bg-[#0f172a] text-[#e2e8f0]">
-                    {/* NAV */}
-                    <nav className="fixed top-0 left-0 right-0 z-[100] bg-[#0f172a]/90 backdrop-blur-md border-b border-[#34d399]/10 flex items-center justify-between px-8 h-[60px]">
-                        <div className="font-mono text-[13px] text-[#34d399] tracking-widest">ELITE_ADMISSIONS.COUNSELOR</div>
-                        <div className="hidden md:flex gap-8">
-                            {NAV_LINKS.map(l => (
-                                <a key={l} href={`#${l.toLowerCase()}`} className="text-[13px] text-[#94a3b8] hover:text-[#34d399] transition-colors uppercase tracking-wider">{l}</a>
-                            ))}
-                        </div>
-                    </nav>
-
-                    {/* HERO */}
-                    <section id="philosophy" className="min-h-screen flex flex-col justify-center px-8 max-w-[1100px] mx-auto pt-[60px]">
-                        <div className="font-mono text-[11px] text-[#34d399] tracking-[0.2em] mb-8 uppercase opacity-80">UC BERKELEY · QUANTITATIVE FINANCE · ELITE STEM ADMISSIONS</div>
-                        <h1 className="text-4xl md:text-7xl font-light leading-[1.1] text-[#f1f5f9] mb-8">Your child's Ivy League window
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
