@@ -17,8 +17,8 @@
     <div id="root"></div>
 
     <script type="text/babel">
-import { useState, useEffect, useRef } from "react";
-
+const { useState, useEffect, useRef } = React;
+        
 const NAV_LINKS = ["Philosophy", "Case Study", "Timeline", "Contact"];
 
 const SSP_DATA = [
@@ -749,3 +749,6 @@ export default function App() {
     </script>
 </body>
 </html>
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
