@@ -547,13 +547,12 @@ export default function App() {
             background: "rgba(15,23,42,0.8)", border: "1px solid rgba(255,255,255,0.07)",
             borderRadius: "2px", display: "flex", gap: "1.25rem", alignItems: "flex-start",
           }}>
-            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "10px", color: "#475569", letterSpacing: "0.15em", marginTop: "2px", flexShrink: 0 }}>INTL. FILTER</div>
-            <p style={{ fontSize: "13px", color: "#475569", lineHeight: 1.75, margin: 0 }}>
-              Both students competed as <span style={{ color: "#64748b" }}>Indian citizens</span> — a single applicant pool that is among the most competitive globally for elite US admissions. The international filter does not grade on a curve. It compares you directly to every other Indian applicant with a similar profile. A 5/7 in Math HL against Indian competition for Princeton Mathematics is not a near-miss. It is elimination.
+            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "10px", color: "#f59e0b", letterSpacing: "0.15em", marginTop: "2px", flexShrink: 0 }}>CITIZENSHIP TRAP</div>
+            <p style={{ fontSize: "13px", color: "#94a3b8", lineHeight: 1.75, margin: 0 }}>
+              While both students attended school in India, <span style={{ color: "#f59e0b" }}>Student 1 (Math) competed as an Indian Citizen</span>, subject to the international quota. <span style={{ color: "#10b981" }}>Student 2 (Bio) held US Citizenship</span>. In the Ivy pool, a 5/7 in Math HL for an Indian international applying for a STEM spike is an immediate elimination. The US citizen was admitted because their profile met a different domestic baseline; the Indian citizen was rejected for failing the absolute baseline of a hyper-competitive international pool.
             </p>
           </div>
         </FadeIn>
-      </section>
 
       {/* COMPARISON TABLE */}
       <section style={{ padding: "80px 2rem", maxWidth: "1100px", margin: "0 auto" }}>
