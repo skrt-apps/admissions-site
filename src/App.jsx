@@ -684,7 +684,7 @@ export default function App() {
               onMouseLeave={e => e.target.style.background = "#34d399"}>
               BOOK A SESSION
             </a>
-            <a href="https://wa.me/919999999999" target="_blank" rel="noopener noreferrer" style={{
+            <a href="https://wa.me/918904176520" target="_blank" rel="noopener noreferrer" style={{
               display: "inline-flex", alignItems: "center", gap: "8px", padding: "16px 32px",
               background: "transparent", color: "#34d399",
               fontWeight: 500, fontSize: "14px", letterSpacing: "0.08em",
