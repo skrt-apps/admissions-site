@@ -716,6 +716,69 @@ export default function App() {
         </FadeIn>
       </section>
 
+<section id="about" style={{ padding: "80px 2rem", maxWidth: "1100px", margin: "0 auto", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+  <FadeIn>
+    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "#34d399", letterSpacing: "0.2em", marginBottom: "1rem" }}>
+      THE CONSULTANT — BACKGROUND
+    </div>
+    <h2 style={{ fontSize: "clamp(1.6rem, 3.5vw, 2.4rem)", fontWeight: 300, color: "#f1f5f9", marginBottom: "3rem", letterSpacing: "-0.02em" }}>
+      Quantitative Rigor Meets Narrative Strategy
+    </h2>
+
+    {/* Flex Container for Image + Text */}
+    <div style={{ display: "flex", gap: "3rem", alignItems: "flex-start", flexWrap: "wrap" }}>
+      
+      {/* 1. IMAGE PLACEHOLDER (LinkedIn Size Area) */}
+      <div style={{ 
+        flexShrink: 0, 
+        width: "280px", // Standard portrait width
+        height: "350px", // Standard portrait height
+        background: "rgba(255,255,255,0.03)", 
+        border: "1px solid rgba(255,255,255,0.08)",
+        borderRadius: "4px", // Matches your split-cards
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        overflow: "hidden", // Ensures image stays within bounds
+        position: "relative" // For potential text overlay
+      }}>
+        {/* The Actual Image Tag - Replace 'your-photo.jpg' when ready */}
+        {/* <img src="/your-photo.jpg" alt="[Your Name]" style={{ width: "100%", height: "100%", objectFit: "cover" }} /> */}
+        
+        {/* Temporary Placeholder text/icon */}
+        <div style={{ textAlign: "center", padding: "20px" }}>
+          <div style={{ fontSize: "40px", color: "#1e293b", marginBottom: "10px" }}>👤</div>
+          <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "10px", color: "#475569", letterSpacing: "0.1em" }}>
+            [PLACEHOLDER: your-photo.jpg]
+            <br />
+            280px x 350px
+          </div>
+        </div>
+      </div>
+
+      {/* 2. TEXT CONTENT (Your Narrative) */}
+      <div style={{ flex: "1 1 500px", minWidth: "300px" }}>
+        <p style={{ fontSize: "16px", color: "#f1f5f9", lineHeight: 1.8, marginBottom: "1.5rem", fontWeight: 400 }}>
+          I am a UC Berkeley graduate with a foundational background in <span style={{ color: "#34d399" }}>Quantitative Finance</span>. My approach to elite admissions is built on the same analytical frameworks used in high-leverage trading: identifying high-probability signals and eliminating background noise.
+        </p>
+        
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem", marginTop: "2rem" }}>
+          <div>
+            <p style={{ fontSize: "14px", color: "#94a3b8", lineHeight: 1.75, marginBottom: "1rem" }}>
+              During my time at Berkeley, I served as a tutor for <span style={{ color: "#e2e8f0" }}>CS 61A</span>—the university's flagship computer science course. This role required breaking down complex logic under immense pressure, a skill I now apply to deconstructing Ivy League essay prompts.
+            </p>
+          </div>
+          <div>
+            <p style={{ fontSize: "14px", color: "#94a3b8", lineHeight: 1.75 }}>
+              <strong style={{ color: "#f1f5f9" }}>The Haas School Record:</strong> I specialized in mentoring juniors through the Berkeley Haas Business School application process. By focusing on "Institutional Fit" and narrative differentiation, every student I advised secured their admission. After years in the US financial sector, I've returned to India to architect profiles that survive the "International Filter."
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </FadeIn>
+</section>
       {/* FOOTER */}
       <footer style={{ borderTop: "1px solid rgba(255,255,255,0.06)", padding: "2rem", textAlign: "center" }}>
         <p style={{ fontSize: "12px", color: "#334155", fontFamily: "'DM Mono', monospace", letterSpacing: "0.08em" }}>
