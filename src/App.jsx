@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 
-const NAV_LINKS = ["Philosophy", "Case Study", "Timeline", "Contact"];
+const NAV_LINKS = ["Philosophy", "Identities", "Case Study", "Timeline", "About", "Contact"];
 
 const SSP_DATA = [
   {
@@ -103,64 +103,50 @@ const TIMELINE = [
   {
     month: "May — Grade 10 Ends",
     title: "The Window Opens",
-    brutal:
-      "This is Day 1. Not August. Not January of Grade 11. NOW. The students who treat this summer as vacation are already behind the students who don't.",
-    action:
-      "First counselor session: honest profile audit, college list reality check, project direction set.",
+    brutal: "This is Day 1. Not August. Not January of Grade 11. NOW. The students who treat this summer as vacation are already behind the students who don't.",
+    action: "First counselor session: honest profile audit, college list reality check, project direction set.",
     tag: "MANDATORY",
   },
   {
     month: "Jun – Aug — Summer",
     title: "Project Architecture",
-    brutal:
-      "Internships at family friend's office are resume filler. What elite committees want: tangible output — a published paper, a GitHub with functional projects, a robotics prototype. Quality over quantity. 2 deep projects beat 5 scattered ones.",
-    action:
-      "Begin research under university mentorship (IISC/local faculty) OR start an independent technical project with a defined outcome.",
+    brutal: "Internships at family friend's office are resume filler. What elite committees want: tangible output — a published paper, a GitHub with functional projects, a robotics prototype.",
+    action: "Begin research under university mentorship (IISC/local faculty) OR start an independent technical project.",
     tag: "CRITICAL",
   },
   {
     month: "Sep – Nov — Grade 11 Starts",
     title: "Academic Fortress",
-    brutal:
-      "Grade 11 is the most important year of your life as an applicant. Your application GPA is locked by May. 6 months. That's it. IB: minimum 39/42 for Ivy. SAT: minimum 1530. Every HL subject score will be scrutinized against your intended major.",
-    action:
-      "Subject-specific coaching where needed. Mock SAT/ACT diagnostic. HL subject alignment with intended major.",
+    brutal: "Grade 11 is the most important year of your life. Your application GPA is locked by May. 6 months. That's it. IB: minimum 39/42 for Ivy. SAT: minimum 1530.",
+    action: "Subject-specific coaching where needed. Mock SAT/ACT diagnostic. HL subject alignment with intended major.",
     tag: "HIGHEST STAKES",
   },
   {
     month: "Dec – Feb — Mid-Year",
     title: "SAT / ACT Execution",
-    brutal:
-      "The SAT is the only benchmark that lets admissions committees directly compare an IB student in Bangalore to a high schooler in New Jersey. Score below 1530? You are compensating everywhere else. Score above? You've neutralized one variable.",
-    action:
-      "SAT target: 1530+. ACT target: 34+. Sit the exam. If scores disappoint, pivot to ACT immediately.",
+    brutal: "The SAT is the only benchmark that lets admissions committees directly compare an IB student in Bangalore to a high schooler in New Jersey. Score below 1530? You are compensating.",
+    action: "SAT target: 1530+. ACT target: 34+. Sit the exam. If scores disappoint, pivot to ACT immediately.",
     tag: "NON-NEGOTIABLE",
   },
   {
     month: "Mar – May — Grade 11 Ends",
     title: "Profile Lock & List Finalization",
-    brutal:
-      "By May, your IB predicted scores are set. Your SAT score is known. Your projects either exist or they don't. The dream list of 10 schools either survives contact with reality or gets surgically edited. This is where most families get the brutal truth they needed 12 months earlier.",
-    action:
-      "Finalize college list by tier. Identify whether intended major aligns with GPA profile per school. Begin CommonApp essay brainstorming.",
+    brutal: "By May, your IB predicted scores are set. Your SAT score is known. Your projects either exist or they don't. The dream list of 10 schools either survives contact with reality.",
+    action: "Finalize college list by tier. Identify whether intended major aligns with GPA profile per school. Begin CommonApp essay brainstorming.",
     tag: "REALITY CHECK",
   },
   {
     month: "Jun – Aug — Pre-Senior Summer",
     title: "Essay Architecture",
-    brutal:
-      "The CommonApp essay is not an autobiography. It is proof of passion — anchored in your deepest project experience, structured as a story of discovery, setback, and learning. 650 words. No room for generic. The essay must make the admissions reader feel the obsession.",
-    action:
-      "Draft CommonApp essay. Map supplements to school-specific requirements. Finalize activity list with measurable outcomes.",
+    brutal: "The CommonApp essay is not an autobiography. It is proof of passion — anchored in your deepest project experience, structured as a story of discovery.",
+    action: "Draft CommonApp essay. Map supplements to school-specific requirements. Finalize activity list with measurable outcomes.",
     tag: "EXECUTION",
   },
   {
     month: "Sep – Nov — Senior Year",
     title: "Application Submission",
-    brutal:
-      "REA/ED deadlines are Nov 1. If your profile is strong enough to apply REA to your #1 school, the decision to do so must already be made in June. The students who wait until October to 'see how it feels' have already made a decision by omission.",
-    action:
-      "Submit REA/ED by Nov 1. Regular Decision applications finalized. Letters of Recommendation locked.",
+    brutal: "REA/ED deadlines are Nov 1. If your profile is strong enough to apply REA to your #1 school, the decision must already be made in June.",
+    action: "Submit REA/ED by Nov 1. Regular Decision applications finalized. Letters of Recommendation locked.",
     tag: "SUBMIT",
   },
 ];
@@ -203,7 +189,12 @@ function useInView(threshold = 0.15) {
   const [inView, setInView] = useState(false);
   useEffect(() => {
     const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setInView(true); obs.disconnect(); } },
+      ([e]) => {
+        if (e.isIntersecting) {
+          setInView(true);
+          obs.disconnect();
+        }
+      },
       { threshold }
     );
     if (ref.current) obs.observe(ref.current);
@@ -231,12 +222,9 @@ function FadeIn({ children, delay = 0, className = "" }) {
 
 export default function App() {
   const [activeStep, setActiveStep] = useState(null);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <div style={{ background: "#0f172a", color: "#e2e8f0", fontFamily: "'DM Sans', 'Inter', sans-serif", minHeight: "100vh" }}>
-
-      {/* Google Fonts */}
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
@@ -253,9 +241,7 @@ export default function App() {
         </div>
         <div style={{ display: "flex", gap: "2rem" }}>
           {NAV_LINKS.map(l => (
-            <a key={l} href={`#${l.toLowerCase()}`} style={{ fontSize: "13px", color: "#94a3b8", textDecoration: "none", letterSpacing: "0.05em", transition: "color 0.2s" }}
-              onMouseEnter={e => e.target.style.color = "#34d399"}
-              onMouseLeave={e => e.target.style.color = "#94a3b8"}>
+            <a key={l} href={`#${l.toLowerCase().replace(" ", "-")}`} style={{ fontSize: "13px", color: "#94a3b8", textDecoration: "none", letterSpacing: "0.05em" }}>
               {l}
             </a>
           ))}
@@ -264,105 +250,79 @@ export default function App() {
 
       {/* HERO */}
       <section id="philosophy" style={{ minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", padding: "120px 2rem 80px", maxWidth: "1100px", margin: "0 auto" }}>
-
         <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "#34d399", letterSpacing: "0.2em", marginBottom: "2rem", opacity: 0.8 }}>
           UC BERKELEY · QUANTITATIVE FINANCE · ELITE STEM ADMISSIONS
         </div>
-
-        <h1 style={{
-          fontSize: "clamp(2.4rem, 5.5vw, 4.2rem)",
-          fontWeight: 300,
-          lineHeight: 1.1,
-          letterSpacing: "-0.03em",
-          color: "#f1f5f9",
-          margin: "0 0 1.5rem",
-          maxWidth: "900px",
-        }}>
-          Your child's Ivy League window<br />
-          <span style={{ color: "#34d399" }}>closes in Grade 11.</span><br />
-          Most families find out in Grade 12.
+        <h1 style={{ fontSize: "clamp(2.4rem, 5.5vw, 4.2rem)", fontWeight: 300, lineHeight: 1.1, letterSpacing: "-0.03em", color: "#f1f5f9", margin: "0 0 1.5rem", maxWidth: "900px" }}>
+          Your child's Ivy League window<br /><span style={{ color: "#34d399" }}>closes in Grade 11.</span><br />Most families find out in Grade 12.
         </h1>
-
         <p style={{ fontSize: "1.1rem", color: "#94a3b8", maxWidth: "640px", lineHeight: 1.75, marginBottom: "3rem", fontWeight: 300 }}>
-          I'm a UC Berkeley Quantitative Finance graduate who has navigated elite US admissions — SSP, Ivies, top-10 STEM — from the inside. This is not general guidance. This is ruthless clarity for Indian STEM specialists who refuse to leave the outcome to chance.
+          I'm a UC Berkeley Quantitative Finance graduate who has navigated elite US admissions from the inside. This is ruthless clarity for Indian STEM specialists.
         </p>
-
         <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-          <a href="#timeline" style={{
-            display: "inline-block", padding: "14px 32px",
-            background: "#34d399", color: "#0f172a",
-            fontWeight: 600, fontSize: "14px", letterSpacing: "0.08em",
-            textDecoration: "none", borderRadius: "2px",
-            transition: "background 0.2s",
-          }}
-            onMouseEnter={e => e.target.style.background = "#6ee7b7"}
-            onMouseLeave={e => e.target.style.background = "#34d399"}>
-            SEE THE TIMELINE →
-          </a>
-          <a href="#case-study" style={{
-            display: "inline-block", padding: "14px 32px",
-            background: "transparent", color: "#34d399",
-            fontWeight: 500, fontSize: "14px", letterSpacing: "0.08em",
-            textDecoration: "none", borderRadius: "2px",
-            border: "1px solid rgba(52,211,153,0.4)",
-            transition: "border-color 0.2s",
-          }}
-            onMouseEnter={e => e.target.style.borderColor = "#34d399"}
-            onMouseLeave={e => e.target.style.borderColor = "rgba(52,211,153,0.4)"}>
-            VIEW CASE STUDY
-          </a>
-        </div>
-
-        {/* Stats row */}
-        <div style={{ display: "flex", gap: "3rem", marginTop: "5rem", flexWrap: "wrap" }}>
-          {[
-            { val: "SSP", label: "Summer Science Program — 2 of 36 global spots from India" },
-            { val: "39/42", label: "IB minimum for Ivy-realistic specialist profiles" },
-            { val: "1530+", label: "SAT floor for elite university consideration" },
-            { val: "2", label: "Deep projects outperform 5 scattered ones, every time" },
-          ].map(s => (
-            <div key={s.val} style={{ borderLeft: "2px solid #34d399", paddingLeft: "1rem" }}>
-              <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "1.4rem", color: "#f1f5f9", fontWeight: 500 }}>{s.val}</div>
-              <div style={{ fontSize: "12px", color: "#64748b", maxWidth: "180px", marginTop: "4px", lineHeight: 1.5 }}>{s.label}</div>
-            </div>
-          ))}
+          <a href="#timeline" style={{ padding: "14px 32px", background: "#34d399", color: "#0f172a", fontWeight: 600, fontSize: "14px", textDecoration: "none", borderRadius: "2px" }}>SEE THE TIMELINE →</a>
+          <a href="#case-study" style={{ padding: "14px 32px", background: "transparent", color: "#34d399", fontWeight: 500, fontSize: "14px", textDecoration: "none", borderRadius: "2px", border: "1px solid rgba(52,211,153,0.4)" }}>VIEW CASE STUDY</a>
         </div>
       </section>
 
-      {/* SPECIALIST DEFINITION */}
-      <section id="philosophy-body" style={{ padding: "80px 2rem", maxWidth: "1100px", margin: "0 auto" }}>
+      {/* IDENTITIES GRID */}
+      <section id="identities" style={{ padding: "80px 2rem", maxWidth: "1100px", margin: "0 auto" }}>
         <FadeIn>
-          <div style={{
-            background: "rgba(52,211,153,0.04)", border: "1px solid rgba(52,211,153,0.15)",
-            borderRadius: "4px", padding: "3rem",
-          }}>
-            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "#34d399", letterSpacing: "0.2em", marginBottom: "1.5rem" }}>
-              SPECIALIST IDENTITY — DEFINED
-            </div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3rem" }}>
-              <div>
-                <h3 style={{ fontSize: "1.1rem", fontWeight: 500, color: "#f1f5f9", marginBottom: "1rem" }}>Who this is for</h3>
-                <p style={{ fontSize: "15px", color: "#94a3b8", lineHeight: 1.75 }}>
-                  The Specialist is the most fortunate applicant type — and carries the highest ROI at elite colleges. For Indian international students, the Specialist leans toward <strong style={{ color: "#e2e8f0" }}>CS/Engineering or Finance/Business</strong> from an early age.
-                </p>
-                <p style={{ fontSize: "15px", color: "#94a3b8", lineHeight: 1.75, marginTop: "1rem" }}>
-                  The Specialist's challenge is not the marathon. It is crossing the finish line — choosing the right experiences, finding the right voice, and ensuring their <em style={{ color: "#e2e8f0" }}>relentless pursuit of expertise burns through the paper.</em>
-                </p>
+          <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "#34d399", letterSpacing: "0.2em", marginBottom: "3rem", textAlign: "center" }}>
+            THE THREE ADMISSIONS ARCHETYPES
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: "2rem" }}>
+            {/* SPECIALIST */}
+            <div style={{ background: "rgba(52,211,153,0.04)", border: "1px solid rgba(52,211,153,0.15)", borderRadius: "4px", padding: "2.5rem" }}>
+              <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "#34d399", marginBottom: "1.5rem" }}>01 — THE SPECIALIST</div>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3rem" }}>
+                <div>
+                  <h3 style={{ fontSize: "1.1rem", fontWeight: 500, color: "#f1f5f9", marginBottom: "1rem" }}>Who this is for</h3>
+                  <p style={{ fontSize: "14px", color: "#94a3b8", lineHeight: 1.75 }}>For Indian international students leaning toward CS/Engineering or Finance. Their challenge is ensuring their expertise burns through the paper.</p>
+                </div>
+                <div>
+                  <h3 style={{ fontSize: "1.1rem", fontWeight: 500, color: "#f1f5f9", marginBottom: "1rem" }}>What this demands</h3>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                    {["Deep academic projects with tangible output", "Subject scores aligned with major", "Essays anchored in proof of passion", "Expert guidance to avoid compounding errors"].map((t, i) => (
+                      <div key={i} style={{ display: "flex", gap: "10px", fontSize: "13px", color: "#94a3b8" }}><span style={{ color: "#34d399", fontFamily: "'DM Mono'" }}>0{i+1}</span> {t}</div>
+                    ))}
+                  </div>
+                </div>
               </div>
-              <div>
-                <h3 style={{ fontSize: "1.1rem", fontWeight: 500, color: "#f1f5f9", marginBottom: "1rem" }}>What this demands</h3>
-                <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-                  {[
-                    "Deep academic projects with tangible, verifiable output",
-                    "Subject scores that align with intended major — not just total IB points",
-                    "Essays anchored in proof of passion, not autobiography",
-                    "A counselor who can call out the wrong choices before they compound",
-                  ].map((item, i) => (
-                    <div key={i} style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}>
-                      <span style={{ color: "#34d399", fontFamily: "'DM Mono', monospace", fontSize: "12px", marginTop: "2px", flexShrink: 0 }}>0{i + 1}</span>
-                      <span style={{ fontSize: "14px", color: "#94a3b8", lineHeight: 1.6 }}>{item}</span>
-                    </div>
-                  ))}
+            </div>
+            {/* POLYMATH */}
+            <div style={{ background: "rgba(56, 189, 248, 0.04)", border: "1px solid rgba(56, 189, 248, 0.15)", borderRadius: "4px", padding: "2.5rem" }}>
+              <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "#38bdf8", marginBottom: "1.5rem" }}>02 — THE POLYMATH</div>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3rem" }}>
+                <div>
+                  <h3 style={{ fontSize: "1.1rem", fontWeight: 500, color: "#f1f5f9", marginBottom: "1rem" }}>Who this is for</h3>
+                  <p style={{ fontSize: "14px", color: "#94a3b8", lineHeight: 1.75 }}>Excels across disparate domains—the Physics student who debates or the Artist who codes. The goal is unity without appearing scattered.</p>
+                </div>
+                <div>
+                  <h3 style={{ fontSize: "1.1rem", fontWeight: 500, color: "#f1f5f9", marginBottom: "1rem" }}>What this demands</h3>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                    {["Identifying a 'Master Narrative'", "Top-tier grades in every HL subject", "Essays explaining the intersection", "Interdisciplinary projects proving versatility"].map((t, i) => (
+                      <div key={i} style={{ display: "flex", gap: "10px", fontSize: "13px", color: "#94a3b8" }}><span style={{ color: "#38bdf8", fontFamily: "'DM Mono'" }}>0{i+1}</span> {t}</div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* TREE */}
+            <div style={{ background: "rgba(168, 85, 247, 0.04)", border: "1px solid rgba(168, 85, 247, 0.15)", borderRadius: "4px", padding: "2.5rem" }}>
+              <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "#a855f7", marginBottom: "1.5rem" }}>03 — THE TREE</div>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3rem" }}>
+                <div>
+                  <h3 style={{ fontSize: "1.1rem", fontWeight: 500, color: "#f1f5f9", marginBottom: "1rem" }}>Who this is for</h3>
+                  <p style={{ fontSize: "14px", color: "#94a3b8", lineHeight: 1.75 }}>Deep-roots in a single, non-academic obsession. Whether activism or music, the value lies in measurable growth over a decade.</p>
+                </div>
+                <div>
+                  <h3 style={{ fontSize: "1.1rem", fontWeight: 500, color: "#f1f5f9", marginBottom: "1rem" }}>What this demands</h3>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                    {["Verifiable impact milestones", "Maintaining Ivy baseline GPA", "Proof of emotional maturity and grit", "Demonstrating scalability of the obsession"].map((t, i) => (
+                      <div key={i} style={{ display: "flex", gap: "10px", fontSize: "13px", color: "#94a3b8" }}><span style={{ color: "#a855f7", fontFamily: "'DM Mono'" }}>0{i+1}</span> {t}</div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
@@ -370,420 +330,127 @@ export default function App() {
         </FadeIn>
       </section>
 
-      {/* CASE STUDY */}
+      {/* SSP CASE STUDY TABLE */}
       <section id="case-study" style={{ padding: "80px 2rem", maxWidth: "1100px", margin: "0 auto" }}>
         <FadeIn>
-          <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "#34d399", letterSpacing: "0.2em", marginBottom: "1rem" }}>
-            CASE STUDY — REAL DATA
-          </div>
-          <h2 style={{ fontSize: "clamp(1.6rem, 3.5vw, 2.4rem)", fontWeight: 300, color: "#f1f5f9", marginBottom: "0.75rem", letterSpacing: "-0.02em" }}>
-            SSP Selection: Three Profiles, One Seat
-          </h2>
-          <p style={{ fontSize: "15px", color: "#64748b", maxWidth: "640px", lineHeight: 1.7, marginBottom: "3rem" }}>
-            The Summer Science Program selects 2 students per year from all of India from a class of 36 globally. In 2015, I was one of those two. Below is my profile against my two main competitors from the same graduating class — one went to UPenn M&T, one to MIT.
-          </p>
-        </FadeIn>
-
-        <FadeIn delay={100}>
+          <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "#34d399", letterSpacing: "0.2em", marginBottom: "1rem" }}>CASE STUDY — REAL DATA</div>
+          <h2 style={{ fontSize: "clamp(1.6rem, 3.5vw, 2.4rem)", fontWeight: 300, color: "#f1f5f9", marginBottom: "3rem" }}>SSP Selection: Three Profiles, One Seat</h2>
           <div style={{ overflowX: "auto" }}>
             <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "13px", minWidth: "680px" }}>
               <thead>
                 <tr style={{ borderBottom: "1px solid rgba(52,211,153,0.3)" }}>
-                  <th style={{ textAlign: "left", padding: "12px 16px", color: "#64748b", fontWeight: 500, fontSize: "11px", letterSpacing: "0.1em", width: "18%" }}>DIMENSION</th>
-                  <th style={{ textAlign: "left", padding: "12px 16px", color: "#34d399", fontWeight: 500, fontSize: "11px", letterSpacing: "0.1em" }}>STUDENT 1 — ME (SSP SELECTED)</th>
-                  <th style={{ textAlign: "left", padding: "12px 16px", color: "#94a3b8", fontWeight: 500, fontSize: "11px", letterSpacing: "0.1em" }}>STUDENT 2 — MIT CS</th>
-                  <th style={{ textAlign: "left", padding: "12px 16px", color: "#94a3b8", fontWeight: 500, fontSize: "11px", letterSpacing: "0.1em" }}>STUDENT 3 — UPENN M&T</th>
+                  <th style={{ textAlign: "left", padding: "12px 16px", color: "#64748b" }}>DIMENSION</th>
+                  <th style={{ textAlign: "left", padding: "12px 16px", color: "#34d399" }}>STUDENT 1 — ME</th>
+                  <th style={{ textAlign: "left", padding: "12px 16px", color: "#94a3b8" }}>STUDENT 2 — MIT</th>
+                  <th style={{ textAlign: "left", padding: "12px 16px", color: "#94a3b8" }}>STUDENT 3 — UPENN</th>
                 </tr>
               </thead>
               <tbody>
-                {SSP_DATA.map((row, i) => {
-                  const isResult = row.label === "SSP Result";
-                  return (
-                    <tr key={i} style={{
-                      borderBottom: "1px solid rgba(255,255,255,0.05)",
-                      background: isResult ? "rgba(52,211,153,0.07)" : i % 2 === 0 ? "transparent" : "rgba(255,255,255,0.015)",
-                    }}>
-                      <td style={{ padding: "14px 16px", color: isResult ? "#34d399" : "#64748b", fontSize: "11px", letterSpacing: "0.05em", fontFamily: "'DM Mono', monospace", verticalAlign: "top", fontWeight: isResult ? 600 : 400 }}>{row.label}</td>
-                      <td style={{ padding: "14px 16px", color: isResult ? "#34d399" : "#e2e8f0", lineHeight: 1.6, verticalAlign: "top", borderLeft: "2px solid rgba(52,211,153,0.25)", fontWeight: isResult ? 700 : 400, fontSize: isResult ? "15px" : "13px" }}>{row.s1}</td>
-                      <td style={{ padding: "14px 16px", color: isResult ? "#ef4444" : "#94a3b8", lineHeight: 1.6, verticalAlign: "top", fontWeight: isResult ? 700 : 400, fontSize: isResult ? "15px" : "13px" }}>{row.s2}</td>
-                      <td style={{ padding: "14px 16px", color: isResult ? "#ef4444" : "#94a3b8", lineHeight: 1.6, verticalAlign: "top", fontWeight: isResult ? 700 : 400, fontSize: isResult ? "15px" : "13px" }}>{row.s3}</td>
-                    </tr>
-                  );
-                })}
+                {SSP_DATA.map((row, i) => (
+                  <tr key={i} style={{ borderBottom: "1px solid rgba(255,255,255,0.05)", background: row.label === "SSP Result" ? "rgba(52,211,153,0.07)" : "transparent" }}>
+                    <td style={{ padding: "14px 16px", color: "#64748b", fontFamily: "'DM Mono', monospace" }}>{row.label}</td>
+                    <td style={{ padding: "14px 16px", color: "#e2e8f0" }}>{row.s1}</td>
+                    <td style={{ padding: "14px 16px", color: "#94a3b8" }}>{row.s2}</td>
+                    <td style={{ padding: "14px 16px", color: "#94a3b8" }}>{row.s3}</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
-          </div>
-        </FadeIn>
-
-        <FadeIn delay={150}>
-          <div style={{
-            background: "rgba(52,211,153,0.06)", border: "1px solid rgba(52,211,153,0.2)",
-            borderRadius: "2px", padding: "1.5rem 2rem", marginTop: "2rem",
-          }}>
-            <p style={{ fontSize: "14px", color: "#94a3b8", lineHeight: 1.75, margin: 0 }}>
-              <strong style={{ color: "#34d399" }}>The lesson: </strong>
-              Student 3 had 8 A*s at IGCSE — the strongest academic baseline of the three. But strong academics without <em>deep, documented research output</em> is not enough. SSP is not selecting scholars. It is selecting future researchers. The output is the proof. The essay converts the proof into a narrative.
-            </p>
           </div>
         </FadeIn>
       </section>
 
       {/* PRINCETON PARADOX */}
-      <section id="princeton" style={{ padding: "80px 2rem", maxWidth: "1100px", margin: "0 auto" }}>
+      <section id="case-study-2" style={{ padding: "80px 2rem", maxWidth: "1100px", margin: "0 auto" }}>
         <FadeIn>
-          <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "#f59e0b", letterSpacing: "0.2em", marginBottom: "1rem" }}>
-            ACADEMIC INSIGHT — IVY TRAP
-          </div>
-          <h2 style={{ fontSize: "clamp(1.6rem, 3.5vw, 2.4rem)", fontWeight: 300, color: "#f1f5f9", marginBottom: "0.75rem", letterSpacing: "-0.02em" }}>
-            The Princeton Paradox
-          </h2>
-          <p style={{ fontSize: "15px", color: "#64748b", maxWidth: "680px", lineHeight: 1.75, marginBottom: "3rem" }}>
-            Two students. Same school. Same graduating class. Princeton REA, 2016. The student with the lower total IB score — and weaker research output — gets in. The one with the higher score, SSP selection, and published papers does not. The variable that explains everything: <span style={{ color: "#f1f5f9" }}>major choice versus subject-specific performance.</span>
-          </p>
-        </FadeIn>
-
-        {/* Split Cards */}
-        <FadeIn delay={80}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2px", marginBottom: "2px" }}>
-            {/* Header: Reject */}
-            <div style={{
-              background: "rgba(120,53,15,0.25)", border: "1px solid rgba(245,158,11,0.2)",
-              borderBottom: "none", padding: "1.25rem 1.75rem",
-              display: "flex", alignItems: "center", gap: "1rem",
-            }}>
-              <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#ef4444", flexShrink: 0 }} />
-              <div>
-                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "10px", color: "#f59e0b", letterSpacing: "0.15em", marginBottom: "3px" }}>STUDENT 1 — PRINCETON REA</div>
-                <div style={{ fontSize: "14px", color: "#fcd34d", fontWeight: 500 }}>The Ivy Trap: 37/42 · Math Major · Rejected</div>
-              </div>
+          <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "#f59e0b", letterSpacing: "0.2em", marginBottom: "1rem" }}>ACADEMIC INSIGHT — IVY TRAP</div>
+          <h2 style={{ fontSize: "clamp(1.6rem, 3.5vw, 2.4rem)", fontWeight: 300, color: "#f1f5f9", marginBottom: "3rem" }}>The Princeton Paradox</h2>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2px" }}>
+            <div style={{ background: "rgba(120,53,15,0.25)", border: "1px solid rgba(245,158,11,0.2)", padding: "20px" }}>
+              <div style={{ fontSize: "10px", color: "#f59e0b" }}>STUDENT 1 — REJECTED</div>
+              <div style={{ fontSize: "14px", color: "#fcd34d" }}>37/42 · Math Major</div>
             </div>
-            {/* Header: Admit */}
-            <div style={{
-              background: "rgba(52,211,153,0.06)", border: "1px solid rgba(52,211,153,0.2)",
-              borderBottom: "none", padding: "1.25rem 1.75rem",
-              display: "flex", alignItems: "center", gap: "1rem",
-            }}>
-              <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#34d399", flexShrink: 0 }} />
-              <div>
-                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "10px", color: "#34d399", letterSpacing: "0.15em", marginBottom: "3px" }}>STUDENT 2 — PRINCETON REA</div>
-                <div style={{ fontSize: "14px", color: "#6ee7b7", fontWeight: 500 }}>The STEM Hub: 38/42 · Biology Major · Admitted</div>
-              </div>
+            <div style={{ background: "rgba(52,211,153,0.06)", border: "1px solid rgba(52,211,153,0.2)", padding: "20px" }}>
+              <div style={{ fontSize: "10px", color: "#34d399" }}>STUDENT 2 — ADMITTED</div>
+              <div style={{ fontSize: "14px", color: "#6ee7b7" }}>38/42 · Bio Major</div>
             </div>
           </div>
-
-          {/* Data rows */}
           {PRINCETON_DATA.map((row, i) => (
-            <div key={i} style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2px", marginBottom: "2px" }}>
-              <div style={{
-                background: row.isResult ? "rgba(239,68,68,0.1)" : row.signal ? "rgba(120,53,15,0.35)" : "rgba(120,53,15,0.15)",
-                border: "1px solid rgba(245,158,11,0.12)",
-                padding: "14px 20px",
-              }}>
-                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "10px", color: "#92400e", letterSpacing: "0.1em", marginBottom: "5px" }}>{row.label}</div>
-                <div style={{
-                  fontSize: row.isResult ? "15px" : row.signal ? "13px" : "13px",
-                  color: row.isResult ? "#ef4444" : row.signal ? "#fcd34d" : "#d97706",
-                  fontWeight: row.isResult ? 700 : row.signal ? 600 : 400,
-                  lineHeight: 1.5,
-                  fontFamily: row.signal ? "'DM Mono', monospace" : "inherit",
-                }}>{row.reject}</div>
-                {row.signal && (
-                  <div style={{
-                    marginTop: "8px", display: "inline-block",
-                    fontSize: "10px", fontFamily: "'DM Mono', monospace",
-                    padding: "3px 10px", letterSpacing: "0.12em",
-                    background: "rgba(239,68,68,0.2)", color: "#ef4444",
-                    borderRadius: "2px", border: "1px solid rgba(239,68,68,0.3)",
-                  }}>FATAL SIGNAL</div>
-                )}
-              </div>
-              <div style={{
-                background: row.isResult ? "rgba(52,211,153,0.1)" : row.signal ? "rgba(52,211,153,0.1)" : "rgba(52,211,153,0.03)",
-                border: "1px solid rgba(52,211,153,0.12)",
-                padding: "14px 20px",
-              }}>
-                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "10px", color: "#065f46", letterSpacing: "0.1em", marginBottom: "5px" }}>{row.label}</div>
-                <div style={{
-                  fontSize: row.isResult ? "15px" : "13px",
-                  color: row.isResult ? "#34d399" : row.signal ? "#6ee7b7" : "#94a3b8",
-                  fontWeight: row.isResult ? 700 : row.signal ? 600 : 400,
-                  lineHeight: 1.5,
-                }}>{row.admit}</div>
-              </div>
+            <div key={i} style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2px", borderBottom: "1px solid rgba(255,255,255,0.02)" }}>
+              <div style={{ background: "rgba(15,23,42,0.15)", padding: "14px 20px", color: "#94a3b8" }}>{row.reject}</div>
+              <div style={{ background: "rgba(15,23,42,0.05)", padding: "14px 20px", color: "#e2e8f0" }}>{row.admit}</div>
             </div>
           ))}
-        </FadeIn>
-
-        {/* The Major Trap callout */}
-        <FadeIn delay={120}>
-          <div style={{
-            display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem", marginTop: "2rem",
-          }}>
-            <div style={{
-              background: "rgba(120,53,15,0.2)", border: "1px solid rgba(245,158,11,0.25)",
-              borderRadius: "2px", padding: "1.5rem 1.75rem",
-            }}>
-              <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "10px", color: "#f59e0b", letterSpacing: "0.15em", marginBottom: "0.75rem" }}>THE MAJOR TRAP</div>
-              <p style={{ fontSize: "14px", color: "#d97706", lineHeight: 1.75, margin: 0 }}>
-                Princeton's Mathematics program is among the most competitive in the world. A Math HL score of <strong style={{ color: "#fcd34d" }}>5/7</strong> does not signal readiness for that cohort — regardless of total IB points, SAT score, or research output. The committee sees the subject score first. Everything else is secondary.
-              </p>
-            </div>
-            <div style={{
-              background: "rgba(52,211,153,0.04)", border: "1px solid rgba(52,211,153,0.2)",
-              borderRadius: "2px", padding: "1.5rem 1.75rem",
-            }}>
-              <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "10px", color: "#34d399", letterSpacing: "0.15em", marginBottom: "0.75rem" }}>THE STEM HUB PRINCIPLE</div>
-              <p style={{ fontSize: "14px", color: "#94a3b8", lineHeight: 1.75, margin: 0 }}>
-                Biology at Princeton carries far less competition than Mathematics. A <strong style={{ color: "#6ee7b7" }}>6/7 in Bio HL</strong> against a less saturated applicant pool — with a lower total score and weaker research — is enough. Program choice, calibrated to your subject scores, is the highest-leverage decision in your application.
-              </p>
-            </div>
-          </div>
-        </FadeIn>
-
-        {/* International Filter note */}
-        <FadeIn delay={160}>
-          <div style={{
-            marginTop: "1.5rem", padding: "1.25rem 1.75rem",
-            background: "rgba(15,23,42,0.8)", border: "1px solid rgba(255,255,255,0.07)",
-            borderRadius: "2px", display: "flex", gap: "1.25rem", alignItems: "flex-start",
-          }}>
-            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "10px", color: "#f59e0b", letterSpacing: "0.15em", marginTop: "2px", flexShrink: 0 }}>CITIZENSHIP TRAP</div>
-            <p style={{ fontSize: "13px", color: "#94a3b8", lineHeight: 1.75, margin: 0 }}>
-              While both students attended school in India, <span style={{ color: "#f59e0b" }}>Student 1 (Math) competed as an Indian Citizen</span>, subject to the international quota. <span style={{ color: "#10b981" }}>Student 2 (Bio) held US Citizenship</span>. In the Ivy pool, a 5/7 in Math HL for an Indian international applying for a STEM spike is an immediate elimination. The US citizen was admitted because their profile met a different domestic baseline; the Indian citizen was rejected for failing the absolute baseline of a hyper-competitive international pool.
+          <div style={{ marginTop: "1.5rem", padding: "1.5rem", background: "rgba(15,23,42,0.8)", border: "1px solid rgba(255,255,255,0.07)", display: "flex", gap: "20px" }}>
+            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "10px", color: "#f59e0b" }}>CITIZENSHIP TRAP</div>
+            <p style={{ fontSize: "13px", color: "#94a3b8", lineHeight: 1.7 }}>
+              Student 1 (Math) competed as an <span style={{ color: "#f59e0b" }}>Indian Citizen</span>. Student 2 (Bio) was a <span style={{ color: "#10b981" }}>US Citizen</span>. For Indian internationals, a 5/7 in Math HL is a fatal signal for STEM spikes.
             </p>
           </div>
         </FadeIn>
+      </section>
 
-      {/* COMPARISON TABLE */}
+      {/* STRATEGY COMPARISON TABLE */}
       <section style={{ padding: "80px 2rem", maxWidth: "1100px", margin: "0 auto" }}>
-        <FadeIn>
-          <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "#34d399", letterSpacing: "0.2em", marginBottom: "1rem" }}>
-            STRATEGY CONTRAST
-          </div>
-          <h2 style={{ fontSize: "clamp(1.6rem, 3.5vw, 2.4rem)", fontWeight: 300, color: "#f1f5f9", marginBottom: "3rem", letterSpacing: "-0.02em" }}>
-            Generic Approach vs. Specialist Strategy
-          </h2>
-        </FadeIn>
-
-        <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: "2px" }}>
+        <h2 style={{ fontSize: "clamp(1.6rem, 3.5vw, 2.4rem)", fontWeight: 300, color: "#f1f5f9", marginBottom: "3rem" }}>Generic vs. Specialist Strategy</h2>
+        <div style={{ display: "grid", gap: "2px" }}>
           {COMPARISON.map((row, i) => (
-            <FadeIn key={i} delay={i * 50}>
-              <div style={{
-                display: "grid", gridTemplateColumns: "200px 1fr 1fr",
-                gap: "1px", background: "rgba(255,255,255,0.05)",
-              }}>
-                <div style={{ background: "#0f172a", padding: "16px 20px", display: "flex", alignItems: "center" }}>
-                  <span style={{ fontSize: "12px", color: "#64748b", fontFamily: "'DM Mono', monospace", letterSpacing: "0.04em" }}>{row.dimension}</span>
-                </div>
-                <div style={{ background: "#0f172a", padding: "16px 20px", borderLeft: "1px solid rgba(255,255,255,0.05)" }}>
-                  <div style={{ fontSize: "11px", color: "#ef4444", fontFamily: "'DM Mono', monospace", marginBottom: "6px", letterSpacing: "0.1em" }}>GENERIC</div>
-                  <div style={{ fontSize: "14px", color: "#64748b", lineHeight: 1.6 }}>{row.generic}</div>
-                </div>
-                <div style={{ background: "rgba(52,211,153,0.04)", padding: "16px 20px", borderLeft: "1px solid rgba(52,211,153,0.12)" }}>
-                  <div style={{ fontSize: "11px", color: "#34d399", fontFamily: "'DM Mono', monospace", marginBottom: "6px", letterSpacing: "0.1em" }}>SPECIALIST</div>
-                  <div style={{ fontSize: "14px", color: "#e2e8f0", lineHeight: 1.6 }}>{row.specialist}</div>
-                </div>
-              </div>
-            </FadeIn>
+            <div key={i} style={{ display: "grid", gridTemplateColumns: "200px 1fr 1fr", background: "rgba(255,255,255,0.05)", gap: "1px" }}>
+              <div style={{ background: "#0f172a", padding: "16px 20px", color: "#64748b", fontSize: "12px" }}>{row.dimension}</div>
+              <div style={{ background: "#0f172a", padding: "16px 20px", color: "#64748b", fontSize: "14px" }}>{row.generic}</div>
+              <div style={{ background: "rgba(52,211,153,0.04)", padding: "16px 20px", color: "#e2e8f0", fontSize: "14px" }}>{row.specialist}</div>
+            </div>
           ))}
         </div>
       </section>
 
       {/* TIMELINE */}
       <section id="timeline" style={{ padding: "80px 2rem", maxWidth: "900px", margin: "0 auto" }}>
-        <FadeIn>
-          <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "#34d399", letterSpacing: "0.2em", marginBottom: "1rem" }}>
-            12-MONTH EXECUTION WINDOW
-          </div>
-          <h2 style={{ fontSize: "clamp(1.6rem, 3.5vw, 2.4rem)", fontWeight: 300, color: "#f1f5f9", marginBottom: "0.75rem", letterSpacing: "-0.02em" }}>
-            The Junior Year Timeline
-          </h2>
-          <p style={{ fontSize: "15px", color: "#64748b", maxWidth: "560px", lineHeight: 1.7, marginBottom: "4rem" }}>
-            Most families believe the process starts after Grade 11. That belief is the single most expensive mistake an Indian STEM aspirant can make.
-          </p>
-        </FadeIn>
-
-        <div style={{ position: "relative" }}>
-          <div style={{ position: "absolute", left: "20px", top: 0, bottom: 0, width: "1px", background: "linear-gradient(to bottom, #34d399, rgba(52,211,153,0.1))" }} />
-
+        <h2 style={{ fontSize: "2rem", fontWeight: 300, color: "#f1f5f9", marginBottom: "4rem" }}>The Junior Year Timeline</h2>
+        <div style={{ position: "relative", paddingLeft: "40px", borderLeft: "1px solid rgba(52,211,153,0.2)" }}>
           {TIMELINE.map((step, i) => (
-            <FadeIn key={i} delay={i * 80}>
-              <div
-                style={{ display: "flex", gap: "2rem", marginBottom: "2.5rem", cursor: "pointer", position: "relative" }}
-                onClick={() => setActiveStep(activeStep === i ? null : i)}
-              >
-                {/* Dot */}
-                <div style={{ flexShrink: 0, width: "40px", display: "flex", flexDirection: "column", alignItems: "center" }}>
-                  <div style={{
-                    width: "10px", height: "10px", borderRadius: "50%",
-                    background: activeStep === i ? "#34d399" : "#1e293b",
-                    border: "2px solid #34d399",
-                    transition: "background 0.2s",
-                    marginTop: "4px",
-                  }} />
+            <div key={i} style={{ marginBottom: "2.5rem", cursor: "pointer" }} onClick={() => setActiveStep(activeStep === i ? null : i)}>
+              <div style={{ fontSize: "11px", color: "#34d399", fontFamily: "'DM Mono'" }}>{step.month}</div>
+              <h3 style={{ fontSize: "1.05rem", color: "#f1f5f9", margin: "8px 0" }}>{step.title}</h3>
+              <p style={{ fontSize: "14px", color: "#64748b", lineHeight: 1.7 }}>{step.brutal}</p>
+              {activeStep === i && (
+                <div style={{ marginTop: "1rem", padding: "1rem", background: "rgba(52,211,153,0.06)", border: "1px solid rgba(52,211,153,0.2)" }}>
+                  <p style={{ fontSize: "14px", color: "#94a3b8" }}>{step.action}</p>
                 </div>
-
-                {/* Content */}
-                <div style={{ flex: 1, paddingBottom: "0.5rem" }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "6px", flexWrap: "wrap" }}>
-                    <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "#34d399", letterSpacing: "0.1em" }}>{step.month}</span>
-                    <span style={{
-                      fontSize: "10px", fontFamily: "'DM Mono', monospace",
-                      padding: "2px 8px", letterSpacing: "0.1em",
-                      background: step.tag === "MANDATORY" || step.tag === "HIGHEST STAKES" ? "rgba(239,68,68,0.15)" : "rgba(52,211,153,0.1)",
-                      color: step.tag === "MANDATORY" || step.tag === "HIGHEST STAKES" ? "#ef4444" : "#34d399",
-                      borderRadius: "2px",
-                    }}>{step.tag}</span>
-                  </div>
-
-                  <h3 style={{ fontSize: "1.05rem", fontWeight: 500, color: "#f1f5f9", marginBottom: "8px" }}>{step.title}</h3>
-                  <p style={{ fontSize: "14px", color: "#64748b", lineHeight: 1.7, marginBottom: "0" }}>{step.brutal}</p>
-
-                  {activeStep === i && (
-                    <div style={{
-                      marginTop: "1rem", padding: "1rem 1.25rem",
-                      background: "rgba(52,211,153,0.06)", border: "1px solid rgba(52,211,153,0.2)",
-                      borderRadius: "2px",
-                      animation: "none",
-                    }}>
-                      <div style={{ fontSize: "11px", color: "#34d399", fontFamily: "'DM Mono', monospace", letterSpacing: "0.1em", marginBottom: "6px" }}>ACTION ITEM</div>
-                      <p style={{ fontSize: "14px", color: "#94a3b8", lineHeight: 1.7, margin: 0 }}>{step.action}</p>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </FadeIn>
+              )}
+            </div>
           ))}
         </div>
       </section>
 
-      {/* CTA */}
-      <section id="contact" style={{ padding: "100px 2rem", maxWidth: "900px", margin: "0 auto", textAlign: "center" }}>
+      {/* ABOUT ME */}
+      <section id="about" style={{ padding: "80px 2rem", maxWidth: "1100px", margin: "0 auto", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
         <FadeIn>
-          <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "#34d399", letterSpacing: "0.2em", marginBottom: "2rem" }}>
-            PRESCRIPTIVE CALL TO ACTION
-          </div>
-          <h2 style={{ fontSize: "clamp(2rem, 4.5vw, 3.2rem)", fontWeight: 300, color: "#f1f5f9", letterSpacing: "-0.03em", lineHeight: 1.15, marginBottom: "1.5rem" }}>
-            If your child is finishing Grade 10<br />
-            <span style={{ color: "#34d399" }}>this is the last moment</span><br />
-            to act without losing ground.
-          </h2>
-          <p style={{ fontSize: "15px", color: "#64748b", maxWidth: "560px", margin: "0 auto 3rem", lineHeight: 1.75 }}>
-            The students who make it to SSP, MIT, Berkeley, and the Ivies don't find their strategy in Grade 12. They begin in the summer after Grade 10 with one honest conversation. That conversation is what I offer.
-          </p>
-          <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
-            <a href="mailto:contact@admissions.com" style={{
-              display: "inline-block", padding: "16px 40px",
-              background: "#34d399", color: "#0f172a",
-              fontWeight: 600, fontSize: "14px", letterSpacing: "0.1em",
-              textDecoration: "none", borderRadius: "2px",
-              transition: "background 0.2s",
-            }}
-              onMouseEnter={e => e.target.style.background = "#6ee7b7"}
-              onMouseLeave={e => e.target.style.background = "#34d399"}>
-              BOOK A SESSION
-            </a>
-            <a href="https://wa.me/918904176520" target="_blank" rel="noopener noreferrer" style={{
-              display: "inline-flex", alignItems: "center", gap: "8px", padding: "16px 32px",
-              background: "transparent", color: "#34d399",
-              fontWeight: 500, fontSize: "14px", letterSpacing: "0.08em",
-              textDecoration: "none", borderRadius: "2px",
-              border: "1px solid rgba(52,211,153,0.4)",
-              transition: "border-color 0.2s, background 0.2s",
-            }}
-              onMouseEnter={e => { e.currentTarget.style.borderColor = "#34d399"; e.currentTarget.style.background = "rgba(52,211,153,0.06)"; }}
-              onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(52,211,153,0.4)"; e.currentTarget.style.background = "transparent"; }}>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="#34d399" xmlns="http://www.w3.org/2000/svg">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-                <path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.119 1.529 5.845L0 24l6.335-1.51A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.214-3.732.89.934-3.618-.235-.372A9.818 9.818 0 1112 21.818z"/>
-              </svg>
-              WHATSAPP
-            </a>
-          </div>
-
-          <div style={{ marginTop: "4rem", display: "flex", justifyContent: "center", gap: "3rem", flexWrap: "wrap" }}>
-            {[
-              { label: "Background", val: "UC Berkeley — Quantitative Finance" },
-              { label: "Cohort", val: "SSP Class of 2015 — India" },
-              { label: "Focus", val: "Indian STEM Specialists, Ivies + Top-10" },
-            ].map(item => (
-              <div key={item.label} style={{ textAlign: "left" }}>
-                <div style={{ fontSize: "11px", color: "#64748b", fontFamily: "'DM Mono', monospace", letterSpacing: "0.1em", marginBottom: "4px" }}>{item.label}</div>
-                <div style={{ fontSize: "14px", color: "#94a3b8" }}>{item.val}</div>
+          <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "#34d399", marginBottom: "1rem" }}>THE CONSULTANT — BACKGROUND</div>
+          <h2 style={{ fontSize: "clamp(1.6rem, 3.5vw, 2.4rem)", fontWeight: 300, color: "#f1f5f9", marginBottom: "3rem" }}>Quantitative Rigor Meets Narrative Strategy</h2>
+          <div style={{ display: "flex", gap: "3rem", flexWrap: "wrap" }}>
+            <div style={{ width: "280px", height: "350px", background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "4px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+               <div style={{ textAlign: "center" }}><div style={{ fontSize: "40px" }}>👤</div><div style={{ fontSize: "10px", color: "#475569" }}>[headshot.jpg]</div></div>
+            </div>
+            <div style={{ flex: "1 1 500px" }}>
+              <p style={{ fontSize: "16px", color: "#f1f5f9", lineHeight: 1.8, marginBottom: "1.5rem" }}>I am a UC Berkeley graduate in Quantitative Finance. I deconstruct Ivy prompts with the same logic used in high-leverage trading.</p>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem" }}>
+                <p style={{ fontSize: "14px", color: "#94a3b8" }}>At Berkeley, I tutored <span style={{ color: "#e2e8f0" }}>CS 61A</span>—the flagship CS course—breaking down logic for thousands of students.</p>
+                <p style={{ fontSize: "14px", color: "#94a3b8" }}><strong style={{ color: "#f1f5f9" }}>The Haas Record:</strong> I successfully mentored multiple juniors through the Berkeley Haas process with a 100% success rate.</p>
               </div>
-            ))}
+            </div>
           </div>
         </FadeIn>
       </section>
 
-<section id="about" style={{ padding: "80px 2rem", maxWidth: "1100px", margin: "0 auto", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
-  <FadeIn>
-    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "#34d399", letterSpacing: "0.2em", marginBottom: "1rem" }}>
-      THE CONSULTANT — BACKGROUND
-    </div>
-    <h2 style={{ fontSize: "clamp(1.6rem, 3.5vw, 2.4rem)", fontWeight: 300, color: "#f1f5f9", marginBottom: "3rem", letterSpacing: "-0.02em" }}>
-      Quantitative Rigor Meets Narrative Strategy
-    </h2>
+      {/* CONTACT */}
+      <section id="contact" style={{ padding: "100px 2rem", textAlign: "center", background: "#0f172a" }}>
+        <h2 style={{ fontSize: "2.4rem", fontWeight: 300, color: "#f1f5f9", marginBottom: "3rem" }}>Ready to act without losing ground?</h2>
+        <a href="https://wa.me/918904176520" target="_blank" rel="noopener noreferrer" style={{ padding: "16px 40px", background: "#34d399", color: "#0f172a", fontWeight: 600, textDecoration: "none", borderRadius: "2px" }}>WHATSAPP →</a>
+      </section>
 
-    {/* Flex Container for Image + Text */}
-    <div style={{ display: "flex", gap: "3rem", alignItems: "flex-start", flexWrap: "wrap" }}>
-      
-      {/* 1. IMAGE PLACEHOLDER (LinkedIn Size Area) */}
-      <div style={{ 
-        flexShrink: 0, 
-        width: "280px", // Standard portrait width
-        height: "350px", // Standard portrait height
-        background: "rgba(255,255,255,0.03)", 
-        border: "1px solid rgba(255,255,255,0.08)",
-        borderRadius: "4px", // Matches your split-cards
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        overflow: "hidden", // Ensures image stays within bounds
-        position: "relative" // For potential text overlay
-      }}>
-        {/* The Actual Image Tag - Replace 'your-photo.jpg' when ready */}
-        {/* <img src="/your-photo.jpg" alt="[Your Name]" style={{ width: "100%", height: "100%", objectFit: "cover" }} /> */}
-        
-        {/* Temporary Placeholder text/icon */}
-        <div style={{ textAlign: "center", padding: "20px" }}>
-          <div style={{ fontSize: "40px", color: "#1e293b", marginBottom: "10px" }}>👤</div>
-          <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "10px", color: "#475569", letterSpacing: "0.1em" }}>
-            [PLACEHOLDER: your-photo.jpg]
-            <br />
-            280px x 350px
-          </div>
-        </div>
-      </div>
-
-      {/* 2. TEXT CONTENT (Your Narrative) */}
-      <div style={{ flex: "1 1 500px", minWidth: "300px" }}>
-        <p style={{ fontSize: "16px", color: "#f1f5f9", lineHeight: 1.8, marginBottom: "1.5rem", fontWeight: 400 }}>
-          I am a UC Berkeley graduate with a foundational background in <span style={{ color: "#34d399" }}>Quantitative Finance</span>. My approach to elite admissions is built on the same analytical frameworks used in high-leverage trading: identifying high-probability signals and eliminating background noise.
-        </p>
-        
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem", marginTop: "2rem" }}>
-          <div>
-            <p style={{ fontSize: "14px", color: "#94a3b8", lineHeight: 1.75, marginBottom: "1rem" }}>
-              During my time at Berkeley, I served as a tutor for <span style={{ color: "#e2e8f0" }}>CS 61A</span>—the university's flagship computer science course. This role required breaking down complex logic under immense pressure, a skill I now apply to deconstructing Ivy League essay prompts.
-            </p>
-          </div>
-          <div>
-            <p style={{ fontSize: "14px", color: "#94a3b8", lineHeight: 1.75 }}>
-              <strong style={{ color: "#f1f5f9" }}>The Haas School Record:</strong> I specialized in mentoring juniors through the Berkeley Haas Business School application process. By focusing on "Institutional Fit" and narrative differentiation, every student I advised secured their admission. After years in the US financial sector, I've returned to India to architect profiles that survive the "International Filter."
-            </p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </FadeIn>
-</section>
-      {/* FOOTER */}
       <footer style={{ borderTop: "1px solid rgba(255,255,255,0.06)", padding: "2rem", textAlign: "center" }}>
-        <p style={{ fontSize: "12px", color: "#334155", fontFamily: "'DM Mono', monospace", letterSpacing: "0.08em" }}>
-          ELITE_ADMISSIONS.COUNSELOR — BENGALURU — RUTHLESS CLARITY FOR STEM SPECIALISTS
-        </p>
+        <p style={{ fontSize: "11px", color: "#334155" }}>ELITE_ADMISSIONS.COUNSELOR — BENGALURU — RUTHLESS CLARITY</p>
       </footer>
     </div>
   );
