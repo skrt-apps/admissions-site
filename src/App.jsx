@@ -233,27 +233,58 @@ export default function App() {
       </section>
 
       {/* ABOUT ME - EXPANDED */}
+      {/* ABOUT ME - EXPANDED AUTHORITY VERSION */}
       <section id="about-me" style={{ padding: "100px 2rem", maxWidth: "1100px", margin: "0 auto", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
         <FadeIn>
           <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "#34d399", letterSpacing: "0.2em", marginBottom: "1rem" }}>THE CONSULTANT</div>
           <h2 style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 300, color: "#f1f5f9", marginBottom: "4rem" }}>The Berkeley Architecture</h2>
+          
           <div style={{ display: "flex", gap: "4rem", flexWrap: "wrap" }}>
+            {/* Visual Anchor with Headshot */}
             <div style={{ flex: "0 0 300px" }}>
-              <div style={{ width: "100%", height: "420px", background: "rgba(255,255,255,0.02)", border: "1px solid rgba(52,211,153,0.2)", borderRadius: "4px", display: "flex", alignItems: "center", justifyContent: "center", position: "relative", overflow: "hidden" }}>
-                <img src="/headshot.jpg" alt="Sukrit Tripathi" style={{ width: "100%", height: "100%", objectFit: "cover" }} onError={(e) => { e.target.style.display = 'none'; e.target.parentNode.innerHTML += '<div style="color:#475569;font-family:DM Mono;font-size:10px;text-align:center">Photo upload pending in /public folder</div>'; }} />
+              <div style={{ 
+                width: "100%", 
+                height: "420px", 
+                background: "rgba(255,255,255,0.02)", 
+                border: "1px solid rgba(52,211,153,0.2)", 
+                borderRadius: "4px", 
+                display: "flex", 
+                alignItems: "center", 
+                justifyContent: "center", 
+                position: "relative",
+                overflow: "hidden" 
+              }}>
+                <img 
+                  src="/headshot.jpg" 
+                  alt="Sukrit Tripathi" 
+                  style={{ 
+                    width: "100%", 
+                    height: "100%", 
+                    objectFit: "cover", 
+                    display: "block" 
+                  }} 
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    e.target.parentNode.innerHTML += '<div style="color:#475569;font-family:DM Mono;font-size:10px;text-align:center">Photo upload pending in /public folder</div>';
+                  }}
+                />
                 <div style={{ position: "absolute", bottom: "20px", left: "20px", right: "20px", background: "rgba(15, 23, 42, 0.9)", padding: "15px", border: "1px solid rgba(255,255,255,0.05)" }}>
                   <div style={{ fontSize: "14px", fontWeight: 600, color: "#f1f5f9" }}>Sukrit Tripathi</div>
                   <div style={{ fontSize: "11px", color: "#34d399", fontFamily: "'DM Mono'" }}>Data Science & Economics</div>
                 </div>
               </div>
             </div>
+
+            {/* Narrative Body */}
             <div style={{ flex: "1 1 500px" }}>
-              <h3 style={{ fontSize: "1.4rem", color: "#f1f5f9", marginBottom: "1.5rem" }}>Data-Driven Strategy from a Global Perspective</h3>
+              <h3 style={{ fontSize: "1.4rem", color: "#f1f5f9", marginBottom: "1.5rem", fontWeight: 400 }}>Data-Driven Strategy from a Global Perspective</h3>
+              
               <p style={{ fontSize: "16px", color: "#94a3b8", lineHeight: 1.8, marginBottom: "1.5rem" }}>
-                I am a graduate of the <span style={{ color: "#f1f5f9" }}>University of California, Berkeley</span>, where I completed a dual-degree program in <span style={{ color: "#f1f5f9" }}>Data Science and Economics</span>. My foundation in elite admissions began as 1 of only 2 students selected from India to attend the <span style={{ color: "#f1f5f9" }}>Summer Science Program (SSP)</span>, where I published research in Lagrangian Mechanics and Astronomy via the Harvard Smithsonian Press. This analytical rigor defined my early career in San Francisco as a <span style={{ color: "#f1f5f9" }}>Quantitative Advisory Consultant at Ernst & Young</span>, specializing in model development and validation for top-tier US financial institutions.
+                I am a graduate of the <span style={{ color: "#f1f5f9" }}>University of California, Berkeley</span>, where I completed a dual-degree program in <span style={{ color: "#f1f5f9" }}>Data Science and Economics</span>. My journey in elite admissions began when I was <span style={{ color: "#f1f5f9" }}>1 of only 2 students selected from India</span> for the prestigious <span style={{ color: "#f1f5f9" }}>Summer Science Program (SSP)</span>. During this time, I conducted research in Lagrangian Mechanics and Astronomy that was subsequently published in the Harvard Smithsonian Press and the Minor Planet Center.
               </p>
+
               <p style={{ fontSize: "16px", color: "#94a3b8", lineHeight: 1.8 }}>
-                Navigating the US system as an international applicant gave me a unique vantage point on the "International Filter." While at Berkeley, I served as a tutor for <span style={{ color: "#f1f5f9" }}>CS 61A</span>—the university's flagship computer science course—and as a mentor for the <span style={{ color: "#f1f5f9" }}>Haas School of Business</span> application process. By applying quantitative profile architecture to the admissions cycle, I achieved a 100% success rate for the juniors I advised into the Haas program. I now dedicate this institutional knowledge to helping Indian STEM specialists secure their places at elite universities.
+                Professionally, I applied this analytical rigor as a <span style={{ color: "#f1f5f9" }}>Quantitative Advisory Consultant at Ernst & Young</span> in San Francisco, specializing in predictive model development and validation for top-tier US financial institutions. I don't see admissions as an essay contest, but as an engineering problem that requires architecting a narrative to survive the hyper-competitive international filter. Having坐坐 both sides of the table—as an international applicant and a <span style={{ color: "#f1f5f9" }}>Haas School of Business mentor</span> with a <span style={{ color: "#f1f5f9" }}>100% success rate</span>—I provide ruthless clarity for the next generation of STEM specialists.
               </p>
             </div>
           </div>
