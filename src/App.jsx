@@ -267,7 +267,7 @@ export default function App() {
       </section>
 
       <footer style={{ borderTop: "1px solid rgba(255,255,255,0.06)", padding: "2rem", textAlign: "center" }}>
-        <p style={{ fontSize: "11px", color: "#334155" }}>ADMISSIONS LAB — BENGALURU — RUTHLESS CLARITY</p>
+        <p style={{ fontSize: "11px", color: "#334155" }}>ADMISSIONS LAB</p>
       </footer>
     </div>
   );
