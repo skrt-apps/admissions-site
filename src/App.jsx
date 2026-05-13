@@ -225,7 +225,7 @@ export default function App() {
         padding: "0 1.5rem", height: "70px"
       }}>
         <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "14px", color: "#34d399", letterSpacing: "0.1em", fontWeight: "bold" }}>
-          ADMISSIONS LAB
+          ROADTOIVIES
         </div>
         <div className="desktop-nav" style={{ display: "flex", gap: "1.5rem" }}>
           {NAV_LINKS.map(l => (
@@ -457,13 +457,13 @@ export default function App() {
       <section id="contact" style={{ padding: "100px 1.5rem", textAlign: "center", background: "#0f172a" }}>
         <FadeIn>
           <h2 style={{ fontSize: "2.4rem", fontWeight: 300, color: "#f1f5f9", marginBottom: "1rem" }}>Ready to Architect?</h2>
-          <p style={{ color: "#94a3b8", marginBottom: "3rem" }}>Limited intake for the 2026 application cycle.</p>
+          <p style={{ color: "#94a3b8", marginBottom: "3rem" }}>Accepting a limited number of students for the 2026-27 Cohort.</p>
           <a href="https://wa.me/918904176520" target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", padding: "18px 48px", background: "#34d399", color: "#020617", fontWeight: "bold", textDecoration: "none", borderRadius: "4px", fontSize: "15px" }}>WHATSAPP CONSULTATION</a>
         </FadeIn>
       </section>
 
       <footer style={{ padding: "40px 1.5rem", borderTop: "1px solid rgba(255,255,255,0.06)", textAlign: "center" }}>
-        <p style={{ fontSize: "11px", color: "#475569", fontFamily: "'DM Mono'" }}>© 2026 ADMISSIONS LAB · BENGALURU</p>
+        <p style={{ fontSize: "11px", color: "#475569", fontFamily: "'DM Mono'" }}>© 2026 ROADTOIVIES · BENGALURU</p>
       </footer>
 
       {/* GLOBAL CSS INJECTION FOR MOBILE NAV */}
