@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 
-const NAV_LINKS = ["Philosophy", "Identities", "Case Study", "Timeline", "About", "Contact"];
+const NAV_LINKS = ["Philosophy", "Identities", "Case Study", "Timeline", "About Me", "Contact"];
 
 const SSP_DATA = [
   {
@@ -227,8 +227,8 @@ export default function App() {
     <div style={{ background: "#0f172a", color: "#e2e8f0", fontFamily: "'DM Sans', 'Inter', sans-serif", minHeight: "100vh" }}>
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
-
-      {/* NAV */}
+      
+      {/* NAV UPDATE */}
       <nav style={{
         position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
         background: "rgba(15,23,42,0.92)", backdropFilter: "blur(12px)",
@@ -237,34 +237,54 @@ export default function App() {
         padding: "0 2rem", height: "60px",
       }}>
         <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "13px", color: "#34d399", letterSpacing: "0.1em" }}>
-          ELITE_ADMISSIONS.COUNSELOR
+          ADMISSIONS LAB
         </div>
         <div style={{ display: "flex", gap: "2rem" }}>
           {NAV_LINKS.map(l => (
-            <a key={l} href={`#${l.toLowerCase().replace(" ", "-")}`} style={{ fontSize: "13px", color: "#94a3b8", textDecoration: "none", letterSpacing: "0.05em" }}>
-              {l}
-            </a>
+            <a key={l} href={`#${l.toLowerCase().replace(" ", "-")}`} style={{ fontSize: "13px", color: "#94a3b8", textDecoration: "none", letterSpacing: "0.05em" }}>{l}</a>
           ))}
         </div>
       </nav>
 
-      {/* HERO */}
-      <section id="philosophy" style={{ minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", padding: "120px 2rem 80px", maxWidth: "1100px", margin: "0 auto" }}>
-        <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "#34d399", letterSpacing: "0.2em", marginBottom: "2rem", opacity: 0.8 }}>
-          UC BERKELEY · QUANTITATIVE FINANCE · ELITE STEM ADMISSIONS
-        </div>
-        <h1 style={{ fontSize: "clamp(2.4rem, 5.5vw, 4.2rem)", fontWeight: 300, lineHeight: 1.1, letterSpacing: "-0.03em", color: "#f1f5f9", margin: "0 0 1.5rem", maxWidth: "900px" }}>
-          Your child's Ivy League window<br /><span style={{ color: "#34d399" }}>closes in Grade 11.</span><br />Most families find out in Grade 12.
-        </h1>
-        <p style={{ fontSize: "1.1rem", color: "#94a3b8", maxWidth: "640px", lineHeight: 1.75, marginBottom: "3rem", fontWeight: 300 }}>
-          I'm a UC Berkeley Quantitative Finance graduate who has navigated elite US admissions from the inside. This is ruthless clarity for Indian STEM specialists.
-        </p>
-        <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-          <a href="#timeline" style={{ padding: "14px 32px", background: "#34d399", color: "#0f172a", fontWeight: 600, fontSize: "14px", textDecoration: "none", borderRadius: "2px" }}>SEE THE TIMELINE →</a>
-          <a href="#case-study" style={{ padding: "14px 32px", background: "transparent", color: "#34d399", fontWeight: 500, fontSize: "14px", textDecoration: "none", borderRadius: "2px", border: "1px solid rgba(52,211,153,0.4)" }}>VIEW CASE STUDY</a>
-        </div>
-      </section>
-
+      {/* HERO SECTION - REFINED COPY */}
+      <section id="philosophy" style={{ minHeight: "90vh", display: "flex", flexDirection: "column", justifyContent: "center", padding: "100px 2rem 60px", maxWidth: "1100px", margin: "0 auto" }}>
+        <FadeIn>
+          <h1 style={{ fontSize: "clamp(2.4rem, 5.5vw, 4.2rem)", fontWeight: 300, lineHeight: 1.1, letterSpacing: "-0.03em", color: "#f1f5f9", margin: "0 0 2rem", maxWidth: "900px" }}>
+            Your Ivy League window<br />
+            <span style={{ color: "#34d399" }}>closes in Grade 11.</span><br />
+            Most students find out in Grade 12.
+          </h1>
+      
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1.5rem", marginBottom: "3rem" }}>
+            {[
+              "Defining hyper-realistic college goals based on subject-level data",
+              "Structuring a 24-month project roadmap with verifiable output",
+              "Coordinating a rigid standardized testing and IB/AP schedule",
+              "Architecting a narrative that survives the 'International Filter'",
+              "Every stage of this lifecycle requires precise, expert guidance."
+            ].map((point, i) => (
+              <div key={i} style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}>
+                <span style={{ color: "#34d399", fontFamily: "'DM Mono'", fontSize: "14px", fontWeight: "bold" }}>→</span>
+                <p style={{ 
+                  fontSize: "15px", 
+                  margin: 0, 
+                  lineHeight: 1.5, 
+                  fontWeight: i === 4 ? 600 : 300, 
+                  color: i === 4 ? "#f1f5f9" : "#94a3b8" 
+                }}>
+                  {point}
+                </p>
+              </div>
+            ))}
+          </div>
+          
+          <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+                <a href="#timeline" style={{ display: "inline-block", padding: "14px 32px", background: "#34d399", color: "#0f172a", fontWeight: 600, fontSize: "14px", textDecoration: "none", borderRadius: "2px" }}>VIEW THE TIMELINE</a>
+                <a href="#contact" style={{ display: "inline-block", padding: "14px 32px", background: "transparent", color: "#34d399", fontWeight: 500, fontSize: "14px", textDecoration: "none", borderRadius: "2px", border: "1px solid rgba(52,211,153,0.4)" }}>BOOK A SESSION</a>
+              </div>
+            </FadeIn>
+          </section>
+      
       {/* IDENTITIES GRID */}
       <section id="identities" style={{ padding: "80px 2rem", maxWidth: "1100px", margin: "0 auto" }}>
         <FadeIn>
@@ -424,19 +444,73 @@ export default function App() {
       </section>
 
       {/* ABOUT ME */}
-      <section id="about" style={{ padding: "80px 2rem", maxWidth: "1100px", margin: "0 auto", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+            {/* ABOUT ME - FINAL INTEGRATED VERSION */}
+      <section id="about-me" style={{ padding: "100px 2rem", maxWidth: "1100px", margin: "0 auto", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
         <FadeIn>
-          <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "#34d399", marginBottom: "1rem" }}>THE CONSULTANT — BACKGROUND</div>
-          <h2 style={{ fontSize: "clamp(1.6rem, 3.5vw, 2.4rem)", fontWeight: 300, color: "#f1f5f9", marginBottom: "3rem" }}>Quantitative Rigor Meets Narrative Strategy</h2>
-          <div style={{ display: "flex", gap: "3rem", flexWrap: "wrap" }}>
-            <div style={{ width: "280px", height: "350px", background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "4px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-               <div style={{ textAlign: "center" }}><div style={{ fontSize: "40px" }}>👤</div><div style={{ fontSize: "10px", color: "#475569" }}>[headshot.jpg]</div></div>
+          <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "#34d399", letterSpacing: "0.2em", marginBottom: "1rem" }}>THE CONSULTANT</div>
+          <h2 style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 300, color: "#f1f5f9", marginBottom: "4rem" }}>The Berkeley Architecture</h2>
+          
+          <div style={{ display: "flex", gap: "4rem", flexWrap: "wrap" }}>
+            {/* Visual Anchor with Live Headshot */}
+            <div style={{ flex: "0 0 300px" }}>
+              <div style={{ 
+                width: "100%", 
+                height: "420px", 
+                background: "rgba(255,255,255,0.02)", 
+                border: "1px solid rgba(52,211,153,0.2)", 
+                borderRadius: "4px", 
+                display: "flex", 
+                alignItems: "center", 
+                justifyContent: "center", 
+                position: "relative",
+                overflow: "hidden" 
+              }}>
+                <img 
+                  src="/headshot.jpg" 
+                  alt="Sukrit Tripathi" 
+                  style={{ 
+                    width: "100%", 
+                    height: "100%", 
+                    objectFit: "cover", 
+                    display: "block" 
+                  }} 
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    e.target.parentNode.innerHTML += '<div style="color:#475569;font-family:DM Mono;font-size:10px;text-align:center">Photo upload pending in /public folder</div>';
+                  }}
+                />
+                <div style={{ position: "absolute", bottom: "20px", left: "20px", right: "20px", background: "rgba(15, 23, 42, 0.9)", padding: "15px", border: "1px solid rgba(255,255,255,0.05)" }}>
+                  <div style={{ fontSize: "14px", fontWeight: 600, color: "#f1f5f9" }}>Sukrit Tripathi</div>
+                  <div style={{ fontSize: "11px", color: "#34d399", fontFamily: "'DM Mono'" }}>Data Science & Economics</div>
+                </div>
+              </div>
             </div>
+      
+            {/* Narrative Body */}
             <div style={{ flex: "1 1 500px" }}>
-              <p style={{ fontSize: "16px", color: "#f1f5f9", lineHeight: 1.8, marginBottom: "1.5rem" }}>I am a UC Berkeley graduate in Quantitative Finance. I deconstruct Ivy prompts with the same logic used in high-leverage trading.</p>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem" }}>
-                <p style={{ fontSize: "14px", color: "#94a3b8" }}>At Berkeley, I tutored <span style={{ color: "#e2e8f0" }}>CS 61A</span>—the flagship CS course—breaking down logic for thousands of students.</p>
-                <p style={{ fontSize: "14px", color: "#94a3b8" }}><strong style={{ color: "#f1f5f9" }}>The Haas Record:</strong> I successfully mentored multiple juniors through the Berkeley Haas process with a 100% success rate.</p>
+              <h3 style={{ fontSize: "1.4rem", color: "#f1f5f9", marginBottom: "1.5rem", fontWeight: 400 }}>Data-Driven Strategy from a Global Perspective</h3>
+              
+              <p style={{ fontSize: "16px", color: "#94a3b8", lineHeight: 1.8, marginBottom: "1.5rem" }}>
+                I am a graduate of the <span style={{ color: "#f1f5f9" }}>University of California, Berkeley</span>, where I completed a dual-degree program in <span style={{ color: "#f1f5f9" }}>Data Science and Economics</span>. My foundation in elite admissions began as 1 of only 2 students selected from India to attend the <span style={{ color: "#f1f5f9" }}>Summer Science Program (SSP)</span>, where I published research in Lagrangian Mechanics and Astronomy via the Harvard Smithsonian Press. This analytical rigor defined my early career in San Francisco as a <span style={{ color: "#f1f5f9" }}>Quantitative Advisory Consultant at Ernst & Young</span>, where I specialized in model development and validation for top-tier US financial institutions.
+              </p>
+      
+              <p style={{ fontSize: "16px", color: "#94a3b8", lineHeight: 1.8, marginBottom: "1.5rem" }}>
+                Navigating the US system as an international applicant gave me a unique vantage point on the "International Filter." While at Berkeley, I leveraged this insight to serve as a tutor for <span style={{ color: "#f1f5f9" }}>CS 61A</span>—the university's flagship computer science course—and as a mentor for the <span style={{ color: "#f1f5f9" }}>Haas School of Business</span> application process. By applying quantitative profile architecture to the admissions cycle, I achieved a 100% success rate for the juniors I advised into the Haas program. I now dedicate this institutional knowledge to helping Indian STEM specialists secure their places at the world’s most elite universities.
+              </p>
+      
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2.5rem", marginTop: "3rem" }}>
+                <div>
+                  <h4 style={{ color: "#34d399", fontSize: "14px", fontFamily: "'DM Mono'", marginBottom: "1rem" }}>QUANTITATIVE EXPERTISE</h4>
+                  <p style={{ fontSize: "14px", color: "#64748b", lineHeight: 1.6 }}>
+                    Deep experience in Python, SQL, and predictive modeling from EY's San Francisco Quantitative group, bringing a data-first mindset to every application strategy.
+                  </p>
+                </div>
+                <div>
+                  <h4 style={{ color: "#34d399", fontSize: "14px", fontFamily: "'DM Mono'", marginBottom: "1rem" }}>ADMISSIONS RECORD</h4>
+                  <p style={{ fontSize: "14px", color: "#64748b", lineHeight: 1.6 }}>
+                    Proven track record of navigating hyper-competitive international quotas, with successful admits into Berkeley Haas, SSP, and elite US STEM programs.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -450,7 +524,7 @@ export default function App() {
       </section>
 
       <footer style={{ borderTop: "1px solid rgba(255,255,255,0.06)", padding: "2rem", textAlign: "center" }}>
-        <p style={{ fontSize: "11px", color: "#334155" }}>ELITE_ADMISSIONS.COUNSELOR — BENGALURU — RUTHLESS CLARITY</p>
+        <p style={{ fontSize: "11px", color: "#334155" }}>ADMISSIONS LAB</p>
       </footer>
     </div>
   );
