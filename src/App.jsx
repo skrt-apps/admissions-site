@@ -453,12 +453,17 @@ export default function App() {
         </FadeIn>
       </section>
 
-      {/* CONTACT */}
+     {/* CONTACT SECTION UPGRADE */}
       <section id="contact" style={{ padding: "100px 1.5rem", textAlign: "center", background: "#0f172a" }}>
         <FadeIn>
           <h2 style={{ fontSize: "2.4rem", fontWeight: 300, color: "#f1f5f9", marginBottom: "1rem" }}>Ready to Architect?</h2>
-          <p style={{ color: "#94a3b8", marginBottom: "3rem" }}>Accepting a limited number of students for the 2026-27 Cohort.</p>
-          <a href="https://wa.me/918904176520" target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", padding: "18px 48px", background: "#34d399", color: "#020617", fontWeight: "bold", textDecoration: "none", borderRadius: "4px", fontSize: "15px" }}>WHATSAPP CONSULTATION</a>
+          <p style={{ color: "#94a3b8", marginBottom: "3rem", maxWidth: "600px", margin: "0 auto 3rem" }}>Accepting a limited number of students for the 2026-27 Cohort. Initiate direct configuration through your preferred high-priority channel.</p>
+          
+          <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap", maxWidth: "800px", margin: "0 auto" }}>
+            <a href="https://wa.me/918904176520" target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", padding: "18px 36px", background: "#34d399", color: "#020617", fontWeight: "bold", textDecoration: "none", borderRadius: "4px", fontSize: "14px", textTransform: "uppercase" }}>WhatsApp Link</a>
+            <a href="mailto:sukrit@roadtoivies.com" style={{ display: "inline-block", padding: "18px 36px", background: "transparent", color: "#f1f5f9", fontWeight: "500", fontSize: "14px", textDecoration: "none", borderRadius: "4px", border: "1px solid rgba(255,255,255,0.15)" }}>Email Desk</a>
+            <a href="https://www.linkedin.com/in/sukrit-tripathi" target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", padding: "18px 36px", background: "transparent", color: "#0077b5", fontWeight: "500", fontSize: "14px", textDecoration: "none", borderRadius: "4px", border: "1px solid rgba(0,119,181,0.3)" }}>LinkedIn Matrix</a>
+          </div>
         </FadeIn>
       </section>
 
