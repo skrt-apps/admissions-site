@@ -259,8 +259,8 @@ export default function App() {
             ))}
           </div>
           <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-            <a href="#timeline" style={{ display: "inline-block", padding: "16px 36px", background: "#34d399", color: "#0f172a", fontWeight: 600, fontSize: "14px", textDecoration: "none", borderRadius: "2px" }}>VIEW THE TIMELINE</a>
-            <a href="#contact" style={{ display: "inline-block", padding: "16px 36px", background: "transparent", color: "#34d399", fontWeight: 500, fontSize: "14px", textDecoration: "none", borderRadius: "2px", border: "1px solid rgba(52,211,153,0.4)" }}>BOOK A SESSION</a>
+          <a href="/diagnostic.html" style={{ display: "inline-block", padding: "16px 36px", background: "#34d399", color: "#0f172a", fontWeight: 600, fontSize: "14px", textDecoration: "none", borderRadius: "2px" }}>RUN COHORT DIAGNOSTIC</a>
+          <a href="#contact" style={{ display: "inline-block", padding: "16px 36px", background: "transparent", color: "#34d399", fontWeight: 500, fontSize: "14px", textDecoration: "none", borderRadius: "2px", border: "1px solid rgba(52,211,153,0.4)" }}>BOOK A SESSION</a>
           </div>
         </FadeIn>
       </section>
