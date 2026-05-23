@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Cohort Diagnostic Lab — Road to Ivies</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { background: #0f172a; color: #e2e8f0; font-family: 'Inter', sans-serif; margin: 0; padding: 40px 20px; -webkit-font-smoothing: antialiased; }
+        .container { max-width: 850px; margin: 0 auto; background: rgba(30, 41, 59, 0.4); border: 1px solid rgba(52, 211, 153, 0.12); padding: 45px; border-radius: 4px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        
+        /* Typography */
+        .label { font-family: 'DM Mono', monospace; font-size: 11px; color: #34d399; letter-spacing: 0.25em; margin-bottom: 12px; text-transform: uppercase; font-weight: 600; }
+        h2 { font-size: 2.2rem; font-weight: 300; color: #f1f5f9; margin-top: 0; margin-bottom: 20px; letter-spacing: -0.02em; }
+        
+        /* Parent User Guide styling */
+        .user-guide { background: rgba(52, 211, 153, 0.03); border: 1px solid rgba(52, 211, 153, 0.15); padding: 24px; margin-bottom: 40px; border-radius: 2px; }
+        .user-guide p { font-size: 14px; color: #94a3b8; line-height: 1.6; margin: 0 0 12px 0; font-weight: 300; }
+        .user-guide ul { margin: 0; padding-left: 20px; }
+        .user-guide li { font-size: 13.5px; color: #cbd5e1; margin-bottom: 8px; font-weight: 400; line-height: 1.5; }
+        .user-guide li strong { color: #34d399; font-weight: 500; }
+        
+        /* Form Grid layout */
+        .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 24px; margin-bottom: 30px; }
+        .form-group { margin-bottom: 6px; }
+        .form-group.full-width { grid-column: 1 / -1; }
+        label { display: block; font-size: 11px; font-family: 'DM Mono', monospace; color: #94a3b8; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 500; }
+        select { width: 100%; background: #0f172a; border: 1px solid rgba(148, 163, 184, 0.25); padding: 14px; color: #e2e8f0; border-radius: 2px; font-size: 14px; outline: none; transition: border-color 0.2s ease; box-sizing: border-box; }
+        select:focus { border-color: #34d399; }
+        
+        /* Archetype Panel layout */
+        .guideline-panel { background: rgba(15, 23, 42, 0.5); border: 1px dashed rgba(52, 211, 153, 0.2); padding: 18px; margin-top: 12px; border-radius: 2px; }
+        .guideline-title { font-family: 'DM Mono', monospace; font-size: 11px; color: #34d399; margin-bottom: 8px; text-transform: uppercase; font-weight: 600; }
+        .guideline-text { font-size: 13px; color: #94a3b8; margin: 0; line-height: 1.6; font-weight: 300; }
+        
+        button { width: 100%; padding: 18px; background: #34d399; color: #020617; border: none; font-weight: 600; letter-spacing: 0.08em; cursor: pointer; border-radius: 2px; font-size: 14px; text-transform: uppercase; margin-top: 10px; transition: background 0.2s ease; }
+        button:hover { background: #059669; }
+        
+        /* Output Diagnostic Roadmap Blocks */
+        .result-box { margin-top: 40px; padding: 35px; background: #0f172a; border-left: 4px solid #34d399; border-radius: 2px; display: none; }
+        .result-header { border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 20px; margin-bottom: 24px; }
+        .result-title { font-size: 20px; color: #f1f5f9; margin: 0 0 8px 0; font-weight: 500; letter-spacing: -0.01em; }
+        .result-status { font-size: 14.5px; color: #94a3b8; line-height: 1.6; margin: 0; font-weight: 300; }
+        
+        .roadmap-section { margin-bottom: 24px; background: rgba(30, 41, 59, 0.3); padding: 20px; border: 1px solid rgba(255,255,255,0.03); border-radius: 2px; }
+        .roadmap-section:last-child { margin-bottom: 0; }
+        .section-label { font-family: 'DM Mono', monospace; font-size: 11px; color: #f59e0b; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
+        .section-text { font-size: 14px; color: #cbd5e1; line-height: 1.6; margin: 0; font-weight: 300; }
+        .section-text strong { color: #f1f5f9; font-weight: 500; }
+        
+        .back-link { display: block; text-align: center; margin-top: 40px; color: #64748b; font-family: 'DM Mono', monospace; font-size: 12px; text-decoration: none; letter-spacing: 0.05em; }
+        .back-link:hover { color: #34d399; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="label">Admissions Optimization System</div>
+    <h2>Profile Cohort Diagnostic Lab</h2>
+    
+    <div class="user-guide">
+        <p>
+            Welcome to the Profile Diagnostic Lab. This clinical evaluation tool is engineered specifically for competitive Indian international applicants targeting ultra-selective US universities (Ivy League, Stanford, MIT, UC Berkeley). 
+        </p>
+        <p>
+            The holistic screening algorithms used by elite admissions committees are highly sensitive to regional filters, citizenship constraints, and major saturation ratios. To use this tool effectively:
+        </p>
+        <ul>
+            <li><strong>Select Parameters Honestly:</strong> Input your child's exact tracking metrics, current grade window, and targeted discipline.</li>
+            <li><strong>Isolate True Bottlenecks:</strong> The engine analyzes the intersection of your choices to flag hidden structural flaws rather than superficial resume gaps.</li>
+            <li><strong>Review the Action Blueprint:</strong> Use the generated roadmap below the form to realign your child’s academic and project execution strategy for the upcoming quarter.</li>
+        </ul>
+    </div>
+    
+    <div class="form-grid">
+        <div class="form-group">
+            <label>Current Grade Level</label>
+            <select id="grade">
+                <option value="g10">Grade 9 or 10 (Early Foundation Window)</option>
+                <option value="g11">Grade 11 (Critical Metric Execution Window)</option>
+                <option value="g12">Grade 12 / Rising Senior (Application Hard-Lock)</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Target Academic Major Discipline</label>
+            <select id="major">
+                <option value="stem">STEM / Computer Science / Engineering Spike</option>
+                <option value="finance">Economics / Quantitative Finance / Business</option>
+                <option value="humanities">Humanities / Arts / Social Sciences</option>
+            </select>
+        </div>
+
+        <div class="form-group full-width">
+            <label>Application Archetype</label>
+            <select id="archetype" onchange="updateGuidelines()">
+                <option value="specialist">The Specialist (Singular STEM or Quantitative Spike)</option>
+                <option value="polymath">The Polymath (Interdisciplinary Domain Intersection)</option>
+                <option value="tree">The Tree (Deep Non-Academic Obsession & Real-World Impact)</option>
+            </select>
+            <div class="guideline-panel">
+                <div id="guideTitle" class="guideline-title">ARCHETYPE MARKERS: THE SPECIALIST</div>
+                <p id="guideText" class="guideline-text">
+                    Targeting hyper-competitive STEM, Computer Science, Economics, or Quantitative Finance fields. The student’s execution requires deep, singular academic spikes (e.g., advanced coding, research papers, Olympiads). Selecting this requires a rigid commitment to hard metric alignment in specific higher-level subjects.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Academic Track Status (IB Midterms / Board Internals)</label>
+            <select id="academic">
+                <option value="high">Competitive Tier (39+/42 IB or 96%+ National Boards)</option>
+                <option value="mid">Imbalanced Baseline (36-38/42 IB or 90-95% Boards)</option>
+                <option value="low">Deficit Range (Under 36/42 IB or Under 90% Boards)</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Standardized Testing Benchmark</label>
+            <select id="testing">
+                <option value="high">Elite Standard (1530+ SAT / 35+ ACT)</option>
+                <option value="mid">Intermediate Baseline (1450-1520 SAT / 32-34 ACT)</option>
+                <option value="low">Sub-Threshold Range (Under 1450 SAT / Under 32 ACT)</option>
+            </select>
+        </div>
+    </div>
+
+    <button onclick="evaluateProfile()">Generate Custom Profile Blueprint</button>
+
+    <div id="resultBox" class="result-box">
+        <div class="result-header">
+            <div class="label" style="margin-bottom: 4px; color: #34d399;">PROFILES ASSIGNED STATUS</div>
+            <div id="resTier" class="result-title"></div>
+            <div id="resStatus" class="result-status"></div>
+        </div>
+        
+        <div class="roadmap-section">
+            <div class="section-label" style="color: #ef4444;">1. Identified Profile Vulnerability</div>
+            <p id="resVulnerability" class="section-text"></p>
+        </div>
+
+        <div class="roadmap-section">
+            <div class="section-label" style="color: #34d399;">2. Extracurricular & Project Redirection</div>
+            <p id="resProject" class="section-text"></p>
+        </div>
+
+        <div class="roadmap-section">
+            <div class="section-label" style="color: #f59e0b;">3. Immediate 90-Day Priority Checklist</div>
+            <p id="resChecklist" class="section-text"></p>
+        </div>
+    </div>
+    
+    <a href="https://roadtoivies.vercel.app" class="back-link">← RETURN TO CORE PLATFORM</a>
+</div>
+
+<script>
+const ARCHETYPE_GUIDELINES = {
+    specialist: {
+        title: "ARCHETYPE MARKERS: THE SPECIALIST",
+        text: "Targeting hyper-competitive STEM, Computer Science, Economics, or Quantitative Finance fields. The student’s execution requires deep, singular academic spikes (e.g., advanced coding, research papers, Olympiads). Selecting this requires a rigid commitment to hard metric alignment in specific higher-level subjects."
+    },
+    polymath: {
+        title: "ARCHETYPE MARKERS: THE POLYMATH",
+        text: "Excels across completely separate domains (e.g., the Physics student who leads competitive debate, or the creative artist who builds functional software). Select this if your child refuses to fit a single box—the strategic challenge here is unifying disparate spikes into a singular 'Master Narrative' to avoid looking scattered."
+    },
+    tree: {
+        title: "ARCHETYPE MARKERS: THE TREE",
+        text: "Grounded by a non-academic obsession with multi-year, measurable growth (e.g., community organizing, elite competitive sports, original musical composition, or launching a scalable project). Select this if their core identity is driven by real-world impact metrics, execution grit, and scalability over raw academic papers."
+    }
+};
+
+function updateGuidelines() {
+    const selected = document.getElementById('archetype').value;
+    document.getElementById('guideTitle').innerText = ARCHETYPE_GUIDELINES[selected].title;
+    document.getElementById('guideText').innerText = ARCHETYPE_GUIDELINES[selected].text;
+}
+
+function evaluateProfile() {
+    const grade = document.getElementById('grade').value;
+    const major = document.getElementById('major').value;
+    const archetype = document.getElementById('archetype').value;
+    const academic = document.getElementById('academic').value;
+    const testing = document.getElementById('testing').value;
+    
+    let tier = "";
+    let status = "";
+    let vulnerability = "";
+    let project = "";
+    let checklist = "";
+
+    // Comprehensive Dynamic Logic Mapping Deficits directly to User Inputs
+    if (academic === "high" && testing === "high") {
+        tier = "Elite Competitive Track (Global Top-Tier Cohort)";
+        status = "The student clears primary holistic quantitative filters. However, within highly saturated geographical hubs like South Bengaluru, excellent scores are baseline criteria, not a point of differentiation.";
+        
+        if (archetype === "specialist" && (major === "stem" || major === "finance")) {
+            vulnerability = "<strong>The 'Well-Rounded' Trajectory Trap.</strong> The profile is at high risk of soft rejection if technical output relies on school clubs or generic internships. Elite committees require asymmetric proof of expertise.";
+            project = "Shift focus away from broad summer camps. Launch an independent, functional data science repository on GitHub, or initiate a formal research paper under local university mentorship (e.g., IISc faculty) targeting publication or external peer review.";
+            checklist = "1. Secure an expert profile audit to lock down a singular project thesis. <br>2. Clean and open-source all current technical codebase assets. <br>3. Finalize letters of recommendation strategies highlighting advanced intellectual curiosity beyond school bounds.";
+        } else {
+            vulnerability = "<strong>Narrative Fragmentation.</strong> The student possesses disparate talents, but lacks a binding theme, causing the application profile to read as unfocused or scattered to selection gates.";
+            project = "Build an interdisciplinary portfolio anchor. For example, if combining STEM and debate, engineer a prescriptive web platform addressing local resource allocation or policy analysis.";
+            checklist = "1. Draft a comprehensive 'Master Narrative' statement linking your activities. <br>2. Prune minor, low-impact resume items to prevent profile dilution. <br>3. Target high-authority writing or essay execution matrices immediately.";
+        }
+    } else if (academic === "mid" || testing === "mid") {
+        tier = "Selective Matrix Track (Highly Competitive Pool)";
+        status = "The student possesses a competitive foundation, but shows a clear structural metric imbalance that will trigger immediate scrutiny during initial international filtering phases.";
+        
+        if (academic === "mid") {
+            vulnerability = "<strong>Higher-Level Curriculum Weakness.</strong> School internal tracking or midterm predicted scores (36-38 range) indicate localized subject volatility, which serves as a fatal signal for high-demand majors.";
+            project = "Deploy academic containment projects. The profile must compensate for the internal gap by demonstrating undeniable external validation—such as clean performance in standardized AP exams or certified independent work.";
+            checklist = "1. Implement a rigid, daily subject-specific tutoring routine to protect internal grades. <br>2. Selectively adjust college tier lists to balance ambitious targets with strategic safety configurations. <br>3. Focus project narratives heavily on raw execution grit rather than effortless brilliance.";
+        } else {
+            vulnerability = "<strong>Standardized Testing Variance.</strong> A sub-1530 SAT or sub-35 ACT score creates an institutional comparison liability for Indian citizens competing in crowded applicant pools.";
+            project = "Pivot the extracurricular profile to showcase immense non-testing value. Structure a 'Tree' or 'Polymath' project where verified impact metrics (users reached, hardware deployed, capital raised) overshadow the test variance.";
+            checklist = "1. Lock down a final diagnostic test preparation schedule or evaluate test-optional submission policies. <br>2. Scale current community or execution metrics by 2x within the current quarter. <br>3. Frame personal essays around deep resilience and real-world execution capacity.";
+        }
+    } else {
+        tier = "Strategic Pivoting Track (Development Required)";
+        status = "Critical quantitative baseline barriers present. Current metrics do not clear the entry screening thresholds for hyper-saturated international pools without immediate, drastic correction.";
+        vulnerability = "<strong>Comprehensive Metric Sub-Threshold Status.</strong> The combination of internal grades and testing profiles creates an immediate exclusion risk unless the core messaging is completely realigned.";
+        project = "Halt all generic resume-building tasks. The student must build an unconventional independent portfolio—such as custom hardware hacking, specialized deep-tech deployments, or deep-rooted local execution loops—that changes the evaluation paradigm.";
+        checklist = "1. Initiate an immediate, emergency internal grade stabilization protocol. <br>2. Pivot target choice selections away from standard high-density majors toward niche paths or interdisciplinary frameworks. <br>3. Engage an expert strategy architect to design an asymmetric application narrative that frames past trajectory shifts as rapid growth.";
+    }
+
+    // Specific temporal adjusters based on Grade Level
+    if (grade === "g12") {
+        checklist += "<br><br><strong>CRITICAL TIME GATE WARNING:</strong> As a rising senior, your tactical window is limited to defensive narrative positioning and immediate Early Decision/REA locking. There is no time left for academic recovery loops.";
+    } else if (grade === "g10") {
+        checklist += "<br><br><strong>FOUNDATIONAL POSITIONING WINDOW:</strong> You are in an ideal spot. Current metric deficits can be completely engineered away with an immediate, structured 24-month profile strategy blueprint.";
+    }
+
+    // Display updates
+    document.getElementById('resTier').innerText = tier;
+    document.getElementById('resStatus').innerText = status;
+    document.getElementById('resVulnerability').innerHTML = vulnerability;
+    document.getElementById('resProject').innerHTML = project;
+    document.getElementById('resChecklist').innerHTML = checklist;
+    document.getElementById('resultBox').style.display = 'block';
+    
+    // Smooth scroll down to view output data maps
+    document.getElementById('resultBox').scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>
