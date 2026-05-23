@@ -453,16 +453,45 @@ export default function App() {
         </FadeIn>
       </section>
 
-     {/* CONTACT SECTION UPGRADE */}
+     {/* CONTACT SECTION - RE-ENGINEERED BLOCK INTEGRATION */}
       <section id="contact" style={{ padding: "100px 1.5rem", textAlign: "center", background: "#0f172a" }}>
         <FadeIn>
           <h2 style={{ fontSize: "2.4rem", fontWeight: 300, color: "#f1f5f9", marginBottom: "1rem" }}>Ready to Architect?</h2>
-          <p style={{ color: "#94a3b8", marginBottom: "3rem", maxWidth: "600px", margin: "0 auto 3rem" }}>Accepting a limited number of students for the 2026-27 Cohort. Initiate direct configuration through your preferred high-priority channel.</p>
+          <p style={{ color: "#94a3b8", marginBottom: "3rem" }}>Accepting a limited number of students for the 2026-27 Cohort. Initiate direct configuration through your preferred channel.</p>
           
-          <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap", maxWidth: "800px", margin: "0 auto" }}>
-            <a href="https://wa.me/918904176520" target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", padding: "18px 36px", background: "#34d399", color: "#020617", fontWeight: "bold", textDecoration: "none", borderRadius: "4px", fontSize: "14px", textTransform: "uppercase" }}>WhatsApp Link</a>
-            <a href="mailto:sukrit@roadtoivies.com" style={{ display: "inline-block", padding: "18px 36px", background: "transparent", color: "#f1f5f9", fontWeight: "500", fontSize: "14px", textDecoration: "none", borderRadius: "4px", border: "1px solid rgba(255,255,255,0.15)" }}>Email Desk</a>
-            <a href="https://www.linkedin.com/in/sukrit-tripathi" target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", padding: "18px 36px", background: "transparent", color: "#0077b5", fontWeight: "500", fontSize: "14px", textDecoration: "none", borderRadius: "4px", border: "1px solid rgba(0,119,181,0.3)" }}>LinkedIn Matrix</a>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "16px", maxWidth: "700px", margin: "0 auto" }}>
+            
+            {/* WHATSAPP: Solid Brand Green */}
+            <a href="https://wa.me/918904176520" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "10px", padding: "16px", background: "#25d366", color: "#0f172a", fontWeight: 600, fontSize: "14px", textDecoration: "none", borderRadius: "4px", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+              <svg style={{ width: "18px", height: "18px", fill: "currentColor" }} viewBox="0 0 24 24">
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397 0 11.966 0c3.178.001 6.165 1.24 8.413 3.494 2.25 2.253 3.487 5.244 3.484 8.425-.003 6.616-5.34 11.965-11.909 11.965-2.005-.001-3.973-.505-5.717-1.467L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.863-9.864.001-2.636-1.023-5.115-2.884-6.978C16.58 1.897 14.1 1.875 11.964 1.875c-5.434 0-9.858 4.422-9.861 9.866-.001 1.714.46 3.388 1.334 4.887l-.982 3.582 3.673-.963zm10.844-6.161c-.297-.148-1.758-.867-2.03-.967-.273-.099-.471-.148-.669.149-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+              </svg>
+              <span>WhatsApp</span>
+            </a>
+            
+            {/* GMAIL: Solid Brand Red */}
+            <a href="mailto:sukrit@roadtoivies.com?subject=Strategic%20Counseling%20Inquiry" 
+               style={{ display: "flex", alignItems: "center", justifyCintent: "center", gap: "10px", padding: "16px", background: "#ea4335", color: "#ffffff", fontWeight: 600, fontSize: "14px", textDecoration: "none", borderRadius: "4px", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+              <svg style={{ width: "18px", height: "18px", fill: "currentColor" }} viewBox="0 0 24 24">
+                <path d="M22 4H2C.9 4 0 4.9 0 6v12c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-10 6.5L2 8V6l10 6.5L22 6v2z"/>
+              </svg>
+              <span>Gmail</span>
+            </a>
+            
+            {/* LINKEDIN: Solid Brand Blue */}
+            <a href="https://www.linkedin.com/in/sukrit-tripathi" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               style={{ display: "flex", alignItems: "center", justifyCintent: "center", gap: "10px", padding: "16px", background: "#0077b5", color: "#ffffff", fontWeight: 600, fontSize: "14px", textDecoration: "none", borderRadius: "4px", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+              <svg style={{ width: "18px", height: "18px", fill: "currentColor" }} viewBox="0 0 24 24">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              </svg>
+              <span>LinkedIn</span>
+            </a>
+      
           </div>
         </FadeIn>
       </section>
