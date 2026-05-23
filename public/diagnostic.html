@@ -9,19 +9,15 @@
     <style>
         body { background: #0f172a; color: #e2e8f0; font-family: 'Inter', sans-serif; margin: 0; padding: 40px 20px; -webkit-font-smoothing: antialiased; }
         .container { max-width: 850px; margin: 0 auto; background: rgba(30, 41, 59, 0.4); border: 1px solid rgba(52, 211, 153, 0.12); padding: 45px; border-radius: 4px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
-        
-        /* Typography */
         .label { font-family: 'DM Mono', monospace; font-size: 11px; color: #34d399; letter-spacing: 0.25em; margin-bottom: 12px; text-transform: uppercase; font-weight: 600; }
         h2 { font-size: 2.2rem; font-weight: 300; color: #f1f5f9; margin-top: 0; margin-bottom: 20px; letter-spacing: -0.02em; }
         
-        /* Parent User Guide styling */
         .user-guide { background: rgba(52, 211, 153, 0.03); border: 1px solid rgba(52, 211, 153, 0.15); padding: 24px; margin-bottom: 40px; border-radius: 2px; }
         .user-guide p { font-size: 14px; color: #94a3b8; line-height: 1.6; margin: 0 0 12px 0; font-weight: 300; }
         .user-guide ul { margin: 0; padding-left: 20px; }
         .user-guide li { font-size: 13.5px; color: #cbd5e1; margin-bottom: 8px; font-weight: 400; line-height: 1.5; }
         .user-guide li strong { color: #34d399; font-weight: 500; }
         
-        /* Form Grid layout */
         .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 24px; margin-bottom: 30px; }
         .form-group { margin-bottom: 6px; }
         .form-group.full-width { grid-column: 1 / -1; }
@@ -29,7 +25,6 @@
         select { width: 100%; background: #0f172a; border: 1px solid rgba(148, 163, 184, 0.25); padding: 14px; color: #e2e8f0; border-radius: 2px; font-size: 14px; outline: none; transition: border-color 0.2s ease; box-sizing: border-box; }
         select:focus { border-color: #34d399; }
         
-        /* Archetype Panel layout */
         .guideline-panel { background: rgba(15, 23, 42, 0.5); border: 1px dashed rgba(52, 211, 153, 0.2); padding: 18px; margin-top: 12px; border-radius: 2px; }
         .guideline-title { font-family: 'DM Mono', monospace; font-size: 11px; color: #34d399; margin-bottom: 8px; text-transform: uppercase; font-weight: 600; }
         .guideline-text { font-size: 13px; color: #94a3b8; margin: 0; line-height: 1.6; font-weight: 300; }
@@ -37,7 +32,6 @@
         button { width: 100%; padding: 18px; background: #34d399; color: #020617; border: none; font-weight: 600; letter-spacing: 0.08em; cursor: pointer; border-radius: 2px; font-size: 14px; text-transform: uppercase; margin-top: 10px; transition: background 0.2s ease; }
         button:hover { background: #059669; }
         
-        /* Output Diagnostic Roadmap Blocks */
         .result-box { margin-top: 40px; padding: 35px; background: #0f172a; border-left: 4px solid #34d399; border-radius: 2px; display: none; }
         .result-header { border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 20px; margin-bottom: 24px; }
         .result-title { font-size: 20px; color: #f1f5f9; margin: 0 0 8px 0; font-weight: 500; letter-spacing: -0.01em; }
@@ -61,7 +55,7 @@
     
     <div class="user-guide">
         <p>
-            Welcome to the Profile Diagnostic Lab. This clinical evaluation tool is engineered specifically for competitive Indian international applicants targeting ultra-selective US universities (Ivy League, Stanford, MIT, UC Berkeley). 
+            Welcome to the Profile Diagnostic Lab. This clinical evaluation tool is engineered specifically for competitive international applicants targeting ultra-selective US universities (Ivy League, Stanford, MIT, UC Berkeley). 
         </p>
         <p>
             The holistic screening algorithms used by elite admissions committees are highly sensitive to regional filters, citizenship constraints, and major saturation ratios. To use this tool effectively:
@@ -77,13 +71,21 @@
         <div class="form-group">
             <label>Current Grade Level</label>
             <select id="grade">
-                <option value="g10">Grade 9 or 10 (Early Foundation Window)</option>
+                <option value="g10">Grade 9 or 10 (Early Foundational Window)</option>
                 <option value="g11">Grade 11 (Critical Metric Execution Window)</option>
                 <option value="g12">Grade 12 / Rising Senior (Application Hard-Lock)</option>
             </select>
         </div>
 
         <div class="form-group">
+            <label>Citizenship Pool Context</label>
+            <select id="citizenship">
+                <option value="india">Indian Citizen (International Saturated Pool)</option>
+                <option value="us">US Citizen / OCI Passport Holder (Domestic Allocation Pool)</option>
+            </select>
+        </div>
+
+        <div class="form-group full-width">
             <label>Target Academic Major Discipline</label>
             <select id="major">
                 <option value="stem">STEM / Computer Science / Engineering Spike</option>
@@ -178,6 +180,7 @@ function updateGuidelines() {
 
 function evaluateProfile() {
     const grade = document.getElementById('grade').value;
+    const citizenship = document.getElementById('citizenship').value;
     const major = document.getElementById('major').value;
     const archetype = document.getElementById('archetype').value;
     const academic = document.getElementById('academic').value;
@@ -189,57 +192,61 @@ function evaluateProfile() {
     let project = "";
     let checklist = "";
 
-    // Comprehensive Dynamic Logic Mapping Deficits directly to User Inputs
+    // Base Tier Processing
     if (academic === "high" && testing === "high") {
         tier = "Elite Competitive Track (Global Top-Tier Cohort)";
-        status = "The student clears primary holistic quantitative filters. However, within highly saturated geographical hubs like South Bengaluru, excellent scores are baseline criteria, not a point of differentiation.";
-        
-        if (archetype === "specialist" && (major === "stem" || major === "finance")) {
-            vulnerability = "<strong>The 'Well-Rounded' Trajectory Trap.</strong> The profile is at high risk of soft rejection if technical output relies on school clubs or generic internships. Elite committees require asymmetric proof of expertise.";
-            project = "Shift focus away from broad summer camps. Launch an independent, functional data science repository on GitHub, or initiate a formal research paper under local university mentorship (e.g., IISc faculty) targeting publication or external peer review.";
-            checklist = "1. Secure an expert profile audit to lock down a singular project thesis. <br>2. Clean and open-source all current technical codebase assets. <br>3. Finalize letters of recommendation strategies highlighting advanced intellectual curiosity beyond school bounds.";
-        } else {
-            vulnerability = "<strong>Narrative Fragmentation.</strong> The student possesses disparate talents, but lacks a binding theme, causing the application profile to read as unfocused or scattered to selection gates.";
-            project = "Build an interdisciplinary portfolio anchor. For example, if combining STEM and debate, engineer a prescriptive web platform addressing local resource allocation or policy analysis.";
-            checklist = "1. Draft a comprehensive 'Master Narrative' statement linking your activities. <br>2. Prune minor, low-impact resume items to prevent profile dilution. <br>3. Target high-authority writing or essay execution matrices immediately.";
-        }
+        status = "The student clears primary holistic quantitative filters. However, excellent scores are baseline criteria, not points of differentiation.";
     } else if (academic === "mid" || testing === "mid") {
         tier = "Selective Matrix Track (Highly Competitive Pool)";
-        status = "The student possesses a competitive foundation, but shows a clear structural metric imbalance that will trigger immediate scrutiny during initial international filtering phases.";
-        
-        if (academic === "mid") {
-            vulnerability = "<strong>Higher-Level Curriculum Weakness.</strong> School internal tracking or midterm predicted scores (36-38 range) indicate localized subject volatility, which serves as a fatal signal for high-demand majors.";
-            project = "Deploy academic containment projects. The profile must compensate for the internal gap by demonstrating undeniable external validation—such as clean performance in standardized AP exams or certified independent work.";
-            checklist = "1. Implement a rigid, daily subject-specific tutoring routine to protect internal grades. <br>2. Selectively adjust college tier lists to balance ambitious targets with strategic safety configurations. <br>3. Focus project narratives heavily on raw execution grit rather than effortless brilliance.";
-        } else {
-            vulnerability = "<strong>Standardized Testing Variance.</strong> A sub-1530 SAT or sub-35 ACT score creates an institutional comparison liability for Indian citizens competing in crowded applicant pools.";
-            project = "Pivot the extracurricular profile to showcase immense non-testing value. Structure a 'Tree' or 'Polymath' project where verified impact metrics (users reached, hardware deployed, capital raised) overshadow the test variance.";
-            checklist = "1. Lock down a final diagnostic test preparation schedule or evaluate test-optional submission policies. <br>2. Scale current community or execution metrics by 2x within the current quarter. <br>3. Frame personal essays around deep resilience and real-world execution capacity.";
-        }
+        status = "The student possesses a strong foundation, but shows a clear metric variance that will trigger immediate scrutiny during initial evaluation phases.";
     } else {
         tier = "Strategic Pivoting Track (Development Required)";
-        status = "Critical quantitative baseline barriers present. Current metrics do not clear the entry screening thresholds for hyper-saturated international pools without immediate, drastic correction.";
-        vulnerability = "<strong>Comprehensive Metric Sub-Threshold Status.</strong> The combination of internal grades and testing profiles creates an immediate exclusion risk unless the core messaging is completely realigned.";
-        project = "Halt all generic resume-building tasks. The student must build an unconventional independent portfolio—such as custom hardware hacking, specialized deep-tech deployments, or deep-rooted local execution loops—that changes the evaluation paradigm.";
-        checklist = "1. Initiate an immediate, emergency internal grade stabilization protocol. <br>2. Pivot target choice selections away from standard high-density majors toward niche paths or interdisciplinary frameworks. <br>3. Engage an expert strategy architect to design an asymmetric application narrative that frames past trajectory shifts as rapid growth.";
+        status = "Critical quantitative baseline barriers present. Current metrics do not clear structural entry screening thresholds easily.";
     }
 
-    // Specific temporal adjusters based on Grade Level
+    // Dynamic Vulnerability/Blueprint Logic with Explicit Citizenship Penalty Controls
+    if (citizenship === "india") {
+        status += " <strong>CRITICAL CITIZENSHIP QUOTA WARNING:</strong> Competing as an Indian Citizen activates the single most saturated international pool in the world. Admissions committees operate with strict demographic ceilings. Quantitative perfection is assumed; any minor curriculum fluctuation (e.g., a 5/7 in an HL STEM subject) or lack of out-of-school technical output results in an immediate soft rejection.";
+        
+        if (major === "stem" || major === "finance") {
+            vulnerability = "<strong>The Saturated International Demographic Trap.</strong> For an Indian citizen targeting STEM or quantitative tracks, a 'well-rounded' portfolio is a fatal positioning strategy. You are competing directly against thousands of applicants with identical data profiles. Your child's application is invisible unless anchored by an undeniable external asymmetric spike.";
+            project = "Cease all passive community volunteer hours or institutional summer camps. Your child must build a functional, open-source technical asset—such as a data-science software platform or a localized algorithmic modeling repository—or execute formal academic research alongside university faculty targeting publication.";
+            checklist = "1. Initiate an immediate profile audit to isolate a singular, un-clichéd technical project direction. <br>2. Re-verify that Higher Level (HL) math/science splits show absolute flawless performance. <br>3. Frame upcoming recommendation profiles around advanced intellectual autonomy that outperforms standard grade boundaries.";
+        } else {
+            vulnerability = "<strong>The Generalist Filter Vulnerability.</strong> While shifting away from STEM clears some selection volume, an Indian international applicant tracking as a Polymath or Tree must provide undeniable proof of cross-domain scaling or high linguistic mastery to survive initial holistic cuts.";
+            project = "Unify the interdisciplinary profile with a verifiable, real-world platform. If combining economics and social advocacy, construct a scalable data project mapping local urban structural adjustments rather than joining generic school clubs.";
+            checklist = "1. Draft a binding 'Master Narrative' that bridges separate interests into an unified theme. <br>2. Ensure the main personal statement is structurally bulletproof and avoids cliché coming-of-age tropes. <br>3. Lock down high-level regional or international writing distinctions.";
+        }
+    } else {
+        // Domestic US Citizen / OCI allocation profiles
+        status += " <strong>PASSPORT POSITIONING ADVANTAGE:</strong> Holding a US Passport or OCI status moves the applicant out of the ultra-saturated international citizen allocation pool, shifting them into a more flexible evaluation metric lane with higher acceptance limits.";
+        
+        if (academic === "high" && testing === "high") {
+            vulnerability = "<strong>Over-Reliance on Hard Metrics.</strong> While the passport advantage mitigates regional filtering ceilings, top-tier institutional tracks still reject high-scoring domestic applicants who fail to show deep personal maturity or a clear intrinsic thread.";
+            project = "Focus heavily on character and leadership scaling. Elevate a 'Tree' or 'Polymath' project to a state or national level, proving the student has genuine real-world execution capacity beyond high test performance.";
+            checklist = "1. Finalize an early submission architecture to capitalize on Early Action/ED pacing windows. <br>2. Build out highly distinct personal essay drafts that focus heavily on internal reflections and value systems.";
+        } else {
+            vulnerability = "<strong>Metric Vulnerability.</strong> The domestic status protects the student from the absolute data-cutoff filters that international citizens face, but an imbalanced academic baseline still flags localized preparation weaknesses.";
+            project = "Deploy defensive academic major mapping. Align the application strategy with lower-density majors where the current metric profile remains competitive, using the passport context to capture holistic evaluation latitude.";
+            checklist = "1. Stabilize internal grade trajectories before the next reporting window. <br>2. Maximize the tactical impact of personal statements to directly contextualize any score variations.";
+        }
+    }
+
+    // Time-based Adjustments
     if (grade === "g12") {
-        checklist += "<br><br><strong>CRITICAL TIME GATE WARNING:</strong> As a rising senior, your tactical window is limited to defensive narrative positioning and immediate Early Decision/REA locking. There is no time left for academic recovery loops.";
+        checklist += "<br><br><strong>CRITICAL TIME GATE WARNING:</strong> As a rising senior, your tactical window is strictly limited to defensive narrative positioning and immediate Early Decision/REA locking. There is no time left for academic recovery loops.";
     } else if (grade === "g10") {
         checklist += "<br><br><strong>FOUNDATIONAL POSITIONING WINDOW:</strong> You are in an ideal spot. Current metric deficits can be completely engineered away with an immediate, structured 24-month profile strategy blueprint.";
     }
 
-    // Display updates
+    // Update Display
     document.getElementById('resTier').innerText = tier;
-    document.getElementById('resStatus').innerText = status;
+    document.getElementById('resStatus').innerHTML = status;
     document.getElementById('resVulnerability').innerHTML = vulnerability;
     document.getElementById('resProject').innerHTML = project;
     document.getElementById('resChecklist').innerHTML = checklist;
     document.getElementById('resultBox').style.display = 'block';
     
-    // Smooth scroll down to view output data maps
     document.getElementById('resultBox').scrollIntoView({ behavior: 'smooth' });
 }
 </script>
