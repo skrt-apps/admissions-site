@@ -493,8 +493,14 @@ export default function App() {
             </a>
             {/* TeacherOn: Solid Brand Blue */}
             <a href="https://www.teacheron.com/tutor/dtkF?r=dtkF" 
-              target="_blank" style="display: inline-block;">
-              <img src="https://www.teacheron.com/resources/assets/img/badges/viewMyProfile.png" style="width: 120px !important; height: 52px !important">
+              target="_blank" 
+              rel="noopener noreferrer"
+              style={{ display: "inline-block" }}>
+              <img 
+                src="https://www.teacheron.com/resources/assets/img/badges/viewMyProfile.png" 
+                style={{ width: "120px", height: "52px" }} 
+                alt="View my TeacherOn profile"
+              />
             </a>
           </div>
         </FadeIn>
