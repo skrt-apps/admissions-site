@@ -2,10 +2,27 @@
 export default {
   content: [
     "./index.html",
-    "./src/**/*.{js,ts,jsx,xlx}",
+    "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        ink:          '#0c0c0c',
+        paper:        '#f5f0e8',
+        cream:        '#ede8dc',
+        rule:         '#c8bfa8',
+        muted:        '#7a7060',
+        teal:         '#2d7a5f',
+        'teal-light': '#4aab85',
+        danger:       '#c41c1c',
+        amber:        '#b07d2a',
+      },
+      fontFamily: {
+        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+        sans:  ['"IBM Plex Sans"', 'system-ui', 'sans-serif'],
+        mono:  ['"IBM Plex Mono"', 'Menlo', 'monospace'],
+      },
+    },
   },
   plugins: [],
 }
