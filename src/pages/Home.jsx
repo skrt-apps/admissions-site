@@ -144,10 +144,10 @@ export default function Home() {
             Road<span className="text-teal">To</span>Ivies
           </span>
           <nav className="hidden md:flex items-center gap-8">
-            {["Credentials", "Case Study", "Services", "Activities"].map((l) => (
+            {["Credentials", "Case Study", "Services", "Activities", "Diagnostic"].map((l) => (
               <a
                 key={l}
-                href={`#${l.toLowerCase().replace(" ", "-")}`}
+                href={l === "Diagnostic" ? "/diagnostic" : `#${l.toLowerCase().replace(" ", "-")}`}
                 className="font-mono text-[13px] tracking-[0.15em] uppercase text-white/50 hover:text-teal transition-colors"
               >
                 {l}
@@ -253,6 +253,9 @@ export default function Home() {
 
         {/* Diagnostic output sidebar */}
         <div className="border border-rule bg-white">
+          <Link to="/diagnostic" className="block font-mono text-[12px] text-muted hover:text-teal transition-colors mb-3 px-4 pt-3">
+            Example output — run yours →
+          </Link>
           <div className="bg-ink px-4 py-3">
             <span className="font-mono text-[12px] tracking-[0.2em] uppercase text-teal">Sample Diagnostic Output</span>
           </div>

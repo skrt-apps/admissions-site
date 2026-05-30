@@ -288,9 +288,9 @@ export default function Diagnostic() {
             <div>
               <label className={LABEL_CLS}>Current Grade Level</label>
               <select name="grade" value={form.grade} onChange={handleChange} className={INPUT_CLS}>
-                <option value="g10">Grade 9 or 10 (Early Foundational Window)</option>
-                <option value="g11">Grade 11 (Critical Metric Execution Window)</option>
-                <option value="g12">Grade 12 / Rising Senior (Application Hard-Lock)</option>
+                <option value="g10">Grade 9–10 · Early window</option>
+                <option value="g11">Grade 11 · Execution phase</option>
+                <option value="g12">Grade 12 · Application lock</option>
               </select>
             </div>
 
@@ -428,7 +428,7 @@ export default function Diagnostic() {
 
         <Link
           to="/"
-          className="block text-center mt-10 font-mono text-[13px] tracking-[0.1em] uppercase text-white/50 hover:text-teal transition-colors"
+          className="block text-center mt-10 font-mono text-[13px] tracking-[0.1em] uppercase text-white/60 hover:text-teal transition-colors"
         >
           ← Return to Core Platform
         </Link>
