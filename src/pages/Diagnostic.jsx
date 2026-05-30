@@ -64,8 +64,8 @@ function evaluateProfile({ grade, citizenship, major, academic, testing }) {
   return { tier, status, vulnerability, project, checklist };
 }
 
-const INPUT_CLS = "w-full bg-ink border border-white/20 px-3.5 py-3.5 text-paper text-[14px] placeholder:text-white/20 focus:border-teal outline-none transition-colors";
-const LABEL_CLS = "block font-mono text-[10px] tracking-[0.1em] uppercase text-white/50 mb-2.5";
+const INPUT_CLS = "w-full bg-ink border border-white/20 px-3.5 py-3.5 text-paper text-[14px] placeholder:text-white/40 focus:border-teal outline-none transition-colors";
+const LABEL_CLS = "block font-mono text-[13px] tracking-[0.1em] uppercase text-white/50 mb-2.5";
 
 export default function Diagnostic() {
   const [form, setForm] = useState({
@@ -127,7 +127,7 @@ export default function Diagnostic() {
   return (
     <div className="bg-ink text-paper font-sans min-h-screen py-10 px-4">
       <div className="max-w-3xl mx-auto border border-teal/15 bg-white/[0.02] p-10 max-sm:p-5 max-sm:border-0 max-sm:bg-transparent">
-        <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-teal mb-3">
+        <p className="font-mono text-[13px] tracking-[0.25em] uppercase text-teal mb-3">
           Admissions Optimization System
         </p>
         <h1 className="font-serif text-[2rem] sm:text-[2.2rem] font-bold text-paper mb-8 leading-tight">
@@ -155,7 +155,7 @@ export default function Diagnostic() {
 
         <form onSubmit={handleSubmit}>
           {/* === Student Profile === */}
-          <p className="font-mono text-[9px] tracking-[0.25em] uppercase text-teal border-b border-white/10 pb-3 mb-6">
+          <p className="font-mono text-[12px] tracking-[0.25em] uppercase text-teal border-b border-white/10 pb-3 mb-6">
             Student Profile
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
@@ -281,16 +281,16 @@ export default function Diagnostic() {
           </div>
 
           {/* === Diagnostic Selects === */}
-          <p className="font-mono text-[9px] tracking-[0.25em] uppercase text-teal border-b border-white/10 pb-3 mb-6">
+          <p className="font-mono text-[12px] tracking-[0.25em] uppercase text-teal border-b border-white/10 pb-3 mb-6">
             Diagnostic Parameters
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
             <div>
               <label className={LABEL_CLS}>Current Grade Level</label>
               <select name="grade" value={form.grade} onChange={handleChange} className={INPUT_CLS}>
-                <option value="g10">Grade 9 or 10 (Early Foundational Window)</option>
-                <option value="g11">Grade 11 (Critical Metric Execution Window)</option>
-                <option value="g12">Grade 12 / Rising Senior (Application Hard-Lock)</option>
+                <option value="g10">Grade 9–10 · Early window</option>
+                <option value="g11">Grade 11 · Execution phase</option>
+                <option value="g12">Grade 12 · Application lock</option>
               </select>
             </div>
 
@@ -319,7 +319,7 @@ export default function Diagnostic() {
                 <option value="tree">The Tree (Deep Non-Academic Obsession & Real-World Impact)</option>
               </select>
               <div className="border border-dashed border-teal/20 bg-ink/50 p-4">
-                <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-teal mb-2">{guide.title}</p>
+                <p className="font-mono text-[13px] tracking-[0.15em] uppercase text-teal mb-2">{guide.title}</p>
                 <p className="text-[13px] text-white/50 leading-relaxed">{guide.text}</p>
               </div>
             </div>
@@ -346,7 +346,7 @@ export default function Diagnostic() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-teal text-paper font-mono text-[11px] tracking-[0.15em] uppercase py-4 hover:bg-teal-light transition-colors border border-teal cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
+            className="w-full bg-teal text-paper font-mono text-[13px] tracking-[0.15em] uppercase py-4 hover:bg-teal-light transition-colors border border-teal cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
           >
             {loading ? "Submitting…" : "Generate Custom Profile Blueprint →"}
           </button>
@@ -355,13 +355,13 @@ export default function Diagnostic() {
         {/* Submit feedback banner */}
         {submitStatus === "success" && (
           <div className="mt-4 border border-teal/40 bg-teal/5 px-4 py-3 flex items-center gap-3">
-            <span className="font-mono text-[10px] tracking-[0.15em] uppercase text-teal">Profile Recorded</span>
+            <span className="font-mono text-[13px] tracking-[0.15em] uppercase text-teal">Profile Recorded</span>
             <span className="text-[13px] text-white/50">Your submission has been saved. Blueprint generated below.</span>
           </div>
         )}
         {submitStatus === "error" && (
           <div className="mt-4 border border-danger/40 bg-danger/5 px-4 py-3 flex items-center gap-3">
-            <span className="font-mono text-[10px] tracking-[0.15em] uppercase text-danger">Save Failed</span>
+            <span className="font-mono text-[13px] tracking-[0.15em] uppercase text-danger">Save Failed</span>
             <span className="text-[13px] text-white/50">Could not save submission — blueprint still generated below.</span>
           </div>
         )}
@@ -370,7 +370,7 @@ export default function Diagnostic() {
         {result && (
           <div id="result-box" className="mt-10 border-l-4 border-teal bg-ink/80 p-8 max-sm:p-5">
             <div className="border-b border-white/[0.08] pb-5 mb-6">
-              <p className="font-mono text-[9px] tracking-[0.25em] uppercase text-teal mb-2">
+              <p className="font-mono text-[12px] tracking-[0.25em] uppercase text-teal mb-2">
                 Profile Assigned Status
               </p>
               <h2 className="font-serif text-xl font-bold text-paper mb-2">{result.tier}</h2>
@@ -386,7 +386,7 @@ export default function Diagnostic() {
               { color: "text-amber",  label: "3. Immediate 90-Day Priority Checklist",   html: result.checklist    },
             ].map(({ color, label, html }) => (
               <div key={label} className="mb-5 bg-white/[0.02] border border-white/5 p-5">
-                <p className={`font-mono text-[10px] tracking-[0.1em] uppercase mb-2 ${color}`}>{label}</p>
+                <p className={`font-mono text-[13px] tracking-[0.1em] uppercase mb-2 ${color}`}>{label}</p>
                 <p
                   className="text-[14px] text-white/70 leading-relaxed"
                   dangerouslySetInnerHTML={{ __html: html }}
@@ -395,7 +395,7 @@ export default function Diagnostic() {
             ))}
 
             <div className="mt-8 border-t border-white/[0.08] pt-6">
-              <p className="font-mono text-[9px] tracking-[0.25em] uppercase text-teal mb-4">
+              <p className="font-mono text-[12px] tracking-[0.25em] uppercase text-teal mb-4">
                 Engage Strategy Architect
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -403,13 +403,13 @@ export default function Diagnostic() {
                   href="https://wa.me/918904176520?text=I%20just%20completed%20the%20Profile%20Diagnostic%20Lab%20and%20would%20like%20to%20discuss%20the%2090-day%20blueprint%20for%20my%20child."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 py-3.5 px-4 bg-[#25d366] text-ink font-mono text-[10px] tracking-[0.1em] uppercase font-medium"
+                  className="flex items-center justify-center gap-2 py-3.5 px-4 bg-[#25d366] text-ink font-mono text-[13px] tracking-[0.1em] uppercase font-medium"
                 >
                   <WhatsAppIcon /> WhatsApp
                 </a>
                 <a
                   href="mailto:sukrit@roadtoivies.com?subject=Profile%20Diagnostic%20Lab%20Analysis%20Request"
-                  className="flex items-center justify-center gap-2 py-3.5 px-4 bg-[#ea4335] text-white font-mono text-[10px] tracking-[0.1em] uppercase font-medium"
+                  className="flex items-center justify-center gap-2 py-3.5 px-4 bg-[#ea4335] text-white font-mono text-[13px] tracking-[0.1em] uppercase font-medium"
                 >
                   <EmailIcon /> Email
                 </a>
@@ -417,7 +417,7 @@ export default function Diagnostic() {
                   href="https://www.linkedin.com/in/sukrit-tripathi"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 py-3.5 px-4 bg-[#0077b5] text-white font-mono text-[10px] tracking-[0.1em] uppercase font-medium"
+                  className="flex items-center justify-center gap-2 py-3.5 px-4 bg-[#0077b5] text-white font-mono text-[13px] tracking-[0.1em] uppercase font-medium"
                 >
                   <LinkedInIcon /> LinkedIn
                 </a>
@@ -428,7 +428,7 @@ export default function Diagnostic() {
 
         <Link
           to="/"
-          className="block text-center mt-10 font-mono text-[11px] tracking-[0.1em] uppercase text-white/30 hover:text-teal transition-colors"
+          className="block text-center mt-10 font-mono text-[13px] tracking-[0.1em] uppercase text-white/60 hover:text-teal transition-colors"
         >
           ← Return to Core Platform
         </Link>

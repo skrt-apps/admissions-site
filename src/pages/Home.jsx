@@ -128,47 +128,80 @@ const TIER_ACCENT = {
 };
 
 export default function Home() {
+  const [menuOpen, setMenuOpen] = useState(false);
   return (
     <div className="bg-paper text-ink font-sans min-h-screen overflow-x-hidden">
       <style>{`
-        @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        .ticker-track { animation: ticker 50s linear infinite; }
-        .ticker-track:hover { animation-play-state: paused; }
+        @media (prefers-reduced-motion: no-preference) {
+          @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+          .ticker-track { animation: ticker 50s linear infinite; }
+          .ticker-track:hover { animation-play-state: paused; }
+        }
       `}</style>
 
       {/* === SECTION: MASTHEAD === */}
       <header className="sticky top-0 z-50 bg-ink border-b border-white/10">
         <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
-          <span className="font-mono text-[11px] tracking-[0.25em] text-paper uppercase">
+          <span className="font-mono text-[13px] tracking-[0.25em] text-paper uppercase">
             Road<span className="text-teal">To</span>Ivies
           </span>
           <nav className="hidden md:flex items-center gap-8">
-            {["Credentials", "Case Study", "Services", "Activities"].map((l) => (
+            {["Credentials", "Case Study", "Services", "Activities", "Diagnostic"].map((l) => (
               <a
                 key={l}
-                href={`#${l.toLowerCase().replace(" ", "-")}`}
-                className="font-mono text-[10px] tracking-[0.15em] uppercase text-white/50 hover:text-teal transition-colors"
+                href={l === "Diagnostic" ? "/diagnostic" : `#${l.toLowerCase().replace(" ", "-")}`}
+                className="font-mono text-[13px] tracking-[0.15em] uppercase text-white/50 hover:text-teal transition-colors"
               >
                 {l}
               </a>
             ))}
           </nav>
+          <button
+            onClick={() => setMenuOpen((o) => !o)}
+            className="font-mono text-[13px] text-white/60 hover:text-teal transition-colors md:hidden"
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? "✕" : "☰"}
+          </button>
           <a
             href="https://wa.me/918904176520"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-mono text-[10px] tracking-[0.15em] uppercase bg-teal text-paper px-4 py-2 hover:bg-teal-light transition-colors border border-teal"
+            className="font-mono text-[13px] tracking-[0.15em] uppercase bg-teal text-paper px-4 py-3 hover:bg-teal-light transition-colors border border-teal"
           >
             WhatsApp →
           </a>
         </div>
+        {menuOpen && (
+          <div className="md:hidden bg-ink border-b border-white/10 w-full">
+            {["Credentials", "Case Study", "Services", "Activities"].map((l) => (
+              <a
+                key={l}
+                href={`#${l.toLowerCase().replace(" ", "-")}`}
+                onClick={() => setMenuOpen(false)}
+                className="block font-mono text-[13px] tracking-[0.15em] uppercase text-white/60 hover:text-teal transition-colors px-6 py-4 border-b border-white/5"
+              >
+                {l}
+              </a>
+            ))}
+            <a
+              href="https://wa.me/918904176520"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMenuOpen(false)}
+              className="block font-mono text-[13px] tracking-[0.15em] uppercase bg-teal text-paper px-6 py-4 hover:bg-teal-light transition-colors"
+            >
+              WhatsApp →
+            </a>
+          </div>
+        )}
       </header>
 
       {/* === SECTION: TICKER === */}
       <div className="bg-cream border-b border-rule overflow-hidden">
         <div className="ticker-track flex whitespace-nowrap py-2.5">
           {[...TICKER_ITEMS, ...TICKER_ITEMS].map((item, i) => (
-            <span key={i} className="font-mono text-[10px] tracking-[0.15em] uppercase text-muted px-8">
+            <span key={i} className="font-mono text-[13px] tracking-[0.15em] uppercase text-muted px-8">
               {item}
               <span className="ml-8 text-rule">·</span>
             </span>
@@ -179,7 +212,7 @@ export default function Home() {
       {/* === SECTION: HERO === */}
       <section className="max-w-7xl mx-auto px-6 pt-20 pb-24 grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-16 items-start">
         <div>
-          <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-teal mb-6">
+          <p className="font-mono text-[13px] tracking-[0.2em] uppercase text-teal mb-6">
             Elite US STEM Admissions · Bengaluru
           </p>
           <h1 className="font-serif text-[clamp(2.2rem,5vw,3.8rem)] font-bold leading-[1.08] text-ink mb-6">
@@ -199,7 +232,7 @@ export default function Home() {
             ].map(({ n, label }) => (
               <div key={n} className="bg-paper p-5 text-center">
                 <div className="font-serif text-3xl font-bold text-teal mb-1">{n}</div>
-                <div className="font-mono text-[9px] tracking-[0.15em] uppercase text-muted whitespace-pre-line leading-relaxed">{label}</div>
+                <div className="font-mono text-[12px] tracking-[0.15em] uppercase text-muted whitespace-pre-line leading-relaxed">{label}</div>
               </div>
             ))}
           </div>
@@ -207,13 +240,13 @@ export default function Home() {
           <div className="flex flex-wrap gap-3">
             <a
               href="/diagnostic"
-              className="font-mono text-[11px] tracking-[0.15em] uppercase bg-teal text-paper px-6 py-3.5 hover:bg-teal-light transition-colors border border-teal"
+              className="font-mono text-[13px] tracking-[0.15em] uppercase bg-teal text-paper px-6 py-3.5 hover:bg-teal-light transition-colors border border-teal"
             >
               Run Cohort Diagnostic →
             </a>
             <a
               href="#final-cta"
-              className="font-mono text-[11px] tracking-[0.15em] uppercase bg-transparent text-teal px-6 py-3.5 border border-teal hover:bg-teal/5 transition-colors"
+              className="font-mono text-[13px] tracking-[0.15em] uppercase bg-transparent text-teal px-6 py-3.5 border border-teal hover:bg-teal/5 transition-colors"
             >
               Book a Session
             </a>
@@ -222,8 +255,11 @@ export default function Home() {
 
         {/* Diagnostic output sidebar */}
         <div className="border border-rule bg-white">
+          <Link to="/diagnostic" className="block font-mono text-[12px] text-muted hover:text-teal transition-colors mb-3 px-4 pt-3">
+            Example output — run yours →
+          </Link>
           <div className="bg-ink px-4 py-3">
-            <span className="font-mono text-[9px] tracking-[0.2em] uppercase text-teal">Sample Diagnostic Output</span>
+            <span className="font-mono text-[12px] tracking-[0.2em] uppercase text-teal">Sample Diagnostic Output</span>
           </div>
           <div className="p-5 space-y-3">
             {[
@@ -235,12 +271,12 @@ export default function Home() {
               ["Major Alignment",  "Strong"],
             ].map(([label, val]) => (
               <div key={label} className="flex justify-between items-baseline gap-4 border-b border-rule/40 pb-3 last:border-0 last:pb-0">
-                <span className="font-mono text-[9px] tracking-[0.12em] uppercase text-muted shrink-0">{label}</span>
+                <span className="font-mono text-[12px] tracking-[0.12em] uppercase text-muted shrink-0">{label}</span>
                 <span className="font-sans text-[13px] text-ink font-medium text-right">{val}</span>
               </div>
             ))}
             <div className="mt-2 border border-teal/40 bg-teal/5 p-3">
-              <p className="font-mono text-[9px] tracking-[0.12em] uppercase text-teal mb-1">Recommendation</p>
+              <p className="font-mono text-[12px] tracking-[0.12em] uppercase text-teal mb-1">Recommendation</p>
               <p className="text-[12px] text-ink leading-relaxed">
                 Strong REA candidate for Princeton Math only if Math HL ≥ 6 sustained through Gr. 12 mocks.
               </p>
@@ -252,19 +288,19 @@ export default function Home() {
       {/* === SECTION: CREDENTIALS === */}
       <section id="credentials" className="border-t border-rule">
         <div className="max-w-7xl mx-auto px-6 py-20">
-          <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-teal mb-2">Why This Matters</p>
+          <p className="font-mono text-[13px] tracking-[0.2em] uppercase text-teal mb-2">Why This Matters</p>
           <h2 className="font-serif text-3xl font-bold text-ink mb-12">The Credential Architecture</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-rule border border-rule">
             {CREDENTIALS.map((c) => (
               <div key={c.title} className="bg-paper p-6 flex flex-col gap-4">
-                <span className="font-mono text-[9px] tracking-[0.2em] uppercase text-muted">{c.year}</span>
+                <span className="font-mono text-[12px] tracking-[0.2em] uppercase text-muted">{c.year}</span>
                 <div>
                   <h3 className="font-serif text-lg font-bold text-ink leading-tight mb-1">{c.title}</h3>
-                  <p className="font-mono text-[9px] tracking-[0.15em] uppercase text-teal">{c.role}</p>
+                  <p className="font-mono text-[12px] tracking-[0.15em] uppercase text-teal">{c.role}</p>
                 </div>
                 <p className="text-[13px] text-muted leading-relaxed flex-1">{c.desc}</p>
                 <div className="border-t border-rule pt-3">
-                  <span className="font-mono text-[9px] tracking-[0.15em] uppercase text-ink font-medium">{c.metric}</span>
+                  <span className="font-mono text-[12px] tracking-[0.15em] uppercase text-ink font-medium">{c.metric}</span>
                 </div>
               </div>
             ))}
@@ -275,7 +311,7 @@ export default function Home() {
       {/* === SECTION: PRINCETON PARADOX === */}
       <section id="case-study" className="bg-ink">
         <div className="max-w-7xl mx-auto px-6 py-20">
-          <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-amber mb-2">Academic Insight · Ivy Trap</p>
+          <p className="font-mono text-[13px] tracking-[0.2em] uppercase text-amber mb-2">Academic Insight · Ivy Trap</p>
           <h2 className="font-serif text-3xl font-bold text-paper mb-4">The Princeton Paradox</h2>
           <p className="text-[15px] text-white/50 max-w-2xl mb-12 leading-relaxed">
             Two real profiles. One admit, one reject. The difference was not total score — it was subject-level HL alignment with intended major.
@@ -285,13 +321,13 @@ export default function Home() {
             <table className="w-full min-w-[620px]">
               <thead>
                 <tr className="border-b border-white/10">
-                  <th className="text-left p-4 font-mono text-[9px] tracking-[0.2em] uppercase text-white/30 w-[30%]">
+                  <th className="text-left p-4 font-mono text-[12px] tracking-[0.2em] uppercase text-white/50 w-[30%]">
                     Dimension
                   </th>
-                  <th className="text-left p-4 font-mono text-[9px] tracking-[0.2em] uppercase text-danger border-l border-white/10">
+                  <th className="text-left p-4 font-mono text-[12px] tracking-[0.2em] uppercase text-danger border-l border-white/10">
                     Student 1 — Rejected
                   </th>
-                  <th className="text-left p-4 font-mono text-[9px] tracking-[0.2em] uppercase text-teal border-l border-white/10">
+                  <th className="text-left p-4 font-mono text-[12px] tracking-[0.2em] uppercase text-teal border-l border-white/10">
                     Student 2 — Admitted
                   </th>
                 </tr>
@@ -299,7 +335,7 @@ export default function Home() {
               <tbody>
                 {PRINCETON_ROWS.map((row, i) => (
                   <tr key={i} className={`border-b border-white/5 ${row.result ? "bg-white/5" : ""}`}>
-                    <td className="p-4 font-mono text-[10px] tracking-[0.1em] uppercase text-white/40">{row.label}</td>
+                    <td className="p-4 font-mono text-[13px] tracking-[0.1em] uppercase text-white/60">{row.label}</td>
                     <td className={`p-4 text-[13px] border-l border-white/10 ${row.fatal ? "text-danger font-medium" : row.result ? "text-danger" : "text-white/70"}`}>
                       {row.reject}
                     </td>
@@ -313,7 +349,7 @@ export default function Home() {
           </div>
 
           <div className="border border-amber/30 bg-amber/5 p-6 grid grid-cols-1 md:grid-cols-[80px_1fr] gap-6 items-start">
-            <span className="font-mono text-[9px] tracking-[0.2em] uppercase text-amber">Mechanism</span>
+            <span className="font-mono text-[12px] tracking-[0.2em] uppercase text-amber">Mechanism</span>
             <div className="space-y-2 text-[14px] text-white/70 leading-relaxed">
               <p>
                 Subject-level HL score in the{" "}
@@ -323,7 +359,7 @@ export default function Home() {
                 Princeton Mathematics is the most competitive Ivy program.{" "}
                 <span className="text-danger">5/7 Math HL + Math major = structural incompatibility.</span>
               </p>
-              <p className="text-white/40 text-[12px]">
+              <p className="text-white/60 text-[12px]">
                 Student 1 was also competing as an Indian citizen against a far smaller admit pool than Student 2 (US citizen).
               </p>
             </div>
@@ -334,22 +370,22 @@ export default function Home() {
       {/* === SECTION: SERVICES === */}
       <section id="services" className="border-t border-rule">
         <div className="max-w-7xl mx-auto px-6 py-20">
-          <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-teal mb-2">Engagement Options</p>
+          <p className="font-mono text-[13px] tracking-[0.2em] uppercase text-teal mb-2">Engagement Options</p>
           <h2 className="font-serif text-3xl font-bold text-ink mb-12">Services</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-rule border border-rule">
             {SERVICES.map((s) => (
               <div key={s.title} className={`p-8 flex flex-col gap-5 ${s.featured ? "bg-teal" : "bg-paper"}`}>
-                <span className={`font-mono text-[9px] tracking-[0.2em] uppercase ${s.featured ? "text-teal-light" : "text-muted"}`}>
+                <span className={`font-mono text-[12px] tracking-[0.2em] uppercase ${s.featured ? "text-paper/90" : "text-muted"}`}>
                   {s.scope}
                 </span>
                 <div>
                   <h3 className={`font-serif text-2xl font-bold mb-2 ${s.featured ? "text-paper" : "text-ink"}`}>{s.title}</h3>
-                  <p className={`font-mono text-[11px] tracking-[0.1em] ${s.featured ? "text-teal-light" : "text-teal"}`}>{s.price}</p>
+                  <p className={`font-mono text-[13px] tracking-[0.1em] ${s.featured ? "text-teal-light" : "text-teal"}`}>{s.price}</p>
                 </div>
                 <p className={`text-[13px] leading-relaxed flex-1 ${s.featured ? "text-paper/80" : "text-muted"}`}>{s.desc}</p>
                 <ul className="space-y-2">
                   {s.items.map((item) => (
-                    <li key={item} className={`font-mono text-[10px] tracking-[0.1em] flex gap-2 ${s.featured ? "text-paper/70" : "text-muted"}`}>
+                    <li key={item} className={`font-mono text-[13px] tracking-[0.1em] flex gap-2 ${s.featured ? "text-paper/70" : "text-muted"}`}>
                       <span className={s.featured ? "text-teal-light" : "text-teal"}>→</span>
                       {item}
                     </li>
@@ -357,7 +393,7 @@ export default function Home() {
                 </ul>
                 <a
                   href="#final-cta"
-                  className={`mt-2 font-mono text-[10px] tracking-[0.15em] uppercase text-center py-3 border transition-colors ${
+                  className={`mt-2 font-mono text-[13px] tracking-[0.15em] uppercase text-center py-3 border transition-colors ${
                     s.featured
                       ? "border-paper/30 text-paper hover:bg-paper/10"
                       : "border-teal text-teal hover:bg-teal/5"
@@ -374,7 +410,7 @@ export default function Home() {
       {/* === SECTION: ACTIVITY TIER SYSTEM === */}
       <section id="activities" className="border-t border-rule bg-cream">
         <div className="max-w-7xl mx-auto px-6 py-20">
-          <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-teal mb-2">Signal Architecture</p>
+          <p className="font-mono text-[13px] tracking-[0.2em] uppercase text-teal mb-2">Signal Architecture</p>
           <h2 className="font-serif text-3xl font-bold text-ink mb-4">The Activity Tier System</h2>
           <p className="text-[15px] text-muted max-w-2xl mb-12 leading-relaxed">
             Not all activities register equally. This is how Ivy committees read your extracurricular list — from programs they identify unprompted to entries that actively hurt you.
@@ -386,17 +422,17 @@ export default function Home() {
                 className={`grid grid-cols-1 md:grid-cols-[120px_1fr_1fr] gap-px bg-rule ${i < ACTIVITY_TIERS.length - 1 ? "border-b border-rule" : ""}`}
               >
                 <div className="bg-cream p-5 flex flex-col justify-center gap-1">
-                  <span className="font-mono text-[9px] tracking-[0.15em] uppercase text-muted">{t.n}</span>
-                  <span className={`font-mono text-[11px] tracking-[0.15em] uppercase font-medium ${TIER_ACCENT[t.accent]}`}>
+                  <span className="font-mono text-[12px] tracking-[0.15em] uppercase text-muted">{t.n}</span>
+                  <span className={`font-mono text-[13px] tracking-[0.15em] uppercase font-medium ${TIER_ACCENT[t.accent]}`}>
                     {t.tier}
                   </span>
                 </div>
                 <div className="bg-paper p-5">
-                  <p className="font-mono text-[9px] tracking-[0.15em] uppercase text-muted mb-2">Examples</p>
+                  <p className="font-mono text-[12px] tracking-[0.15em] uppercase text-muted mb-2">Examples</p>
                   <p className="text-[13px] text-ink leading-relaxed">{t.examples}</p>
                 </div>
                 <div className="bg-paper p-5 border-l border-rule">
-                  <p className="font-mono text-[9px] tracking-[0.15em] uppercase text-muted mb-2">Admission Signal</p>
+                  <p className="font-mono text-[12px] tracking-[0.15em] uppercase text-muted mb-2">Admission Signal</p>
                   <p className="text-[13px] text-muted leading-relaxed">{t.signal}</p>
                 </div>
               </div>
@@ -409,7 +445,7 @@ export default function Home() {
       <section id="final-cta" className="bg-ink">
         <div className="max-w-7xl mx-auto px-6 py-24">
           <div className="max-w-2xl mb-16">
-            <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-teal mb-4">
+            <p className="font-mono text-[13px] tracking-[0.2em] uppercase text-teal mb-4">
               2026–27 Cohort · Limited Seats
             </p>
             <h2 className="font-serif text-4xl font-bold text-paper mb-4 leading-tight">
@@ -422,7 +458,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/10 border border-white/10">
             <div className="bg-ink p-8 flex flex-col gap-4">
-              <span className="font-mono text-[9px] tracking-[0.2em] uppercase text-teal">Schedule a Call</span>
+              <span className="font-mono text-[12px] tracking-[0.2em] uppercase text-teal">Schedule a Call</span>
               <h3 className="font-serif text-xl font-bold text-paper">Book via Calendly</h3>
               <p className="text-[13px] text-white/50 leading-relaxed flex-1">
                 Select a 45-minute strategy session. Comes prepared with a pre-session questionnaire.
@@ -431,12 +467,12 @@ export default function Home() {
                 url="https://calendly.com/sukrit-roadtoivies/profile-consultation"
                 rootElement={document.getElementById("root")}
                 text="Book a Session →"
-                className="font-mono text-[10px] tracking-[0.15em] uppercase text-center py-3 border border-teal text-teal hover:bg-teal/10 transition-colors w-full cursor-pointer bg-transparent"
+                className="font-mono text-[13px] tracking-[0.15em] uppercase text-center py-3 border border-teal text-teal hover:bg-teal/10 transition-colors w-full cursor-pointer bg-transparent"
               />
             </div>
 
             <div className="bg-ink p-8 flex flex-col gap-4">
-              <span className="font-mono text-[9px] tracking-[0.2em] uppercase text-teal">Fastest Response</span>
+              <span className="font-mono text-[12px] tracking-[0.2em] uppercase text-teal">Fastest Response</span>
               <h3 className="font-serif text-xl font-bold text-paper">WhatsApp</h3>
               <p className="text-[13px] text-white/50 leading-relaxed flex-1">
                 Direct line. Typically responds within 2 hours during IST business hours.
@@ -445,21 +481,21 @@ export default function Home() {
                 href="https://wa.me/918904176520"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-mono text-[10px] tracking-[0.15em] uppercase text-center py-3 border border-white/20 text-paper hover:border-teal hover:text-teal transition-colors"
+                className="font-mono text-[13px] tracking-[0.15em] uppercase text-center py-3 border border-white/20 text-paper hover:border-teal hover:text-teal transition-colors"
               >
                 +91 89041 76520 →
               </a>
             </div>
 
             <div className="bg-ink p-8 flex flex-col gap-4">
-              <span className="font-mono text-[9px] tracking-[0.2em] uppercase text-teal">Formal Enquiry</span>
+              <span className="font-mono text-[12px] tracking-[0.2em] uppercase text-teal">Formal Enquiry</span>
               <h3 className="font-serif text-xl font-bold text-paper">Email</h3>
               <p className="text-[13px] text-white/50 leading-relaxed flex-1">
                 For detailed profile summaries, school lists, or engagement proposals. Responded within 24 hours.
               </p>
               <a
                 href="mailto:sukrit@roadtoivies.com?subject=Strategic%20Counseling%20Inquiry"
-                className="font-mono text-[10px] tracking-[0.15em] uppercase text-center py-3 border border-white/20 text-paper hover:border-teal hover:text-teal transition-colors"
+                className="font-mono text-[13px] tracking-[0.15em] uppercase text-center py-3 border border-white/20 text-paper hover:border-teal hover:text-teal transition-colors"
               >
                 sukrit@roadtoivies.com →
               </a>
@@ -471,7 +507,7 @@ export default function Home() {
       {/* === SECTION: FOOTER === */}
       <footer className="bg-ink border-t border-white/10">
         <div className="max-w-7xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/20">
+          <span className="font-mono text-[13px] tracking-[0.2em] uppercase text-white/40">
             © 2026 RoadToIvies · Bengaluru, India
           </span>
           <div className="flex items-center gap-6">
@@ -479,7 +515,7 @@ export default function Home() {
               href="https://www.linkedin.com/in/sukrit-tripathi"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-mono text-[10px] tracking-[0.15em] uppercase text-white/30 hover:text-teal transition-colors"
+              className="font-mono text-[13px] tracking-[0.15em] uppercase text-white/50 hover:text-teal transition-colors"
             >
               LinkedIn
             </a>
@@ -487,13 +523,13 @@ export default function Home() {
               href="https://www.teacheron.com/tutor/dtkF?r=dtkF"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-mono text-[10px] tracking-[0.15em] uppercase text-white/30 hover:text-teal transition-colors"
+              className="font-mono text-[13px] tracking-[0.15em] uppercase text-white/50 hover:text-teal transition-colors"
             >
               TeacherOn
             </a>
             <a
               href="/diagnostic"
-              className="font-mono text-[10px] tracking-[0.15em] uppercase text-white/30 hover:text-teal transition-colors"
+              className="font-mono text-[13px] tracking-[0.15em] uppercase text-white/50 hover:text-teal transition-colors"
             >
               Diagnostic Tool
             </a>

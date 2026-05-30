@@ -11,7 +11,7 @@ export default {
         paper:        '#f5f0e8',
         cream:        '#ede8dc',
         rule:         '#c8bfa8',
-        muted:        '#7a7060',
+        muted:        '#5a5348',
         teal:         '#2d7a5f',
         'teal-light': '#4aab85',
         danger:       '#c41c1c',
