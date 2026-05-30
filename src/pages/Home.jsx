@@ -132,9 +132,11 @@ export default function Home() {
   return (
     <div className="bg-paper text-ink font-sans min-h-screen overflow-x-hidden">
       <style>{`
-        @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        .ticker-track { animation: ticker 50s linear infinite; }
-        .ticker-track:hover { animation-play-state: paused; }
+        @media (prefers-reduced-motion: no-preference) {
+          @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+          .ticker-track { animation: ticker 50s linear infinite; }
+          .ticker-track:hover { animation-play-state: paused; }
+        }
       `}</style>
 
       {/* === SECTION: MASTHEAD === */}
@@ -165,7 +167,7 @@ export default function Home() {
             href="https://wa.me/918904176520"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-mono text-[13px] tracking-[0.15em] uppercase bg-teal text-paper px-4 py-2 hover:bg-teal-light transition-colors border border-teal"
+            className="font-mono text-[13px] tracking-[0.15em] uppercase bg-teal text-paper px-4 py-3 hover:bg-teal-light transition-colors border border-teal"
           >
             WhatsApp →
           </a>
