@@ -128,6 +128,7 @@ const TIER_ACCENT = {
 };
 
 export default function Home() {
+  const [menuOpen, setMenuOpen] = useState(false);
   return (
     <div className="bg-paper text-ink font-sans min-h-screen overflow-x-hidden">
       <style>{`
@@ -153,6 +154,13 @@ export default function Home() {
               </a>
             ))}
           </nav>
+          <button
+            onClick={() => setMenuOpen((o) => !o)}
+            className="font-mono text-[13px] text-white/60 hover:text-teal transition-colors md:hidden"
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? "✕" : "☰"}
+          </button>
           <a
             href="https://wa.me/918904176520"
             target="_blank"
@@ -162,6 +170,29 @@ export default function Home() {
             WhatsApp →
           </a>
         </div>
+        {menuOpen && (
+          <div className="md:hidden bg-ink border-b border-white/10 w-full">
+            {["Credentials", "Case Study", "Services", "Activities"].map((l) => (
+              <a
+                key={l}
+                href={`#${l.toLowerCase().replace(" ", "-")}`}
+                onClick={() => setMenuOpen(false)}
+                className="block font-mono text-[13px] tracking-[0.15em] uppercase text-white/60 hover:text-teal transition-colors px-6 py-4 border-b border-white/5"
+              >
+                {l}
+              </a>
+            ))}
+            <a
+              href="https://wa.me/918904176520"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMenuOpen(false)}
+              className="block font-mono text-[13px] tracking-[0.15em] uppercase bg-teal text-paper px-6 py-4 hover:bg-teal-light transition-colors"
+            >
+              WhatsApp →
+            </a>
+          </div>
+        )}
       </header>
 
       {/* === SECTION: TICKER === */}
