@@ -375,7 +375,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-rule border border-rule">
             {SERVICES.map((s) => (
               <div key={s.title} className={`p-8 flex flex-col gap-5 ${s.featured ? "bg-teal" : "bg-paper"}`}>
-                <span className={`font-mono text-[12px] tracking-[0.2em] uppercase ${s.featured ? "text-teal-light" : "text-muted"}`}>
+                <span className={`font-mono text-[12px] tracking-[0.2em] uppercase ${s.featured ? "text-paper/90" : "text-muted"}`}>
                   {s.scope}
                 </span>
                 <div>
