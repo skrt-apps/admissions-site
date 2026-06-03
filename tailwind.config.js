@@ -8,6 +8,7 @@ export default {
     extend: {
       colors: {
         ink:          '#0c0c0c',
+        slate:        '#3E454B',
         paper:        '#f5f0e8',
         cream:        '#ede8dc',
         rule:         '#c8bfa8',

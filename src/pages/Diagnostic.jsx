@@ -65,7 +65,7 @@ function evaluateProfile({ grade, citizenship, major, academic, testing }) {
   return { tier, status, vulnerability, project, checklist };
 }
 
-const INPUT_CLS = "w-full bg-ink border border-white/20 px-3.5 py-3.5 text-paper text-[14px] placeholder:text-white/40 focus:border-teal outline-none transition-colors";
+const INPUT_CLS = "w-full bg-slate border border-white/20 px-3.5 py-3.5 text-paper text-[14px] placeholder:text-white/40 focus:border-teal outline-none transition-colors";
 const LABEL_CLS = "block font-mono text-[13px] tracking-[0.1em] uppercase text-white/50 mb-2.5";
 
 export default function Diagnostic() {
@@ -213,7 +213,7 @@ export default function Diagnostic() {
   const guide = ARCHETYPE_GUIDELINES[form.archetype];
 
   return (
-    <div className="bg-ink text-paper font-sans min-h-screen py-10 px-4">
+    <div className="bg-slate text-paper font-sans min-h-screen py-10 px-4">
       <div className="max-w-3xl mx-auto border border-teal/15 bg-white/[0.02] p-10 max-sm:p-5 max-sm:border-0 max-sm:bg-transparent">
         <p className="font-mono text-[13px] tracking-[0.25em] uppercase text-teal mb-3">
           RoadToIvies · Diagnostic
@@ -406,7 +406,7 @@ export default function Diagnostic() {
                 <option value="polymath">The Polymath (Interdisciplinary Domain Intersection)</option>
                 <option value="tree">The Tree (Deep Non-Academic Obsession & Real-World Impact)</option>
               </select>
-              <div className="border border-dashed border-teal/20 bg-ink/50 p-4">
+              <div className="border border-dashed border-teal/20 bg-slate/50 p-4">
                 <p className="font-mono text-[13px] tracking-[0.15em] uppercase text-teal mb-2">{guide.title}</p>
                 <p className="text-[13px] text-white/50 leading-relaxed">{guide.text}</p>
               </div>
@@ -456,7 +456,7 @@ export default function Diagnostic() {
 
         {/* Result */}
         {result && (
-          <div id="result-box" className="mt-10 border-l-4 border-teal bg-ink/80 p-8 max-sm:p-5">
+          <div id="result-box" className="mt-10 border-l-4 border-teal bg-slate/80 p-8 max-sm:p-5">
             <div className="border-b border-white/[0.08] pb-5 mb-6">
               <p className="font-mono text-[12px] tracking-[0.25em] uppercase text-teal mb-2">
                 Diagnostic Result

@@ -2,6 +2,38 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { PopupButton } from "react-calendly";
 
+const NAV_LINKS = [
+  { label: "Credentials", href: "#credentials" },
+  { label: "Case Study",  href: "#case-study"  },
+  { label: "Services",    href: "#services"    },
+  { label: "Activities",  href: "#activities"  },
+  { label: "Diagnostic",  href: "/diagnostic"  },
+  { label: "About Me",    href: "/about"       },
+];
+
+// TODO: replace these placeholder entries with the real testimonials.
+// Each card needs: quote, name, college, location.
+const TESTIMONIALS = [
+  {
+    quote:    "Sukrit's diagnostic call cut through six months of consultant noise in forty minutes. He told us exactly which of our daughter's activities were filler and which were spike-worthy — and was right.",
+    name:     "[Example] Anjali R.",
+    college:  "Parent · Daughter at Cornell",
+    location: "Whitefield, Bengaluru",
+  },
+  {
+    quote:    "He looked at my profile and said the Math HL grade was going to sink me at every Ivy CS program. Nobody else had said it that plainly. I pivoted majors, got into Berkeley EECS instead.",
+    name:     "[Example] Rohan M.",
+    college:  "UC Berkeley · EECS '27",
+    location: "Koramangala, Bengaluru",
+  },
+  {
+    quote:    "Worth every rupee. The honesty was the whole point — we'd been told what we wanted to hear for two years. Sukrit told us what was actually true. My son is at CMU now.",
+    name:     "[Example] Priya S.",
+    college:  "Parent · Son at Carnegie Mellon",
+    location: "Jubilee Hills, Hyderabad",
+  },
+];
+
 const TICKER_ITEMS = [
   "SSP 2015 — 1 of 2 selected from India",
   "UC Berkeley · B.A. Economics & Data Science",
@@ -140,25 +172,25 @@ export default function Home() {
       `}</style>
 
       {/* === SECTION: MASTHEAD === */}
-      <header className="sticky top-0 z-50 bg-ink border-b border-white/10">
+      <header className="sticky top-0 z-50 bg-slate border-b border-white/10">
         <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
           <span className="font-mono text-[13px] tracking-[0.25em] text-paper uppercase">
             Road<span className="text-teal">To</span>Ivies
           </span>
-          <nav className="hidden md:flex items-center gap-8">
-            {["Credentials", "Case Study", "Services", "Activities", "Diagnostic"].map((l) => (
+          <nav className="hidden xl:flex items-center gap-6">
+            {NAV_LINKS.map((l) => (
               <a
-                key={l}
-                href={l === "Diagnostic" ? "/diagnostic" : `#${l.toLowerCase().replace(" ", "-")}`}
-                className="font-mono text-[13px] tracking-[0.15em] uppercase text-white/50 hover:text-teal transition-colors"
+                key={l.label}
+                href={l.href}
+                className="font-mono text-[16px] tracking-[0.12em] uppercase text-white hover:text-teal transition-colors whitespace-nowrap"
               >
-                {l}
+                {l.label}
               </a>
             ))}
           </nav>
           <button
             onClick={() => setMenuOpen((o) => !o)}
-            className="font-mono text-[13px] text-white/60 hover:text-teal transition-colors md:hidden"
+            className="font-mono text-[16px] text-white hover:text-teal transition-colors xl:hidden"
             aria-label="Toggle menu"
           >
             {menuOpen ? "✕" : "☰"}
@@ -173,15 +205,15 @@ export default function Home() {
           </a>
         </div>
         {menuOpen && (
-          <div className="md:hidden bg-ink border-b border-white/10 w-full">
-            {["Credentials", "Case Study", "Services", "Activities"].map((l) => (
+          <div className="xl:hidden bg-slate border-b border-white/10 w-full">
+            {NAV_LINKS.map((l) => (
               <a
-                key={l}
-                href={`#${l.toLowerCase().replace(" ", "-")}`}
+                key={l.label}
+                href={l.href}
                 onClick={() => setMenuOpen(false)}
-                className="block font-mono text-[13px] tracking-[0.15em] uppercase text-white/60 hover:text-teal transition-colors px-6 py-4 border-b border-white/5"
+                className="block font-mono text-[16px] tracking-[0.15em] uppercase text-white hover:text-teal transition-colors px-6 py-4 border-b border-white/5"
               >
-                {l}
+                {l.label}
               </a>
             ))}
             <a
@@ -258,7 +290,7 @@ export default function Home() {
           <Link to="/diagnostic" className="block font-mono text-[12px] text-muted hover:text-teal transition-colors mb-3 px-4 pt-3">
             Example output — run yours →
           </Link>
-          <div className="bg-ink px-4 py-3">
+          <div className="bg-slate px-4 py-3">
             <span className="font-mono text-[12px] tracking-[0.2em] uppercase text-teal">Sample Diagnostic Output</span>
           </div>
           <div className="p-5 space-y-3">
@@ -309,7 +341,7 @@ export default function Home() {
       </section>
 
       {/* === SECTION: PRINCETON PARADOX === */}
-      <section id="case-study" className="bg-ink">
+      <section id="case-study" className="bg-slate">
         <div className="max-w-7xl mx-auto px-6 py-20">
           <p className="font-mono text-[13px] tracking-[0.2em] uppercase text-amber mb-2">Academic Insight · Ivy Trap</p>
           <h2 className="font-serif text-3xl font-bold text-paper mb-4">The Princeton Paradox</h2>
@@ -407,6 +439,34 @@ export default function Home() {
         </div>
       </section>
 
+      {/* === SECTION: TESTIMONIALS === */}
+      <section id="testimonials" className="border-t border-rule">
+        <div className="max-w-7xl mx-auto px-6 py-20">
+          <p className="font-mono text-[13px] tracking-[0.2em] uppercase text-teal mb-2">From the families I work with</p>
+          <h2 className="font-serif text-3xl font-bold text-ink mb-4">Testimonials</h2>
+          <p className="text-[15px] text-muted max-w-2xl mb-12 leading-relaxed">
+            A small practice — every engagement is direct with me. Below: parents and students who have completed an engagement and agreed to be named.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-rule border border-rule">
+            {TESTIMONIALS.map((t) => (
+              <figure key={t.name} className="bg-paper p-8 flex flex-col gap-5">
+                <span className="font-mono text-[12px] tracking-[0.2em] uppercase text-teal">
+                  Testimonial
+                </span>
+                <blockquote className="font-serif italic text-[18px] text-ink leading-relaxed flex-1">
+                  &ldquo;{t.quote}&rdquo;
+                </blockquote>
+                <figcaption className="border-t border-rule pt-4">
+                  <p className="font-sans font-bold text-ink text-[14px] mb-1">{t.name}</p>
+                  <p className="font-mono text-[12px] tracking-[0.1em] uppercase text-teal mb-1">{t.college}</p>
+                  <p className="font-mono text-[12px] tracking-[0.1em] uppercase text-muted">{t.location}</p>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* === SECTION: ACTIVITY TIER SYSTEM === */}
       <section id="activities" className="border-t border-rule bg-cream">
         <div className="max-w-7xl mx-auto px-6 py-20">
@@ -442,7 +502,7 @@ export default function Home() {
       </section>
 
       {/* === SECTION: FINAL CTA === */}
-      <section id="final-cta" className="bg-ink">
+      <section id="final-cta" className="bg-slate">
         <div className="max-w-7xl mx-auto px-6 py-24">
           <div className="max-w-2xl mb-16">
             <p className="font-mono text-[13px] tracking-[0.2em] uppercase text-teal mb-4">
@@ -457,7 +517,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/10 border border-white/10">
-            <div className="bg-ink p-8 flex flex-col gap-4">
+            <div className="bg-slate p-8 flex flex-col gap-4">
               <span className="font-mono text-[12px] tracking-[0.2em] uppercase text-teal">Schedule a Call</span>
               <h3 className="font-serif text-xl font-bold text-paper">Book via Calendly</h3>
               <p className="text-[13px] text-white/50 leading-relaxed flex-1">
@@ -471,7 +531,7 @@ export default function Home() {
               />
             </div>
 
-            <div className="bg-ink p-8 flex flex-col gap-4">
+            <div className="bg-slate p-8 flex flex-col gap-4">
               <span className="font-mono text-[12px] tracking-[0.2em] uppercase text-teal">Fastest Response</span>
               <h3 className="font-serif text-xl font-bold text-paper">WhatsApp</h3>
               <p className="text-[13px] text-white/50 leading-relaxed flex-1">
@@ -487,7 +547,7 @@ export default function Home() {
               </a>
             </div>
 
-            <div className="bg-ink p-8 flex flex-col gap-4">
+            <div className="bg-slate p-8 flex flex-col gap-4">
               <span className="font-mono text-[12px] tracking-[0.2em] uppercase text-teal">Formal Enquiry</span>
               <h3 className="font-serif text-xl font-bold text-paper">Email</h3>
               <p className="text-[13px] text-white/50 leading-relaxed flex-1">
@@ -505,7 +565,7 @@ export default function Home() {
       </section>
 
       {/* === SECTION: FOOTER === */}
-      <footer className="bg-ink border-t border-white/10">
+      <footer className="bg-slate border-t border-white/10">
         <div className="max-w-7xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <span className="font-mono text-[13px] tracking-[0.2em] uppercase text-white/40">
             © 2026 RoadToIvies · Bengaluru, India
