@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { supabase } from "../lib/supabase";
+import Report from "./Report";
 
 const ARCHETYPE_GUIDELINES = {
   specialist: {
@@ -21,31 +22,31 @@ function evaluateProfile({ grade, citizenship, major, academic, testing }) {
   let tier, status, vulnerability, project, checklist;
 
   if (academic === "high" && testing === "high") {
-    tier = "Elite Competitive Track (Global Top-Tier Cohort)";
+    tier = "Competitive at elite-tier admissions";
     status = "The student clears primary holistic quantitative filters. However, excellent scores are baseline criteria, not points of differentiation.";
   } else if (academic === "mid" || testing === "mid") {
-    tier = "Selective Matrix Track (Highly Competitive Pool)";
+    tier = "Strong but uneven baseline";
     status = "The student possesses a strong foundation, but shows a clear metric variance that will trigger immediate scrutiny during initial evaluation phases.";
   } else {
-    tier = "Strategic Pivoting Track (Development Required)";
+    tier = "Foundational gaps to close";
     status = "Critical quantitative baseline barriers present. Current metrics do not clear structural entry screening thresholds easily.";
   }
 
   if (citizenship === "india") {
-    status += " <strong>CRITICAL CITIZENSHIP QUOTA WARNING:</strong> Competing as an Indian Citizen activates the single most saturated international pool in the world. Admissions committees operate with strict demographic ceilings. Quantitative perfection is assumed; any minor curriculum fluctuation (e.g., a 5/7 in an HL STEM subject) or lack of out-of-school technical output results in an immediate soft rejection.";
+    status += " <strong>Note on the international applicant pool:</strong> Competing as an Indian Citizen activates the single most saturated international pool in the world. Admissions committees operate with strict demographic ceilings. Quantitative perfection is assumed; any minor curriculum fluctuation (e.g., a 5/7 in an HL STEM subject) or lack of out-of-school technical output results in an immediate soft rejection.";
     if (major === "stem" || major === "finance") {
-      vulnerability = "<strong>The Saturated International Demographic Trap.</strong> For an Indian citizen targeting STEM or quantitative tracks, a 'well-rounded' portfolio is a fatal positioning strategy. You are competing directly against thousands of applicants with identical data profiles. Your child's application is invisible unless anchored by an undeniable external asymmetric spike.";
-      project = "Cease all passive community volunteer hours or institutional summer camps. Your child must build a functional, open-source technical asset—such as a data-science software platform or a localized algorithmic modeling repository—or execute formal academic research alongside university faculty targeting publication.";
+      vulnerability = "<strong>The saturated-pool problem.</strong> For an Indian citizen targeting STEM or quantitative tracks, a 'well-rounded' portfolio is a fatal positioning strategy. You are competing directly against thousands of applicants with identical data profiles. Your child's application is invisible unless anchored by an undeniable external asymmetric spike.";
+      project = "Standard volunteering and generic summer camps will not register here. Your child must build a functional, open-source technical asset—such as a data-science software platform or a localized algorithmic modeling repository—or execute formal academic research alongside university faculty targeting publication.";
       checklist = "1. Initiate an immediate profile audit to isolate a singular, un-clichéd technical project direction.<br>2. Re-verify that Higher Level (HL) math/science splits show absolute flawless performance.<br>3. Frame upcoming recommendation profiles around advanced intellectual autonomy that outperforms standard grade boundaries.";
     } else {
-      vulnerability = "<strong>The Generalist Filter Vulnerability.</strong> While shifting away from STEM clears some selection volume, an Indian international applicant tracking as a Polymath or Tree must provide undeniable proof of cross-domain scaling or high linguistic mastery to survive initial holistic cuts.";
+      vulnerability = "<strong>The generalist trap.</strong> While shifting away from STEM clears some selection volume, an Indian international applicant tracking as a Polymath or Tree must provide undeniable proof of cross-domain scaling or high linguistic mastery to survive initial holistic cuts.";
       project = "Unify the interdisciplinary profile with a verifiable, real-world platform. If combining economics and social advocacy, construct a scalable data project mapping local urban structural adjustments rather than joining generic school clubs.";
       checklist = "1. Draft a binding 'Master Narrative' that bridges separate interests into a unified theme.<br>2. Ensure the main personal statement is structurally bulletproof and avoids cliché coming-of-age tropes.<br>3. Lock down high-level regional or international writing distinctions.";
     }
   } else {
-    status += " <strong>PASSPORT POSITIONING ADVANTAGE:</strong> Holding a US Passport or OCI status moves the applicant out of the ultra-saturated international citizen allocation pool, shifting them into a more flexible evaluation metric lane with higher acceptance limits.";
+    status += " <strong>On the domestic-pool advantage:</strong> Holding a US Passport or OCI status moves the applicant out of the ultra-saturated international citizen allocation pool, shifting them into a more flexible evaluation metric lane with higher acceptance limits.";
     if (academic === "high" && testing === "high") {
-      vulnerability = "<strong>Over-Reliance on Hard Metrics.</strong> While the passport advantage mitigates regional filtering ceilings, top-tier institutional tracks still reject high-scoring domestic applicants who fail to show deep personal maturity or a clear intrinsic thread.";
+      vulnerability = "<strong>The metrics-only ceiling.</strong> While the passport advantage mitigates regional filtering ceilings, top-tier institutional tracks still reject high-scoring domestic applicants who fail to show deep personal maturity or a clear intrinsic thread.";
       project = "Focus heavily on character and leadership scaling. Elevate a 'Tree' or 'Polymath' project to a state or national level, proving the student has genuine real-world execution capacity beyond high test performance.";
       checklist = "1. Finalize an early submission architecture to capitalise on Early Action/ED pacing windows.<br>2. Build out highly distinct personal essay drafts that focus heavily on internal reflections and value systems.";
     } else {
@@ -56,9 +57,9 @@ function evaluateProfile({ grade, citizenship, major, academic, testing }) {
   }
 
   if (grade === "g12") {
-    checklist += "<br><br><strong>CRITICAL TIME GATE WARNING:</strong> As a rising senior, your tactical window is strictly limited to defensive narrative positioning and immediate Early Decision/REA locking. There is no time left for academic recovery loops.";
+    checklist += "<br><br><strong>On timing:</strong> As a rising senior, your tactical window is strictly limited to defensive narrative positioning and immediate Early Decision/REA locking. There is no time left for academic recovery loops.";
   } else if (grade === "g10") {
-    checklist += "<br><br><strong>FOUNDATIONAL POSITIONING WINDOW:</strong> You are in an ideal spot. Current metric deficits can be completely engineered away with an immediate, structured 24-month profile strategy blueprint.";
+    checklist += "<br><br><strong>On timing:</strong> You are in an ideal spot. Current metric deficits can be completely engineered away with an immediate, structured 24-month profile strategy blueprint.";
   }
 
   return { tier, status, vulnerability, project, checklist };
@@ -91,6 +92,9 @@ export default function Diagnostic() {
   const [loading, setLoading] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null); // null | "success" | "error"
   const [result, setResult] = useState(null);
+  const [submissionId, setSubmissionId] = useState(null);
+  const [pdfStatus, setPdfStatus] = useState(null); // null | "generating"
+  const [copied, setCopied] = useState(false);
 
   const handleChange = (e) =>
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
@@ -100,26 +104,110 @@ export default function Diagnostic() {
     setLoading(true);
     setSubmitStatus(null);
 
-    const { error } = await supabase.from("diagnostic_submissions").insert({
-      student_name:       form.student_name       || null,
-      curriculum:         form.curriculum          || null,
-      predicted_score:    form.predicted_score     || null,
-      sat_score:          form.sat_score           || null,
-      intended_major:     form.intended_major      || null,
-      target_universities: form.target_universities || null,
-      research_summary:   form.research_summary    || null,
-      extracurriculars:   form.extracurriculars    || null,
-      email:              form.email               || null,
-      phone:              form.phone               || null,
-    });
+    // 1. Compute the result first so it can be stored alongside the profile.
+    const computed = evaluateProfile(form);
 
-    setSubmitStatus(error ? "error" : "success");
-    setResult(evaluateProfile(form));
+    // 4. Attribution: UTM params, referrer, user agent.
+    const params = new URLSearchParams(window.location.search);
+
+    const { data, error } = await supabase
+      .from("diagnostic_submissions")
+      .insert({
+        // Profile fields
+        student_name:        form.student_name        || null,
+        email:               form.email               || null,
+        phone:               form.phone               || null,
+        curriculum:          form.curriculum          || null,
+        intended_major:      form.intended_major      || null,
+        predicted_score:     form.predicted_score     || null,
+        sat_score:           form.sat_score           || null,
+        target_universities: form.target_universities || null,
+        research_summary:    form.research_summary    || null,
+        extracurriculars:    form.extracurriculars    || null,
+        // Diagnostic parameter selects
+        grade:       form.grade       || null,
+        citizenship: form.citizenship || null,
+        major:       form.major       || null,
+        archetype:   form.archetype   || null,
+        academic:    form.academic    || null,
+        testing:     form.testing     || null,
+        // Computed result snapshot
+        result_tier:          computed.tier          || null,
+        result_status:        computed.status        || null,
+        result_vulnerability: computed.vulnerability || null,
+        result_project:       computed.project       || null,
+        result_checklist:     computed.checklist     || null,
+        // Attribution
+        utm_source:   params.get("utm_source")   || null,
+        utm_medium:   params.get("utm_medium")   || null,
+        utm_campaign: params.get("utm_campaign") || null,
+        referrer:     document.referrer          || null,
+        user_agent:   navigator.userAgent        || null,
+      })
+      .select()
+      .single();
+
+    if (error) {
+      // 6. On failure, still show the inline result.
+      setSubmitStatus("error");
+    } else {
+      setSubmitStatus("success");
+      setSubmissionId(data?.id ?? null);
+    }
+    setResult(computed);
     setLoading(false);
 
     setTimeout(() => {
       document.getElementById("result-box")?.scrollIntoView({ behavior: "smooth" });
     }, 50);
+  };
+
+  const studentNameSlug =
+    (form.student_name || "student")
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "") || "student";
+
+  const handleDownloadPdf = async () => {
+    setPdfStatus("generating");
+    try {
+      const html2pdf = (await import("html2pdf.js")).default;
+      const node = document.getElementById("report-pdf-source");
+      if (node) {
+        await html2pdf()
+          .from(node)
+          .set({
+            margin: 10,
+            filename: `roadtoivies-diagnostic-${studentNameSlug}.pdf`,
+            image: { type: "jpeg", quality: 0.95 },
+            html2canvas: { scale: 2, useCORS: true },
+            jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+          })
+          .save();
+      }
+    } finally {
+      setPdfStatus(null);
+    }
+  };
+
+  const reportUrl = submissionId
+    ? `https://roadtoivies.com/report/${submissionId}`
+    : null;
+
+  const handleOpenReport = () => {
+    if (submissionId) window.open(`/report/${submissionId}`, "_blank", "noopener");
+  };
+
+  const handleCopyLink = async () => {
+    if (!reportUrl) return;
+    try {
+      await navigator.clipboard.writeText(reportUrl);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      /* clipboard unavailable — silently ignore */
+    }
   };
 
   const guide = ARCHETYPE_GUIDELINES[form.archetype];
@@ -128,23 +216,23 @@ export default function Diagnostic() {
     <div className="bg-ink text-paper font-sans min-h-screen py-10 px-4">
       <div className="max-w-3xl mx-auto border border-teal/15 bg-white/[0.02] p-10 max-sm:p-5 max-sm:border-0 max-sm:bg-transparent">
         <p className="font-mono text-[13px] tracking-[0.25em] uppercase text-teal mb-3">
-          Admissions Optimization System
+          RoadToIvies · Diagnostic
         </p>
         <h1 className="font-serif text-[2rem] sm:text-[2.2rem] font-bold text-paper mb-8 leading-tight">
-          Profile Cohort Diagnostic Lab
+          Profile Diagnostic
         </h1>
 
         {/* Guide */}
         <div className="border border-teal/15 bg-teal/[0.03] p-6 mb-10">
           <p className="text-[14px] text-white/60 leading-relaxed mb-3">
-            Clinical evaluation tool engineered for competitive international applicants targeting
-            ultra-selective US universities (Ivy League, Stanford, MIT, UC Berkeley).
+            A short questionnaire that classifies where your child's profile sits relative to
+            elite US admissions thresholds. Honest answers produce honest output.
           </p>
           <ul className="space-y-2">
             {[
-              ["Select Parameters Honestly:", "Input exact tracking metrics, grade window, and targeted discipline."],
-              ["Isolate True Bottlenecks:", "The engine flags hidden structural flaws rather than superficial resume gaps."],
-              ["Review the Action Blueprint:", "Use the generated roadmap to realign academic and project execution strategy."],
+              ["Answer honestly:", "The output is only as useful as the inputs. Approximate values are fine."],
+              ["The diagnostic flags structural gaps,", "not surface-level resume polish."],
+              ["The report is yours to keep,", "and you can share it with Sukrit to discuss next steps."],
             ].map(([strong, rest]) => (
               <li key={strong} className="text-[13.5px] text-white/70 leading-relaxed">
                 <span className="text-teal font-medium">{strong}</span> {rest}
@@ -348,7 +436,7 @@ export default function Diagnostic() {
             disabled={loading}
             className="w-full bg-teal text-paper font-mono text-[13px] tracking-[0.15em] uppercase py-4 hover:bg-teal-light transition-colors border border-teal cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
           >
-            {loading ? "Submitting…" : "Generate Custom Profile Blueprint →"}
+            {loading ? "Submitting…" : "Generate Diagnostic Report →"}
           </button>
         </form>
 
@@ -371,7 +459,7 @@ export default function Diagnostic() {
           <div id="result-box" className="mt-10 border-l-4 border-teal bg-ink/80 p-8 max-sm:p-5">
             <div className="border-b border-white/[0.08] pb-5 mb-6">
               <p className="font-mono text-[12px] tracking-[0.25em] uppercase text-teal mb-2">
-                Profile Assigned Status
+                Diagnostic Result
               </p>
               <h2 className="font-serif text-xl font-bold text-paper mb-2">{result.tier}</h2>
               <p
@@ -394,9 +482,41 @@ export default function Diagnostic() {
               </div>
             ))}
 
+            {submissionId && (
+              <div className="mt-8 border-t border-white/[0.08] pt-6">
+                <p className="font-mono text-[12px] tracking-[0.25em] uppercase text-teal mb-4">
+                  Your Report
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  <button
+                    type="button"
+                    onClick={handleDownloadPdf}
+                    disabled={pdfStatus === "generating"}
+                    className="flex items-center justify-center gap-2 py-3.5 px-4 bg-teal text-paper font-mono text-[13px] tracking-[0.1em] uppercase font-medium hover:bg-teal-light transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+                  >
+                    {pdfStatus === "generating" ? "Generating PDF…" : "Download PDF Report"}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleOpenReport}
+                    className="flex items-center justify-center gap-2 py-3.5 px-4 border border-teal text-teal font-mono text-[13px] tracking-[0.1em] uppercase font-medium hover:bg-teal/10 transition-colors"
+                  >
+                    Open shareable report
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleCopyLink}
+                    className="flex items-center justify-center gap-2 py-3.5 px-4 border border-white/20 text-paper font-mono text-[13px] tracking-[0.1em] uppercase font-medium hover:border-teal hover:text-teal transition-colors"
+                  >
+                    {copied ? "Link copied ✓" : "Copy report link"}
+                  </button>
+                </div>
+              </div>
+            )}
+
             <div className="mt-8 border-t border-white/[0.08] pt-6">
               <p className="font-mono text-[12px] tracking-[0.25em] uppercase text-teal mb-4">
-                Engage Strategy Architect
+                Discuss this report
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <a
@@ -426,11 +546,31 @@ export default function Diagnostic() {
           </div>
         )}
 
+        {/* Offscreen Report — source for html2pdf. Rendered (not display:none)
+            so html2canvas can capture it. 794px = A4 width at 96dpi. */}
+        {result && submissionId && (
+          <div
+            style={{ position: "fixed", left: "-9999px", top: 0, width: "794px" }}
+            aria-hidden="true"
+          >
+            <div id="report-pdf-source">
+              <Report
+                data={{
+                  ...form,
+                  ...result,
+                  id: submissionId,
+                  created_at: new Date().toISOString(),
+                }}
+              />
+            </div>
+          </div>
+        )}
+
         <Link
           to="/"
           className="block text-center mt-10 font-mono text-[13px] tracking-[0.1em] uppercase text-white/60 hover:text-teal transition-colors"
         >
-          ← Return to Core Platform
+          ← Back to home
         </Link>
       </div>
     </div>

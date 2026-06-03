@@ -18,14 +18,14 @@ const CREDENTIALS = [
     year: "2015",
     title: "Summer Science Program",
     role: "Astrophysics Research Fellow",
-    desc: "1 of 2 from India. Published in Harvard Smithsonian Press. Tier 4 sovereign signal.",
+    desc: "1 of 2 from India. Published in Harvard Smithsonian Press. The credential that moved the Berkeley admissions needle.",
     metric: "1 of 2 from India",
   },
   {
     year: "2015–2019",
     title: "UC Berkeley",
     role: "B.A. Economics & Data Science",
-    desc: "Haas mentor: 8/8 mentees admitted to Stanford, MIT, Berkeley, Duke, CMU.",
+    desc: "Mentored eight applicants intensively while at Haas. All eight admitted to a target school: Stanford, MIT, Berkeley, Duke, or CMU.",
     metric: "8/8 mentee admits",
   },
   {
@@ -48,7 +48,7 @@ const PRINCETON_ROWS = [
   { label: "Intended Major",     reject: "Applied Mathematics",              admit: "Biology"                        },
   { label: "Total IB (Gr. 11)", reject: "39 / 42",                          admit: "38 / 42"                        },
   { label: "SAT / ACT",         reject: "2300 SAT",                         admit: "34 ACT"                         },
-  { label: "Math HL Score",     reject: "5 / 7  ← FATAL SIGNAL",           admit: "4 / 7",           fatal: true   },
+  { label: "Math HL Score",     reject: "5 / 7  ← misaligned with major",  admit: "4 / 7",           fatal: true   },
   { label: "Subject–Major HL",  reject: "Math HL: 5/7 → Math major",        admit: "Bio HL: 6/7 → Bio major"        },
   { label: "Other Credentials", reject: "SSP · CS/Math papers",             admit: "Biology research papers"        },
   { label: "Princeton REA",     reject: "✗  Rejected",                      admit: "✓  Admitted",     result: true  },
@@ -84,7 +84,7 @@ const SERVICES = [
 const ACTIVITY_TIERS = [
   {
     n: "01",
-    tier: "SOVEREIGN",
+    tier: "RARE — IDENTIFIED UNPROMPTED",
     accent: "teal",
     examples: "SSP · RSI · PRIMES · Regeneron STS finalist · IMO medalist",
     signal: "Globally rare. Admissions committees recognise this unprompted. Locks a top-10 application.",
@@ -112,7 +112,7 @@ const ACTIVITY_TIERS = [
   },
   {
     n: "05",
-    tier: "ZERO SIGNAL",
+    tier: "ACTIVELY HARMFUL",
     accent: "danger",
     examples: "Undocumented service hours · fake NGO hours · duplicate activities across multiple years",
     signal: "Actively suspicious. Committees are trained to identify padding.",
@@ -221,7 +221,7 @@ export default function Home() {
             <span className="italic text-teal">Most find out in Grade&nbsp;12.</span>
           </h1>
           <p className="text-[17px] text-muted leading-relaxed max-w-xl mb-10">
-            Admissions consulting anchored in sovereign credentials — SSP, Berkeley, EY — for Indian STEM specialists who need data-driven strategy, not platitudes.
+            Admissions strategy for Indian STEM applicants — built from inside the process. UC Berkeley grad, SSP 2015 (one of two from India), four years in quantitative consulting. Honest assessment, not glossy promises.
           </p>
 
           <div className="grid grid-cols-3 gap-px bg-rule mb-10 border border-rule">
@@ -446,7 +446,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 py-24">
           <div className="max-w-2xl mb-16">
             <p className="font-mono text-[13px] tracking-[0.2em] uppercase text-teal mb-4">
-              2026–27 Cohort · Limited Seats
+              2026–27 Applications · Taking limited students
             </p>
             <h2 className="font-serif text-4xl font-bold text-paper mb-4 leading-tight">
               Ready to architect<br />your application?
