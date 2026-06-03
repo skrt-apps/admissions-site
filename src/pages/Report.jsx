@@ -84,7 +84,6 @@ function formatDate(iso) {
 
 const C = {
   ink: "#0c0c0c",
-  slate: "#3E454B",
   paper: "#f5f0e8",
   rule: "#c8bfa8",
   muted: "#5a5348",
@@ -446,7 +445,7 @@ export default function Report({ data }) {
               position: "sticky",
               top: 0,
               zIndex: 10,
-              background: C.slate,
+              background: C.ink,
               display: "flex",
               justifyContent: "flex-end",
               gap: "10px",

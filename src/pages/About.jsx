@@ -22,7 +22,7 @@ export default function About() {
   return (
     <div className="bg-paper text-ink font-sans min-h-screen overflow-x-hidden">
       {/* === MASTHEAD (mirrors Home.jsx) === */}
-      <header className="sticky top-0 z-50 bg-slate border-b border-white/10">
+      <header className="sticky top-0 z-50 bg-ink border-b border-white/10">
         <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
           <Link to="/" className="font-mono text-[13px] tracking-[0.25em] text-paper uppercase">
             Road<span className="text-teal">To</span>Ivies
@@ -65,7 +65,7 @@ export default function About() {
           </a>
         </div>
         {menuOpen && (
-          <div className="xl:hidden bg-slate border-b border-white/10 w-full">
+          <div className="xl:hidden bg-ink border-b border-white/10 w-full">
             {NAV_LINKS.map((l) =>
               l.to.startsWith("/#") ? (
                 <a
@@ -190,7 +190,7 @@ export default function About() {
       </Section>
 
       {/* === CTA === */}
-      <section className="bg-slate">
+      <section className="bg-ink">
         <div className="max-w-4xl mx-auto px-6 py-16 text-center">
           <p className="font-mono text-[13px] tracking-[0.2em] uppercase text-teal mb-4">
             Next Step
@@ -218,7 +218,7 @@ export default function About() {
       </section>
 
       {/* === FOOTER === */}
-      <footer className="bg-slate border-t border-white/10">
+      <footer className="bg-ink border-t border-white/10">
         <div className="max-w-7xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <span className="font-mono text-[13px] tracking-[0.2em] uppercase text-white/40">
             © 2026 RoadToIvies · Bengaluru, India

@@ -172,7 +172,7 @@ export default function Home() {
       `}</style>
 
       {/* === SECTION: MASTHEAD === */}
-      <header className="sticky top-0 z-50 bg-slate border-b border-white/10">
+      <header className="sticky top-0 z-50 bg-ink border-b border-white/10">
         <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
           <span className="font-mono text-[13px] tracking-[0.25em] text-paper uppercase">
             Road<span className="text-teal">To</span>Ivies
@@ -205,7 +205,7 @@ export default function Home() {
           </a>
         </div>
         {menuOpen && (
-          <div className="xl:hidden bg-slate border-b border-white/10 w-full">
+          <div className="xl:hidden bg-ink border-b border-white/10 w-full">
             {NAV_LINKS.map((l) => (
               <a
                 key={l.label}
@@ -290,7 +290,7 @@ export default function Home() {
           <Link to="/diagnostic" className="block font-mono text-[12px] text-muted hover:text-teal transition-colors mb-3 px-4 pt-3">
             Example output — run yours →
           </Link>
-          <div className="bg-slate px-4 py-3">
+          <div className="bg-ink px-4 py-3">
             <span className="font-mono text-[12px] tracking-[0.2em] uppercase text-teal">Sample Diagnostic Output</span>
           </div>
           <div className="p-5 space-y-3">
@@ -341,7 +341,7 @@ export default function Home() {
       </section>
 
       {/* === SECTION: PRINCETON PARADOX === */}
-      <section id="case-study" className="bg-slate">
+      <section id="case-study" className="bg-ink">
         <div className="max-w-7xl mx-auto px-6 py-20">
           <p className="font-mono text-[13px] tracking-[0.2em] uppercase text-amber mb-2">Academic Insight · Ivy Trap</p>
           <h2 className="font-serif text-3xl font-bold text-paper mb-4">The Princeton Paradox</h2>
@@ -502,7 +502,7 @@ export default function Home() {
       </section>
 
       {/* === SECTION: FINAL CTA === */}
-      <section id="final-cta" className="bg-slate">
+      <section id="final-cta" className="bg-ink">
         <div className="max-w-7xl mx-auto px-6 py-24">
           <div className="max-w-2xl mb-16">
             <p className="font-mono text-[13px] tracking-[0.2em] uppercase text-teal mb-4">
@@ -517,7 +517,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/10 border border-white/10">
-            <div className="bg-slate p-8 flex flex-col gap-4">
+            <div className="bg-ink p-8 flex flex-col gap-4">
               <span className="font-mono text-[12px] tracking-[0.2em] uppercase text-teal">Schedule a Call</span>
               <h3 className="font-serif text-xl font-bold text-paper">Book via Calendly</h3>
               <p className="text-[13px] text-white/50 leading-relaxed flex-1">
@@ -531,7 +531,7 @@ export default function Home() {
               />
             </div>
 
-            <div className="bg-slate p-8 flex flex-col gap-4">
+            <div className="bg-ink p-8 flex flex-col gap-4">
               <span className="font-mono text-[12px] tracking-[0.2em] uppercase text-teal">Fastest Response</span>
               <h3 className="font-serif text-xl font-bold text-paper">WhatsApp</h3>
               <p className="text-[13px] text-white/50 leading-relaxed flex-1">
@@ -547,7 +547,7 @@ export default function Home() {
               </a>
             </div>
 
-            <div className="bg-slate p-8 flex flex-col gap-4">
+            <div className="bg-ink p-8 flex flex-col gap-4">
               <span className="font-mono text-[12px] tracking-[0.2em] uppercase text-teal">Formal Enquiry</span>
               <h3 className="font-serif text-xl font-bold text-paper">Email</h3>
               <p className="text-[13px] text-white/50 leading-relaxed flex-1">
@@ -565,7 +565,7 @@ export default function Home() {
       </section>
 
       {/* === SECTION: FOOTER === */}
-      <footer className="bg-slate border-t border-white/10">
+      <footer className="bg-ink border-t border-white/10">
         <div className="max-w-7xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <span className="font-mono text-[13px] tracking-[0.2em] uppercase text-white/40">
             © 2026 RoadToIvies · Bengaluru, India
