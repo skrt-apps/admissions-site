@@ -176,17 +176,6 @@ export default function About() {
         </p>
       </Section>
 
-      {/* === WHAT I'M NOT === */}
-      <Section flag="Boundaries" title="What I am not">
-        {/* TODO: Optional but high-trust. The things you don't do. */}
-        <p>
-          Placeholder. The disclosure section. State the things you explicitly
-          do not do: guarantee admits, ghostwrite essays, pad activity lists,
-          place students into projects you cannot vouch for. Parents who have
-          been burned before will read this section twice.
-        </p>
-      </Section>
-
       {/* === CTA === */}
       <section className="bg-ink">
         <div className="max-w-4xl mx-auto px-6 py-16 text-center">
