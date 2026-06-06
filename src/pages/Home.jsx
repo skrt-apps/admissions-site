@@ -15,22 +15,22 @@ const NAV_LINKS = [
 // Each card needs: quote, name, college, location.
 const TESTIMONIALS = [
   {
-    quote:    "Sukrit's diagnostic call cut through six months of consultant noise in forty minutes. He told us exactly which of our daughter's activities were filler and which were spike-worthy — and was right.",
-    name:     "[Example] Anjali R.",
-    college:  "Parent · Daughter at Cornell",
-    location: "Whitefield, Bengaluru",
+    quote:    "Sukrit's diagnostic call cut through six months of consultant noise in forty minutes. He told me exactly which of my activities were filler and which were spike-worthy — and was right. As a CBSE student, his insight was ",
+    name:     "Aishwarya P.",
+    college:  "ESSEC Singapore 2026",
+    location: "Mumbai",
   },
   {
-    quote:    "He looked at my profile and said the Math HL grade was going to sink me at every Ivy CS program. Nobody else had said it that plainly. I pivoted majors, got into Berkeley EECS instead.",
-    name:     "[Example] Rohan M.",
-    college:  "UC Berkeley · EECS '27",
-    location: "Koramangala, Bengaluru",
+    quote:    "He worked with my Haas essays from the beginning to the end. After 4 round of revision, my essay was polished and ready. I got into Haas!",
+    name:     "Ayush M.",
+    college:  "UC Berkeley Haas 2022",
+    location: "San Francisco, USA",
   },
   {
-    quote:    "Worth every rupee. The honesty was the whole point — we'd been told what we wanted to hear for two years. Sukrit told us what was actually true. My son is at CMU now.",
-    name:     "[Example] Priya S.",
-    college:  "Parent · Son at Carnegie Mellon",
-    location: "Jubilee Hills, Hyderabad",
+    quote:    "Worth every rupee. The honesty was the whole point — we'd been told what we wanted to hear for two years. Sukrit told us what was actually true. My son got his invesment banking internship in San Francisco as a result of Sukrit's help.",
+    name:     "Saketh K.",
+    college:  "Parent. Son interned at a Investment Bank in San Francisco",
+    location: "New Jersey, USA",
   },
 ];
 
@@ -39,7 +39,7 @@ const TICKER_ITEMS = [
   "UC Berkeley · B.A. Economics & Data Science",
   "EY Quantitative Advisory · 4+ years",
   "88 Consumer Banking Models Validated",
-  "Haas Mentor — 8/8 admits to Stanford · MIT · Berkeley · Duke · CMU",
+  "Haas Mentor — mentored 4 students to get accepted",
   "Published Research — Harvard Smithsonian Press",
   "200,000+ Loan-Level Observations Analysed",
   "Wells Fargo · SVB · Intuit · Brex · First Citizens",
@@ -57,8 +57,8 @@ const CREDENTIALS = [
     year: "2015–2019",
     title: "UC Berkeley",
     role: "B.A. Economics & Data Science",
-    desc: "Mentored eight applicants intensively while at Haas. All eight admitted to a target school: Stanford, MIT, Berkeley, Duke, or CMU.",
-    metric: "8/8 mentee admits",
+    desc: "Mentored many applicants intensively while at Berkeley. 4 students were admitted into Haas Business school.",
+    metric: "4/4 Haas mentee admits",
   },
   {
     year: "2019–2025",
@@ -89,7 +89,6 @@ const PRINCETON_ROWS = [
 const SERVICES = [
   {
     title: "Profile Audit",
-    price: "From ₹15,000",
     scope: "One session",
     desc: "A single, ruthless assessment of where your profile currently stands. We identify structural gaps, fatal signals, and the 2–3 highest-leverage interventions available before applications open.",
     items: ["1-hour deep session", "Written assessment", "College list sanity check", "Major alignment review"],
@@ -97,7 +96,6 @@ const SERVICES = [
   },
   {
     title: "Essay Strategy",
-    price: "From ₹25,000",
     scope: "Single engagement",
     desc: "Narrative architecture for CommonApp and supplement essays. We anchor every essay in verifiable proof of passion — not autobiography, not generic inspiration stories.",
     items: ["CommonApp essay scaffold", "Supplement strategy map", "Narrative coherence review", "2 revision rounds"],
@@ -105,7 +103,6 @@ const SERVICES = [
   },
   {
     title: "End-to-End Planning",
-    price: "From ₹2,50,000",
     scope: "12–24 month engagement",
     desc: "Full-cycle strategy from Grade 10 summer through final submissions. Project architecture, academic roadmap, testing schedule, college list, essays, and application management.",
     items: ["12–24 month roadmap", "Project architecture", "Testing schedule", "Full essay suite", "Application management"],
