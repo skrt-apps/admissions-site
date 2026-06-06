@@ -15,7 +15,7 @@ const NAV_LINKS = [
 // Each card needs: quote, name, college, location.
 const TESTIMONIALS = [
   {
-    quote:    "Sukrit's diagnostic call cut through six months of consultant noise in forty minutes. He told me exactly which of my activities were filler and which were spike-worthy — and was right. As a CBSE student, his insight was ",
+    quote:    "Sukrit's diagnostic call cut through six months of consultant noise in forty minutes. He told me exactly which of my activities were filler and which were spike-worthy — and was right. As a CBSE student, his insight was invaluable.",
     name:     "Aishwarya P.",
     college:  "ESSEC Singapore 2026",
     location: "Mumbai",
