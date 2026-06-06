@@ -119,62 +119,60 @@ export default function About() {
 
       {/* === MY STORY === */}
       <Section flag="Origin" title="The story">
-        {/* TODO: Replace with your full origin narrative. Two or three paragraphs.
-            How you got from a Bangalore high school to Berkeley, what SSP did
-            for you, why you came back to do this work. */}
         <p>
-          Placeholder. Tell the reader, in your own words, the path that took
-          you from a Bangalore classroom to the UC Berkeley campus, and what
-          you saw inside the US admissions process that made you want to help
-          other Indian students navigate it. Two to four paragraphs is plenty —
-          parents skim.
+          I grew up in Bangalore and went through the IB Diploma at Greenwood High — four Higher Levels including Math, Physics, Chemistry, and Economics, which was one more HL than most students were allowed to take. I scored a 39 at junior midterms, a 2300 on the SAT, won a gold medal as the Karnataka state topper in a national mathematics exam run by UNSW Australia, and captained my school football team to a state championship. On paper, I was a strong applicant. In practice, I applied to Princeton Early Action under the Applied Mathematics major with a 5 out of 7 in Math HL — and was rejected.
         </p>
         <p>
-          A second paragraph for context: SSP 2015, the inflection it created,
-          and what the Berkeley experience taught you that you couldn't have
-          learned from a guidebook.
+          A classmate of mine applied to Princeton the same year, under Biology, with a 38 overall and a 4 out of 7 in Math HL. She was admitted. Her Biology HL score was a 6. The difference had nothing to do with total scores and everything to do with how the intended major aligned with the subject-level grade. I did not learn this from a guidebook. I learned it by watching my own application fail for a reason no counselor had warned me about, and then spending years understanding the mechanism behind it.
+        </p>
+        <p>
+          In the summer before my senior year, I was selected as one of two students from India for the Summer Science Program — a research fellowship run in partnership with MIT and Caltech. I published an asteroid orbit determination paper through the Harvard Smithsonian Center for Astrophysics. That credential, more than my GPA or my SAT, is what moved the needle for UC Berkeley. It taught me something I now tell every family I work with: admissions committees at elite STEM universities are scanning for one unmistakable signal that you have done real work, not a long list of activities that suggest you might.
+        </p>
+        <p>
+          Berkeley gave me a dual degree in Economics and Data Science. It also gave me eight students I mentored informally through the Haas School — all eight were admitted to a target school among Stanford, MIT, Berkeley, Duke, and CMU. That was not a business. It was a pattern I noticed: the same analytical approach that got me in could be taught, and the mistakes I made could be prevented for someone else.
         </p>
       </Section>
 
       {/* === THE PATH === */}
       <Section flag="Track Record" title="The path">
-        {/* TODO: Expand on Berkeley → EY/Accenture → RoadToIvies.
-            What did the quant consulting work teach you about evaluation? */}
         <p>
-          Placeholder. Cover the years between Berkeley and RoadToIvies — the
-          EY and Accenture quantitative advisory work, what you built, what
-          you learned about how rigorous evaluation actually happens inside
-          large institutions. The parallel to admissions reading is worth
-          drawing out explicitly.
+          After Berkeley I spent four years as a quantitative advisory consultant, first at Ernst & Young and then at Accenture, working on credit risk models for US banks including Wells Fargo, SVB, Intuit, and Brex. The work was technical — building and validating probability-of-default models, stress-testing loan portfolios of 200,000+ customers, reviewing 88 consumer banking models for regulatory fairness compliance. I presented findings to heads of risk management and wrote documentation for Federal Reserve review.
+        </p>
+        <p>
+          The reason I mention this is not to impress you with finance jargon. It is because the skill I developed at EY is the same skill I now apply to student profiles: structured evaluation under uncertainty. When a bank submits a credit model for validation, my job was to find the hidden flaw that the builder missed — the feature that looks fine in aggregate but fails under stress. When a student submits a profile for review, I am doing the same thing. The 5/7 in Math HL looks fine next to a 39 total. It only becomes a fatal misalignment when you hold it against the intended major and the admit pool for that program. Most counselors do not read profiles at that resolution. I was trained to.
+        </p>
+        <p>
+          I left consulting in 2024 to run RoadToIvies full-time. The advisory practice funds the platform I am building — an AI-powered diagnostic tool that codifies my admissions framework into a structured assessment any family can access before they ever speak to me. I am not scaling by hiring junior counselors. I am scaling by turning what I know into software.
         </p>
         <ul className="space-y-2 mt-4 list-none">
           <li className="font-mono text-[13px] tracking-[0.1em] text-muted">
-            <span className="text-teal">→</span> UC Berkeley, B.A. Economics & Data Science (2015–2019)
+            <span className="text-teal">→</span> 2015 — Summer Science Program, Astrophysics. 1 of 2 selected from India. Published in Harvard Smithsonian Press.
           </li>
           <li className="font-mono text-[13px] tracking-[0.1em] text-muted">
-            <span className="text-teal">→</span> Summer Science Program, Astrophysics (2015)
+            <span className="text-teal">→</span> 2015–2019 — UC Berkeley, B.A. Economics & Data Science. CS 61A Course Tutor. Mentored 8 students to elite admits.
           </li>
           <li className="font-mono text-[13px] tracking-[0.1em] text-muted">
-            <span className="text-teal">→</span> EY & Accenture, Quantitative Advisory (2019–2023)
+            <span className="text-teal">→</span> 2019–2024 — EY & Accenture, Quantitative Advisory. Credit risk modeling, model validation, regulatory compliance across 6+ US financial institutions.
           </li>
           <li className="font-mono text-[13px] tracking-[0.1em] text-muted">
-            <span className="text-teal">→</span> RoadToIvies, full-time (2024–)
+            <span className="text-teal">→</span> 2024–present — RoadToIvies, full-time. Boutique advisory + AI diagnostic platform.
           </li>
         </ul>
       </Section>
 
       {/* === PHILOSOPHY === */}
       <Section flag="Method" title="How I work">
-        {/* TODO: Your philosophy. What kind of student do you take on?
-            What does "honest assessment" actually look like in practice? */}
         <p>
-          Placeholder. State your operating principles plainly. What kind of
-          family do you work well with. What you refuse to do. What "honest
-          assessment" looks like when it's uncomfortable.
+          I work best with families who want the truth early enough to act on it. The ideal starting point is the summer before Grade 11 — that is when the decisions that determine your child's application quality are still ahead of them, not behind them. If your child is already a rising senior, I can still help, but the conversation shifts from building the profile to positioning what exists. I will tell you which shift you are in during our first call.
         </p>
         <p>
-          A second paragraph can describe the rhythm of an engagement — first
-          session, weekly cadence, how feedback is delivered.
+          My framework classifies every applicant into one of three archetypes — the Specialist, the Polymath, or the Tree — based on how their academic intensity, project depth, and personal interests are distributed. This is not a personality quiz. It is a structural diagnosis that determines which essay strategy, which college list, and which extracurricular investments will actually move the needle for their specific profile. The diagnostic tool on this site gives you a preview of that classification. A paid engagement goes much deeper.
+        </p>
+        <p>
+          A typical engagement starts with a one-hour profile audit where I review grades, test scores, current activities, and intended major. I tell the family where the profile sits relative to the admit pool for their target schools, what the two or three highest-leverage interventions are, and whether the current school list is realistic. This conversation is often uncomfortable. I will tell you if your child's dream school is not a realistic target given their current trajectory, and I will explain why with specific data rather than vague encouragement. I would rather lose a client in the first session than waste a family's time and money for twelve months.
+        </p>
+        <p>
+          After the audit, ongoing engagements follow a regular rhythm — typically fortnightly check-ins during the school year and weekly during application season. I review essay drafts, pressure-test college lists, advise on project direction, and flag problems before they become permanent. Every session ends with a written summary so both the student and the parents know exactly what was discussed and what needs to happen next.
         </p>
       </Section>
 
