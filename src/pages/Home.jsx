@@ -13,38 +13,37 @@ const NAV_LINKS = [
 
 const TESTIMONIALS = [
   {
-    quote:    "Sukrit helped us narrow our college list and focus the student's work on what Ivy League and Stanford would actually recognise. She was admitted to UC Berkeley and received a strong option from MIT as well.",
+    quote:    "Sukrit helped us narrow our college list and focus the student's work on what elite business programs in UK/France would actually recognise. Sukrit even guided us through supplementary scholarship essays and reviewed every step on the application portal. ",
     name:     "Aishwarya P.",
-    grade:    "Grade 11",
-    outcome:  "Admitted: UC Berkeley, MIT offer",
-    college:  "UC Berkeley 2026 · Applied Math",
+    outcome:  "Admitted (1 of 1 app): ESSEC Business School",
+    college:  "Singhania University",
     location: "Mumbai",
   },
   {
-    quote:    "His honesty was the whole point. He told us where our profile was strong and where it was not, then helped us rebuild the essay and research narrative. I got admitted to Haas and my dream research internship followed.",
-    name:     "Ayush M.",
-    grade:    "Grade 12",
-    outcome:  "Admitted: UC Berkeley Haas",
-    college:  "UC Berkeley Haas 2022",
-    location: "San Francisco, USA",
+    quote:    "We had heard conflicting advice for two years. Sukrit clarified how top UK admissions actually read subject fit more than extracurricular depth. I was able to highlight the positives of my CBSE experience perfectly.",
+    name:     "Aditya S.",
+    outcome:  "Admitted: University of Warwick, Biochemistry",
+    college:  "Grade 12/Gap Year",
+    location: "Delhi",
   },
   {
-    quote:    "We had heard conflicting advice for two years. Sukrit clarified how top US admissions actually read subject fit and extracurricular depth. My son went on to secure admits from CMU and Georgia Tech.",
-    name:     "Saketh K.",
+    quote:    "His honesty was the whole point. He told us where our profile was strong and where it was not, then helped us rebuild the essay and research narrative. I got admitted to Haas and my dream internship followed.",
+    name:     "Ayush M.",
     grade:    "Parent",
-    outcome:  "Admitted: CMU, Georgia Tech",
-    college:  "Parent of a CMU admit",
+    outcome:  "Admitted: CMU, UC Berkeley",
+    college:  "Parent of a CMU/Cal admit",
     location: "New Jersey, USA",
   },
 ];
 
 const TICKER_ITEMS = [
   "SSP 2015 — 1 of 2 selected from India",
-  "UC Berkeley · Double B.A. Economics & Data Science",
+  "UC Berkeley · Double B.A. Data Science & Economics",
   "EY & Accenture — analytical framework for high-pressure decisions",
   "Model validation for complex systems and hidden weaknesses",
   "Haas mentor — 4 students admitted to target US STEM schools",
   "Published research — Harvard Smithsonian Press",
+  "Published research — mentored by an IISC professor"
 ];
 
 const CREDIBILITY_STRIP = [
