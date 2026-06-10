@@ -36,13 +36,12 @@ const TESTIMONIALS = [
 
 const TICKER_ITEMS = [
   "SSP 2015 — 1 of 2 selected from India",
-  "UC Berkeley · B.A. Economics & Data Science",
+  "UC Berkeley · Double B.A. Economics & Data Science",
   "EY Quantitative Advisory · 4+ years",
   "88 Consumer Banking Models Validated",
   "Haas Mentor — mentored 4 students to get accepted",
   "Published Research — Harvard Smithsonian Press",
   "200,000+ Loan-Level Observations Analysed",
-  "Wells Fargo · SVB · Intuit · Brex · First Citizens",
 ];
 
 const CREDENTIALS = [
@@ -255,7 +254,6 @@ export default function Home() {
 
           <div className="grid grid-cols-3 gap-px bg-rule mb-10 border border-rule">
             {[
-              { n: "8/8",  label: "Mentee admits\nStanford · MIT · Berkeley" },
               { n: "1/2",  label: "SSP India\nselection — 2015"             },
               { n: "88+",  label: "Quant models\nvalidated at EY"            },
             ].map(({ n, label }) => (
