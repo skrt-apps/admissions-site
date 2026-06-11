@@ -1,15 +1,5 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import { PopupButton } from "react-calendly";
-
-const NAV_LINKS = [
-  { label: "Credentials", href: "#credentials" },
-  { label: "Case Study",  href: "#case-study"  },
-  { label: "Services",    href: "#services"    },
-  { label: "Activities",  href: "#activities"  },
-  { label: "Diagnostic",  href: "/diagnostic"  },
-  { label: "About Me",    href: "/about"       },
-];
+import GlobalHeader from "../components/GlobalHeader";
 
 const TESTIMONIALS = [
   {
@@ -217,7 +207,6 @@ const TIER_ACCENT = {
 };
 
 export default function Home() {
-  const [menuOpen, setMenuOpen] = useState(false);
   return (
     <div className="bg-paper text-ink font-sans min-h-screen overflow-x-hidden">
       <style>{`
@@ -228,63 +217,7 @@ export default function Home() {
         }
       `}</style>
 
-      {/* === SECTION: MASTHEAD === */}
-      <header className="sticky top-0 z-50 bg-ink border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
-          <span className="font-mono text-[13px] tracking-[0.25em] text-paper uppercase">
-            Road<span className="text-teal">To</span>Ivies
-          </span>
-          <nav className="hidden xl:flex items-center gap-6">
-            {NAV_LINKS.map((l) => (
-              <a
-                key={l.label}
-                href={l.href}
-                className="font-mono text-[16px] tracking-[0.12em] uppercase text-white hover:text-teal transition-colors whitespace-nowrap"
-              >
-                {l.label}
-              </a>
-            ))}
-          </nav>
-          <button
-            onClick={() => setMenuOpen((o) => !o)}
-            className="font-mono text-[16px] text-white hover:text-teal transition-colors xl:hidden"
-            aria-label="Toggle menu"
-          >
-            {menuOpen ? "✕" : "☰"}
-          </button>
-          <a
-            href="https://wa.me/918904176520"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-mono text-[13px] tracking-[0.15em] uppercase bg-teal text-paper px-4 py-3 hover:bg-teal-light transition-colors border border-teal"
-          >
-            WhatsApp →
-          </a>
-        </div>
-        {menuOpen && (
-          <div className="xl:hidden bg-ink border-b border-white/10 w-full">
-            {NAV_LINKS.map((l) => (
-              <a
-                key={l.label}
-                href={l.href}
-                onClick={() => setMenuOpen(false)}
-                className="block font-mono text-[16px] tracking-[0.15em] uppercase text-white hover:text-teal transition-colors px-6 py-4 border-b border-white/5"
-              >
-                {l.label}
-              </a>
-            ))}
-            <a
-              href="https://wa.me/918904176520"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setMenuOpen(false)}
-              className="block font-mono text-[13px] tracking-[0.15em] uppercase bg-teal text-paper px-6 py-4 hover:bg-teal-light transition-colors"
-            >
-              WhatsApp →
-            </a>
-          </div>
-        )}
-      </header>
+      <GlobalHeader />
 
       {/* === SECTION: TICKER === */}
       <div className="bg-cream border-b border-rule overflow-hidden">
@@ -299,45 +232,47 @@ export default function Home() {
       </div>
 
       {/* === SECTION: HERO === */}
-      <section className="max-w-7xl mx-auto px-6 pt-20 pb-24 grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-16 items-start">
-        <div>
-          <p className="font-mono text-[13px] tracking-[0.2em] uppercase text-teal mb-6">
-            US Admissions Strategy for Ambitious Indian Students
-          </p>
-          <h1 className="font-serif text-[clamp(2.2rem,5vw,3.8rem)] font-bold leading-[1.08] text-ink mb-6">
-            US Admissions Strategy<br />for Ambitious Indian Students
-          </h1>
-          <p className="text-[17px] text-muted leading-relaxed max-w-xl mb-10">
-            UC Berkeley graduate, Summer Science Program alumnus, and former quantitative consultant helping students build competitive applications for Ivy League and top US universities.
-          </p>
+      <main>
+        <section className="max-w-7xl mx-auto px-6 pt-20 pb-24 grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-16 items-start">
+          <div>
+            <p className="font-mono text-[13px] tracking-[0.2em] uppercase text-teal mb-6">
+              Founder-led US admissions strategy for Indian STEM & business applicants
+            </p>
+            <h1 className="font-serif text-[clamp(2.2rem,5vw,3.8rem)] font-bold leading-[1.02] text-ink mb-6">
+              Berkeley alum advisor for ambitious Indian applicants
+            </h1>
+            <p className="text-[17px] text-muted leading-relaxed max-w-xl mb-8">
+              UC Berkeley graduate, SSP researcher, and former EY consultant. I help students with high academic potential match their major, activities, and essays to elite US STEM and business programs.
+            </p>
 
-          <div className="grid grid-cols-2 gap-px bg-rule mb-10 border border-rule">
-            {[
-              { n: "1/2",  label: "SSP India selection — 2015"             },
-              { n: "Berkeley", label: "Founder advises every profile directly" },
-            ].map(({ n, label }) => (
-              <div key={n} className="bg-paper p-5 text-center">
-                <div className="font-serif text-3xl font-bold text-teal mb-1">{n}</div>
-                <div className="font-mono text-[12px] tracking-[0.15em] uppercase text-muted whitespace-pre-line leading-relaxed">{label}</div>
-              </div>
-            ))}
-          </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-10 text-center">
+              {[
+                { value: "8 students", label: "Haas, Stanford, MIT, CMU admits" },
+                { value: "UC Berkeley", label: "Dual degree in Economics & Data Science" },
+                { value: "SSP 2015", label: "1 of 2 from India selected" },
+              ].map((item) => (
+                <div key={item.value} className="rounded-3xl border border-rule bg-white p-5">
+                  <p className="font-serif text-3xl font-bold text-teal mb-1">{item.value}</p>
+                  <p className="font-mono text-[12px] tracking-[0.15em] uppercase text-muted leading-relaxed">{item.label}</p>
+                </div>
+              ))}
+            </div>
 
-          <div className="flex flex-wrap gap-3">
-            <a
-              href="/diagnostic"
-              className="font-mono text-[13px] tracking-[0.15em] uppercase bg-teal text-paper px-6 py-3.5 hover:bg-teal-light transition-colors border border-teal"
-            >
-              Run Free Diagnostic →
-            </a>
-            <a
-              href="#final-cta"
-              className="font-mono text-[13px] tracking-[0.15em] uppercase bg-transparent text-teal px-6 py-3.5 border border-teal hover:bg-teal/5 transition-colors"
-            >
-              Book Strategy Session
-            </a>
+            <div className="flex flex-wrap gap-3">
+              <Link
+                to="/diagnostic"
+                className="inline-flex items-center justify-center font-mono text-[13px] tracking-[0.15em] uppercase bg-teal text-paper px-7 py-4 hover:bg-teal-light transition-colors border border-teal shadow-lg shadow-teal/10"
+              >
+                Run Free Diagnostic →
+              </Link>
+              <a
+                href="#final-cta"
+                className="inline-flex items-center justify-center font-mono text-[13px] tracking-[0.15em] uppercase bg-transparent text-teal px-7 py-4 border border-teal hover:bg-teal/10 transition-colors"
+              >
+                Book Strategy Session
+              </a>
+            </div>
           </div>
-        </div>
 
         {/* Diagnostic output sidebar */}
         <div className="border border-rule bg-white">
@@ -379,6 +314,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      </main>
 
       {/* === SECTION: FOUNDER CREDIBILITY STRIP === */}
       <section className="border-t border-rule bg-cream">
@@ -432,9 +368,9 @@ export default function Home() {
             </div>
           </div>
           <div className="mt-10 flex flex-wrap gap-3">
-            <a href="/diagnostic" className="font-mono text-[13px] tracking-[0.15em] uppercase bg-teal text-paper px-6 py-3.5 hover:bg-teal-light transition-colors border border-teal">
+            <Link to="/diagnostic" className="font-mono text-[13px] tracking-[0.15em] uppercase bg-teal text-paper px-6 py-3.5 hover:bg-teal-light transition-colors border border-teal">
               Run Free Diagnostic →
-            </a>
+            </Link>
             <a href="#final-cta" className="font-mono text-[13px] tracking-[0.15em] uppercase bg-transparent text-teal px-6 py-3.5 border border-teal hover:bg-teal/5 transition-colors">
               Book Strategy Session
             </a>
@@ -485,9 +421,9 @@ export default function Home() {
             </div>
           </div>
           <div className="mt-12 flex flex-wrap gap-3">
-            <a href="/diagnostic" className="font-mono text-[13px] tracking-[0.15em] uppercase bg-teal text-paper px-6 py-3.5 hover:bg-teal-light transition-colors border border-teal">
+            <Link to="/diagnostic" className="font-mono text-[13px] tracking-[0.15em] uppercase bg-teal text-paper px-6 py-3.5 hover:bg-teal-light transition-colors border border-teal">
               Run Free Diagnostic →
-            </a>
+            </Link>
             <a href="#final-cta" className="font-mono text-[13px] tracking-[0.15em] uppercase bg-transparent text-teal px-6 py-3.5 border border-teal hover:bg-teal/5 transition-colors">
               Schedule a Call
             </a>
@@ -519,9 +455,9 @@ export default function Home() {
               <p className="text-[15px] text-ink leading-relaxed mb-6">
                 The free diagnostic takes 20 minutes and gives you a baseline assessment of your profile.
               </p>
-              <a href="/diagnostic" className="block font-mono text-[13px] tracking-[0.15em] uppercase bg-teal text-paper px-6 py-3.5 hover:bg-teal-light transition-colors border border-teal text-center">
+              <Link to="/diagnostic" className="block font-mono text-[13px] tracking-[0.15em] uppercase bg-teal text-paper px-6 py-3.5 hover:bg-teal-light transition-colors border border-teal text-center">
                 Run Diagnostic →
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -618,9 +554,9 @@ export default function Home() {
             ))}
           </div>
           <div className="mt-10 flex flex-wrap gap-3">
-            <a href="/diagnostic" className="font-mono text-[13px] tracking-[0.15em] uppercase bg-teal text-paper px-6 py-3.5 hover:bg-teal-light transition-colors border border-teal">
+            <Link to="/diagnostic" className="font-mono text-[13px] tracking-[0.15em] uppercase bg-teal text-paper px-6 py-3.5 hover:bg-teal-light transition-colors border border-teal">
               Run Free Diagnostic →
-            </a>
+            </Link>
             <a href="#final-cta" className="font-mono text-[13px] tracking-[0.15em] uppercase bg-transparent text-teal px-6 py-3.5 border border-teal hover:bg-teal/5 transition-colors">
               Book a Session
             </a>
@@ -685,9 +621,9 @@ export default function Home() {
             </div>
           </div>
           <div className="mt-12 flex flex-wrap gap-3">
-            <a href="/diagnostic" className="font-mono text-[13px] tracking-[0.15em] uppercase bg-amber text-ink px-6 py-3.5 hover:bg-amber/90 transition-colors border border-amber">
+            <Link to="/diagnostic" className="font-mono text-[13px] tracking-[0.15em] uppercase bg-amber text-ink px-6 py-3.5 hover:bg-amber/90 transition-colors border border-amber">
               Run Diagnostic →
-            </a>
+            </Link>
             <a href="#final-cta" className="font-mono text-[13px] tracking-[0.15em] uppercase bg-transparent text-white px-6 py-3.5 border border-white/20 hover:border-amber hover:text-amber transition-colors">
               Book Strategy Session
             </a>
@@ -762,9 +698,9 @@ export default function Home() {
             ))}
           </div>
           <div className="mt-12 flex flex-wrap gap-3">
-            <a href="/diagnostic" className="font-mono text-[13px] tracking-[0.15em] uppercase bg-teal text-paper px-6 py-3.5 hover:bg-teal-light transition-colors border border-teal">
+            <Link to="/diagnostic" className="font-mono text-[13px] tracking-[0.15em] uppercase bg-teal text-paper px-6 py-3.5 hover:bg-teal-light transition-colors border border-teal">
               Run Free Diagnostic →
-            </a>
+            </Link>
             <a href="#final-cta" className="font-mono text-[13px] tracking-[0.15em] uppercase bg-transparent text-teal px-6 py-3.5 border border-teal hover:bg-teal/5 transition-colors">
               Book a Session
             </a>
@@ -804,9 +740,9 @@ export default function Home() {
             ))}
           </div>
           <div className="mt-12 flex flex-wrap gap-3">
-            <a href="/diagnostic" className="font-mono text-[13px] tracking-[0.15em] uppercase bg-teal text-paper px-6 py-3.5 hover:bg-teal-light transition-colors border border-teal">
+            <Link to="/diagnostic" className="font-mono text-[13px] tracking-[0.15em] uppercase bg-teal text-paper px-6 py-3.5 hover:bg-teal-light transition-colors border border-teal">
               Run Free Diagnostic →
-            </a>
+            </Link>
             <a href="#final-cta" className="font-mono text-[13px] tracking-[0.15em] uppercase bg-transparent text-teal px-6 py-3.5 border border-teal hover:bg-teal/5 transition-colors">
               Book a Strategy Session
             </a>
@@ -836,12 +772,14 @@ export default function Home() {
               <p className="text-[13px] text-white/50 leading-relaxed flex-1">
                 Select a 45-minute strategy session. Comes prepared with a pre-session questionnaire.
               </p>
-              <PopupButton
-                url="https://calendly.com/sukrit-roadtoivies/profile-consultation"
-                rootElement={document.getElementById("root")}
-                text="Book a Session →"
-                className="font-mono text-[13px] tracking-[0.15em] uppercase text-center py-3 border border-teal text-teal hover:bg-teal/10 transition-colors w-full cursor-pointer bg-transparent"
-              />
+              <a
+              href="https://calendly.com/sukrit-roadtoivies/profile-consultation"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono text-[13px] tracking-[0.15em] uppercase text-center py-3 border border-teal text-teal hover:bg-teal/10 transition-colors w-full inline-flex items-center justify-center"
+            >
+              Book a Session →
+            </a>
             </div>
 
             <div className="bg-ink p-8 flex flex-col gap-4">
@@ -900,12 +838,12 @@ export default function Home() {
             >
               TeacherOn
             </a>
-            <a
-              href="/diagnostic"
+            <Link
+              to="/diagnostic"
               className="font-mono text-[13px] tracking-[0.15em] uppercase text-white/50 hover:text-teal transition-colors"
             >
               Diagnostic Tool
-            </a>
+            </Link>
           </div>
         </div>
       </footer>

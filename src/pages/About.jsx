@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import GlobalHeader from "../components/GlobalHeader";
 
 // ============================================================
 // About — starter shell. Replace placeholder copy with real
@@ -7,89 +6,10 @@ import { Link } from "react-router-dom";
 // page and can be reordered or deleted freely.
 // ============================================================
 
-const NAV_LINKS = [
-  { label: "Credentials", to: "/#credentials" },
-  { label: "Case Study", to: "/#case-study" },
-  { label: "Services", to: "/#services" },
-  { label: "Activities", to: "/#activities" },
-  { label: "Diagnostic", to: "/diagnostic" },
-  { label: "About Me", to: "/about" },
-];
-
 export default function About() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
   return (
     <div className="bg-paper text-ink font-sans min-h-screen overflow-x-hidden">
-      {/* === MASTHEAD (mirrors Home.jsx) === */}
-      <header className="sticky top-0 z-50 bg-ink border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
-          <Link to="/" className="font-mono text-[13px] tracking-[0.25em] text-paper uppercase">
-            Road<span className="text-teal">To</span>Ivies
-          </Link>
-          <nav className="hidden xl:flex items-center gap-6">
-            {NAV_LINKS.map((l) =>
-              l.to.startsWith("/#") ? (
-                <a
-                  key={l.label}
-                  href={l.to}
-                  className="font-mono text-[16px] tracking-[0.12em] uppercase text-white hover:text-teal transition-colors whitespace-nowrap"
-                >
-                  {l.label}
-                </a>
-              ) : (
-                <Link
-                  key={l.label}
-                  to={l.to}
-                  className="font-mono text-[16px] tracking-[0.12em] uppercase text-white hover:text-teal transition-colors whitespace-nowrap"
-                >
-                  {l.label}
-                </Link>
-              )
-            )}
-          </nav>
-          <button
-            onClick={() => setMenuOpen((o) => !o)}
-            className="font-mono text-[16px] text-white hover:text-teal transition-colors xl:hidden"
-            aria-label="Toggle menu"
-          >
-            {menuOpen ? "✕" : "☰"}
-          </button>
-          <a
-            href="https://wa.me/918904176520"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-mono text-[13px] tracking-[0.15em] uppercase bg-teal text-paper px-4 py-3 hover:bg-teal-light transition-colors border border-teal"
-          >
-            WhatsApp →
-          </a>
-        </div>
-        {menuOpen && (
-          <div className="xl:hidden bg-ink border-b border-white/10 w-full">
-            {NAV_LINKS.map((l) =>
-              l.to.startsWith("/#") ? (
-                <a
-                  key={l.label}
-                  href={l.to}
-                  onClick={() => setMenuOpen(false)}
-                  className="block font-mono text-[16px] tracking-[0.15em] uppercase text-white hover:text-teal transition-colors px-6 py-4 border-b border-white/5"
-                >
-                  {l.label}
-                </a>
-              ) : (
-                <Link
-                  key={l.label}
-                  to={l.to}
-                  onClick={() => setMenuOpen(false)}
-                  className="block font-mono text-[16px] tracking-[0.15em] uppercase text-white hover:text-teal transition-colors px-6 py-4 border-b border-white/5"
-                >
-                  {l.label}
-                </Link>
-              )
-            )}
-          </div>
-        )}
-      </header>
+      <GlobalHeader />
 
       {/* === HERO === */}
       <section className="max-w-4xl mx-auto px-6 pt-20 pb-16">
