@@ -55,7 +55,6 @@ const CREDIBILITY_STRIP = [
 ];
 
 const WHO_THIS_IS_FOR = [
-  [
   "Students planning ahead and looking to maximize their opportunities",
   "Applicants targeting highly selective universities",
   "Families seeking founder-led rather than team-based counseling",
@@ -689,7 +688,6 @@ export default function Home() {
                 </blockquote>
                 <figcaption className="border-t border-rule pt-4">
                   <p className="font-sans font-bold text-ink text-[14px] mb-2">{t.name}</p>
-                  <p className="font-mono text-[12px] tracking-[0.1em] uppercase text-teal mb-1">{t.grade}</p>
                   <p className="font-mono text-[12px] tracking-[0.1em] uppercase text-muted mb-2">{t.college}</p>
                   <p className="font-mono text-[11px] tracking-[0.1em] uppercase text-muted">{t.location}</p>
                 </figcaption>
