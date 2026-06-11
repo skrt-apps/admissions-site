@@ -3,23 +3,22 @@ import GlobalHeader from "../components/GlobalHeader";
 
 const TESTIMONIALS = [
   {
-    quote:    "Sukrit helped us narrow our college list and focus the student's work on what elite business programs in UK/France would actually recognise. Sukrit even guided us through supplementary scholarship essays and reviewed every step on the application portal. ",
+    quote:    "Sukrit helped us narrow our college list and focus the student's narrative on what elite business programs in UK/France would actually recognise. He even guided us through supplementary scholarship essays and reviewed every step on the application portal. ",
     name:     "Aishwarya P.",
-    outcome:  "Admitted (1 of 1 app): ESSEC Business School",
-    college:  "Singhania University",
+    outcome:  "Admitted: ESSEC Business School",
+    college:  "Undergraduate Business Applicant",
     location: "Mumbai",
   },
   {
-    quote:    "We had heard conflicting advice for two years. Sukrit clarified how top UK admissions actually read subject fit more than extracurricular depth. I was able to highlight the positives of my CBSE experience perfectly.",
+    quote:   "Most consultants told us what we wanted to hear. Sukrit told us what we needed to hear. He identified weaknesses in the profile early, documented every recommendation, and helped us focus on the activities that would actually matter to admissions committees. Every meeting ended with a clear action plan. There was no confusion, no vague encouragement, and no wasted effort.",
     name:     "Aditya S.",
-    outcome:  "Admitted: University of Warwick, Biochemistry",
+    outcome:  "University of Warwick, Biochemistry (Admitted)",
     college:  "Grade 12/Gap Year",
     location: "Delhi",
   },
   {
     quote:    "His honesty was the whole point. He told us where our profile was strong and where it was not, then helped us rebuild the essay and research narrative. I got admitted to Haas and my dream internship followed.",
     name:     "Ayush M.",
-    grade:    "Parent",
     outcome:  "Admitted: CMU, UC Berkeley",
     college:  "Parent of a CMU/Cal admit",
     location: "New Jersey, USA",
@@ -31,7 +30,7 @@ const TICKER_ITEMS = [
   "UC Berkeley · Double B.A. Data Science & Economics",
   "EY & Accenture — analytical framework for high-pressure decisions",
   "Model validation for complex systems and hidden weaknesses",
-  "Haas mentor — 4 students admitted to target US STEM schools",
+  "3 Berkeley Haas undergraduate admits mentored",
   "Published research — Harvard Smithsonian Press",
   "Published research — mentored by an IISC professor"
 ];
@@ -56,20 +55,20 @@ const CREDIBILITY_STRIP = [
 ];
 
 const WHO_THIS_IS_FOR = [
-  "Grade 8–10 students planning their academic strategy early",
-  "STEM-focused applicants targeting Ivy League and top US universities",
-  "Ambitious students seeking individual, founder-led guidance",
-  "Families serious about building competitive applications",
-  "Students willing to invest in deep profile strategy (not just essay review)",
-  "Indian students applying to top US colleges from abroad",
+  [
+  "Students planning ahead and looking to maximize their opportunities",
+  "Applicants targeting highly selective universities",
+  "Families seeking founder-led rather than team-based counseling",
+  "Students who value direct and honest feedback",
+  "Applicants looking for strategic guidance, essay support, or both",
+  "Indian students applying to leading universities worldwide",
 ];
 
 const WHO_THIS_IS_NOT_FOR = [
   "Students seeking guaranteed admissions",
-  "Families wanting mass-market counseling at lower cost",
+  "Families looking for a standardized counseling process",
   "Applicants unwilling to commit time to profile building",
-  "Students looking for last-minute essay polishing only",
-  "Parents preferring a large counseling practice with juniors",
+  "Applicants looking for someone to simply agree with every decision",
 ];
 
 const PROCESS_STEPS = [
