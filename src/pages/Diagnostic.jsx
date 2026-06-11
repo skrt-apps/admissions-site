@@ -520,7 +520,7 @@ export default function Diagnostic() {
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <a
-                  href="https://wa.me/918904176520?text=I%20just%20completed%20the%20Profile%20Diagnostic%20Lab%20and%20would%20like%20to%20discuss%20the%2090-day%20blueprint%20for%20my%20child."
+                href="https://wa.me/918904176520?text=I%20just%20completed%20the%20Profile%20Diagnostic%20Report%20and%20would%20like%20to%20discuss%20the%2090-day%20blueprint%20for%20my%20child."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 py-3.5 px-4 bg-[#25d366] text-ink font-mono text-[13px] tracking-[0.1em] uppercase font-medium"
@@ -528,7 +528,7 @@ export default function Diagnostic() {
                   <WhatsAppIcon /> WhatsApp
                 </a>
                 <a
-                  href="mailto:sukrit@roadtoivies.com?subject=Profile%20Diagnostic%20Lab%20Analysis%20Request"
+                  href="mailto:sukrit@roadtoivies.com?subject=Profile%20Diagnostic%20Report%20Analysis%20Request"
                   className="flex items-center justify-center gap-2 py-3.5 px-4 bg-[#ea4335] text-white font-mono text-[13px] tracking-[0.1em] uppercase font-medium"
                 >
                   <EmailIcon /> Email

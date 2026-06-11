@@ -297,7 +297,7 @@ export default function Home() {
               ["Predicted IB",     "39 / 42"],
               ["SAT Score",        "1540"],
               ["Math HL",          "6 / 7"],
-              ["Research Signal",  "SSP (Sovereign Tier)"],
+              ["Research Signal",  "SSP (Top-Tier Research Signal)"],
               ["Major Alignment",  "Strong"],
             ].map(([label, val]) => (
               <div key={label} className="flex justify-between items-baseline gap-4 border-b border-rule/40 pb-3 last:border-0 last:pb-0">
