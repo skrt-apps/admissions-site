@@ -7,7 +7,7 @@ const NAV_LINKS = [
   { label: "Services", href: "#services" },
   { label: "Activities", href: "#activities" },
   { label: "Diagnostic", href: "/diagnostic" },
-  { label: "About Me", href: "/about" },
+  { label: "Founder Story", href: "/#founder-story" },
 ];
 
 export default function GlobalHeader() {
