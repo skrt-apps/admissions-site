@@ -244,7 +244,7 @@ export default function Home() {
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-10 text-center">
               {[
-                { value: "8 students", label: "Haas, Stanford, MIT, CMU admits" },
+                { value: "5 students", label: "Haas, CMU admits" },
                 { value: "UC Berkeley", label: "Dual degree in Economics & Data Science" },
                 { value: "SSP 2015", label: "1 of 2 from India selected" },
               ].map((item) => (
@@ -351,7 +351,7 @@ export default function Home() {
               </div>
               <div>
                 <p className="font-mono text-[12px] tracking-[0.2em] uppercase text-teal mb-2">Today</p>
-                <p>I apply the same framework to student profiles: honest evidence-based diagnosis, major-fit clarity, and a plan that preserves options for Ivy League, Stanford, MIT, Carnegie Mellon, Duke, Georgia Tech, and other top US universities.</p>
+                <p>I apply the same framework to student profiles: honest evidence-based diagnosis, major-fit clarity, and a plan that preserves options for Ivy Leaguea, Stanford, Carnegie Mellon, Duke, Georgia Tech, and other top US universities.</p>
               </div>
             </div>
             <div className="rounded-3xl border border-rule bg-cream p-8">
@@ -825,14 +825,6 @@ export default function Home() {
               className="font-mono text-[13px] tracking-[0.15em] uppercase text-white/50 hover:text-teal transition-colors"
             >
               LinkedIn
-            </a>
-            <a
-              href="https://www.teacheron.com/tutor/dtkF?r=dtkF"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-mono text-[13px] tracking-[0.15em] uppercase text-white/50 hover:text-teal transition-colors"
-            >
-              TeacherOn
             </a>
             <Link
               to="/diagnostic"
