@@ -29,7 +29,6 @@ const TICKER_ITEMS = [
   "SSP 2015 — 1 of 2 selected from India",
   "UC Berkeley · Double B.A. Data Science & Economics",
   "EY & Accenture — analytical framework for high-pressure decisions",
-  "Model validation for complex systems and hidden weaknesses",
   "3 Berkeley Haas undergraduate admits mentored",
   "Published research — Harvard Smithsonian Press",
   "Published research — mentored by an IISC professor"
@@ -105,7 +104,7 @@ const CREDENTIALS = [
     year: "2015–2019",
     title: "UC Berkeley",
     role: "B.A. Economics & Data Science",
-    desc: "Mentored applicants informally while at Berkeley. Four students were admitted to Haas, Stanford, MIT, and CMU.",
+    desc: "Mentored US applicants while at Berkeley. Four students were admitted to Haas Business School and CMU. ",
     metric: "Berkeley alum mentor",
   },
   {
@@ -119,8 +118,8 @@ const CREDENTIALS = [
     year: "2014–2015",
     title: "Published Research",
     role: "Independent Researcher (High School)",
-    desc: "Graph theory ranking systems. Portfolio optimization. Two peer-reviewed papers as a high school student.",
-    metric: "2 peer-reviewed papers",
+    desc: "Ranking algorithms for football. Traffic data research published under an IISC professor. Portfolio optimization in Python. Three peer-reviewed papers as a high school student.",
+    metric: "3 peer-reviewed papers",
   },
 ];
 
@@ -292,8 +291,8 @@ export default function Home() {
           <div className="p-5 space-y-3">
             {[
               ["Student Profile",  "CS / Math · IB Diploma"],
-              ["Predicted IB",     "39 / 42"],
-              ["SAT Score",        "1540"],
+              ["Predicted IB",     "38 / 42"],
+              ["SAT Score",        "1530"],
               ["Math HL",          "6 / 7"],
               ["Research Signal",  "SSP (Top-Tier Research Signal)"],
               ["Major Alignment",  "Strong"],
@@ -340,7 +339,7 @@ export default function Home() {
             <div className="space-y-6 text-[16px] text-muted leading-relaxed">
               <div>
                 <p className="font-mono text-[12px] tracking-[0.2em] uppercase text-teal mb-2">The rejection that changed everything</p>
-                <p>I applied to Princeton for Applied Mathematics with strong scores and a high IB profile, but I was rejected. The lesson was not that I was unqualified — it was that the intended major did not align with the subject-level evidence in my profile.</p>
+                <p>I applied to Princeton for Applied Mathematics with strong scores and a 4 HL IB profile, but I was rejected. The lesson was not that I was unqualified — it was that the intended major did not align with the subject-level evidence in my profile.</p>
               </div>
               <div>
                 <p className="font-mono text-[12px] tracking-[0.2em] uppercase text-teal mb-2">Understanding the pattern</p>
@@ -451,7 +450,7 @@ export default function Home() {
             <div className="rounded-2xl border border-rule bg-cream p-8">
               <p className="font-mono text-[12px] tracking-[0.2em] uppercase text-teal mb-4">Ready to start?</p>
               <p className="text-[15px] text-ink leading-relaxed mb-6">
-                The free diagnostic takes 20 minutes and gives you a baseline assessment of your profile.
+                The free diagnostic takes 5 minutes and gives you a baseline assessment of your profile.
               </p>
               <Link to="/diagnostic" className="block font-mono text-[13px] tracking-[0.15em] uppercase bg-teal text-paper px-6 py-3.5 hover:bg-teal-light transition-colors border border-teal text-center">
                 Run Diagnostic →
