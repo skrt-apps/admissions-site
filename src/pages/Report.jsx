@@ -270,11 +270,11 @@ function ReportBody({ record }) {
           }}
         />
         <div style={{ fontSize: "12px", lineHeight: 1.7, color: C.muted }}>
-          <strong style={{ color: C.ink }}>Sukrit Tripathi</strong> — UC Berkeley '19,
+          <strong style={{ color: C.ink }}>Sukrit Tripathi</strong> — UC Berkeley '20,
           B.A. Economics &amp; Data Science. Summer Science Program 2015 (one of two
           students selected from India that year). Four years in quantitative
           consulting at EY and Accenture, building credit risk and model validation
-          systems for US banks. Founded RoadToIvies in 2022 to apply the same
+          systems for US banks. Founded RoadToIvies to apply the same
           analytical rigor to admissions strategy for Indian STEM applicants.
         </div>
       </div>
