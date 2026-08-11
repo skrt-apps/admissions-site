@@ -41,6 +41,7 @@ supabase db push
 
 ## Environment variables
 
-The client reads `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY`. See
-`.env.example` at the repo root. Set the same two variables in the Vercel
-project settings for production.
+The frontend no longer talks to Supabase directly — it calls the FastAPI
+backend in `../backend`, which owns this table. See `../backend/README.md`
+for the backend's `DATABASE_URL` (a Supabase Postgres connection string) and
+the frontend's `VITE_API_URL` in `.env.example` at the repo root.

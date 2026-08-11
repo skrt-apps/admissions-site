@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { supabase } from "../lib/supabase";
+import { getDiagnosticSubmission } from "../lib/api";
 
 // ------------------------------------------------------------------
 // Static dummy record so /report/example renders without a live row.
@@ -46,7 +46,7 @@ const ARCHETYPE_LABELS = {
 
 // Normalize the two possible input shapes into a single record.
 //  - From Diagnostic: { ...form, ...result (tier/status/...), id, created_at }
-//  - From Supabase:   { ...columns, result_tier, result_status, ... }
+//  - From the API:    { ...columns, result_tier, result_status, ... }
 function normalize(data) {
   return {
     id: data.id || "",
@@ -371,7 +371,7 @@ const PRINT_CSS = `
  * Report — renders the diagnostic deliverable.
  *  - With a `data` prop: render immediately (used as the PDF source, and could
  *    be reused elsewhere).
- *  - Without a `data` prop: read `:id` from the route and fetch from Supabase.
+ *  - Without a `data` prop: read `:id` from the route and fetch from the API.
  *    The literal id `example` renders a static dummy record.
  */
 export default function Report({ data }) {
@@ -392,17 +392,14 @@ export default function Report({ data }) {
 
     let active = true;
     (async () => {
-      const { data: row, error } = await supabase
-        .from("diagnostic_submissions")
-        .select("*")
-        .eq("id", id)
-        .single();
-      if (!active) return;
-      if (error || !row) {
-        setState("error");
-      } else {
+      try {
+        const row = await getDiagnosticSubmission(id);
+        if (!active) return;
         setRecord(row);
         setState("ready");
+      } catch {
+        if (!active) return;
+        setState("error");
       }
     })();
     return () => {

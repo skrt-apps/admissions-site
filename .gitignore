@@ -3,3 +3,9 @@ dist/
 .env
 .env.local
 .env.*.local
+
+backend/.venv/
+backend/__pycache__/
+backend/app/__pycache__/
+backend/app/routers/__pycache__/
+*.pyc
